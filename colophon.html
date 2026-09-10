@@ -37,10 +37,9 @@
             </p>
             <p>
                 The document source was composed in <strong>Visual Studio Code</strong> with UTF-8 character encoding. 
-                Every file is positioned at root level in the repository, and all cross-page navigation links use strict relative file paths.
+                The HTML files are stored in the repository root, while the images are stored in the images folder.
             </p>
 
-            <!-- Image 3 of 3 required across your pages -->
             <figure>
                 <img src="images/workspace.jpg" alt="Visual Studio Code editor workspace showing terminal git status and valid HTML code">
                 <figcaption>Figure 1: Local editor environment during validation and git revision staging.</figcaption>
@@ -54,23 +53,23 @@
                 Press <kbd>Ctrl</kbd> + <kbd>`</kbd> to launch the command line interface, then execute the following sequence:
             </p>
             
-            <!-- Code and pre blocks positioned naturally inside colophon as required -->
+           <!-- Code and pre are used here because terminal commands are presented as literal code. -->
             <pre><code>git status
 git add index.html colophon.html
 git commit -m "feat: complete semantic structure for index and colophon"
 git push origin main</code></pre>
 
             <p>Terminal output confirmation from Git client:</p>
-            <p><samp>[main e5f6a7b] feat: complete semantic structure for index and colophon. 2 files changed, 260 insertions(+)</samp></p>
+            <p><samp>Working tree clean</samp></p>
         </section>
 
         <section>
             <h2>Standards Verification &amp; Validation</h2>
-            <!-- External link with target and rel required by assignment -->
+            <!-- The external link opens the validator separately so the current page remains open. -->
             <p>
                 All documents in this repository are verified using the official 
                 <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Nu HTML Checker</a>. 
-                The markup produces zero errors and zero warnings across all sections.
+                The documents are checked using the official W3C Nu HTML Checker before submission.
             </p>
             <p>
                 Deprecated presentation elements like <code>&lt;font&gt;</code> and <code>&lt;center&gt;</code> were omitted. 
@@ -98,7 +97,7 @@ git push origin main</code></pre>
             Webmaster Email: <a href="mailto:251196@astanait.edu.kz">251196@astanait.edu.kz</a> | 
             Studio Phone: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
         </p>
-        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+        <p>&copy; 2019 Astana IT University Music Club. All rights reserved.</p>
     </footer>
 </body>
 </html>
