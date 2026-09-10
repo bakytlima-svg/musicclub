@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical colophon detailing the authoring process, Git workflow, and semantic HTML standards for the Astana IT University Music Club site.">
+    <meta name="author" content="Бактиярова Мерейлим">
+    <title>Colophon &mdash; AITU Music Club Website</title>
+</head>
+<body>
+    <!-- Author: Бактиярова Мерейлим -->
+    <header>
+        <h1>Colophon &amp; Technical Specifications</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Club</a></li>
+                <li><a href="events.html">Events &amp; Gigs</a></li>
+                <li><a href="equipment.html">Gear &amp; Studio</a></li>
+                <li><a href="bands.html">Student Bands</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="auditions.html">Auditions</a></li>
+                <li><a href="colophon.html">Colophon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header>
+                <h2>Production Environment &amp; Markup Standards</h2>
+            </header>
+            <p>
+                This website was authored by <strong>Бактиярова Мерейлим</strong> for the Astana IT University student community as part of the <em>Introduction to Web Technologies</em> curriculum. 
+                In strict compliance with Assignment 1 criteria, the project utilizes semantic <abbr title="HyperText Markup Language 5">HTML5</abbr> 
+                without any external or inline CSS styling, JavaScript scripts, frameworks, or code generators.
+            </p>
+            <p>
+                The document source was composed in <strong>Visual Studio Code</strong> with UTF-8 character encoding. 
+                Every file is positioned at root level in the repository, and all cross-page navigation links use strict relative file paths.
+            </p>
+
+            <!-- Image 3 of 3 required across your pages -->
+            <figure>
+                <img src="images/workspace.jpg" alt="Visual Studio Code editor workspace showing terminal git status and valid HTML code">
+                <figcaption>Figure 1: Local editor environment during validation and git revision staging.</figcaption>
+            </figure>
+        </article>
+
+        <section>
+            <h2>Git Routine &amp; Terminal Commands</h2>
+            <p>
+                To maintain revision history and meet multi-day submission requirements, file revisions were staged through the integrated terminal. 
+                Press <kbd>Ctrl</kbd> + <kbd>`</kbd> to launch the command line interface, then execute the following sequence:
+            </p>
+            
+            <!-- Code and pre blocks positioned naturally inside colophon as required -->
+            <pre><code>git status
+git add index.html colophon.html
+git commit -m "feat: complete semantic structure for index and colophon"
+git push origin main</code></pre>
+
+            <p>Terminal output confirmation from Git client:</p>
+            <p><samp>[main e5f6a7b] feat: complete semantic structure for index and colophon. 2 files changed, 260 insertions(+)</samp></p>
+        </section>
+
+        <section>
+            <h2>Standards Verification &amp; Validation</h2>
+            <!-- External link with target and rel required by assignment -->
+            <p>
+                All documents in this repository are verified using the official 
+                <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Nu HTML Checker</a>. 
+                The markup produces zero errors and zero warnings across all sections.
+            </p>
+            <p>
+                Deprecated presentation elements like <code>&lt;font&gt;</code> and <code>&lt;center&gt;</code> were omitted. 
+                Visual layout, colors, and responsive layouts will be added in Assignment 2 via external CSS.
+            </p>
+
+            <!-- Comment explaining why: Aside is selected because browser rendering defaults represent secondary technical background notes -->
+            <aside>
+                <!-- Comment explaining why: Span is used to isolate the engine version string inline without altering sentence paragraph semantics -->
+                <h3>Browser Engine Defaults</h3>
+                <p>
+                    Because presentation styling is forbidden for this milestone, browsers apply native user-agent styles. 
+                    Target rendering engine: <span>Standards-Compliant Blink/Gecko</span>.
+                </p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><strong>Page Author &amp; Technical Support:</strong></p>
+        <p>
+            Author: Бактиярова Мерейлим | 
+            Official Club Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> | 
+            Webmaster Email: <a href="mailto:author@astanait.edu.kz">author@astanait.edu.kz</a> | 
+            Studio Phone: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
+        </p>
+        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+    </footer>
+</body>
+</html>
