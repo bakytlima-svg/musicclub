@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Masterclasses and practical workshops on vocal technique, guitar setup, and sound engineering hosted by AITU Music Club.">
+    <meta name="author" content="Сарсенбай Жансая">
+    <title>Workshops &amp; Masterclasses &mdash; AITU Music Club</title>
+</head>
+<body>
+    <!-- Author: Сарсенбай Жансая -->
+    <header>
+        <h1>AITU Music Club Workshops</h1>
+        <!-- Jump links allow users to navigate directly to the schedule without manual scrolling -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Club</a></li>
+                <li><a href="events.html">Events &amp; Gigs</a></li>
+                <li><a href="equipment.html">Studio &amp; Gear</a></li>
+                <li><a href="bands.html">Student Bands</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="auditions.html">Auditions</a></li>
+                <li><a href="colophon.html">Colophon</a></li>
+            </ul>
+        </nav>
+        <p>Quick navigation: <a href="#workshop-table">Workshop Schedule</a> | <a href="#terminology">Audio Concepts</a></p>
+    </header>
+
+    <main>
+        <article>
+            <header>
+                <h2>Educational Sessions &amp; Practical Skill Building</h2>
+            </header>
+            <p>
+                Apart from concert preparation, the <abbr title="Astana IT University">AITU</abbr> Music Club organizes weekly educational workshops for beginner and intermediate musicians. 
+                Our educational program covers vocal breathing exercises, guitar pedalboard routing, drum tuning, and live mixing console operation inside <b>Room C1.1.142</b>. 
+                These interactive sessions are open to all university students regardless of their current skill level.
+            </p>
+            <p>
+                During practical workshops, senior members share hands-on technical guidance. 
+                As our sound engineering mentor notes, <q>Understanding audio equalization is just as crucial as executing a flawless guitar solo.</q> 
+                Participants learn how to manage signal clipping above 0 <abbr title="Decibels relative to full scale">dBFS</abbr> and protect sensitive studio equipment. 
+                Registration for the upcoming semester workshops is <mark>currently open for registration</mark>.
+            </p>
+
+            <figure>
+                <img src="images/workshop-vocal.jpg" alt="AITU Music Club mentor demonstrating vocal warm-up techniques to students in room C1.1.142">
+                <figcaption>Figure 1: Practical vocal warm-up and mic handling session in room C1.1.142.</figcaption>
+            </figure>
+
+            <aside>
+                <!-- Aside is selected because instrument requirements represent supplementary advice separate from the main workshop syllabus -->
+                <h3>What to Bring to Workshops</h3>
+                <p>
+                    Acoustic and electric instrument players should bring their own instruments and 6.35mm jack cables. 
+                    Vocalists and sound engineering students are provided with dynamic microphones and digital mixing consoles on site.
+                </p>
+            </aside>
+        </article>
+
+        <section id="workshop-table">
+            <!-- A table is used instead of a list because workshop schedules form a structured two-dimensional matrix of dates, topics, instructors, and locations -->
+            <h2>Upcoming Masterclass Schedule</h2>
+            <table>
+                <caption>Practical workshop timetable for the current academic semester</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Date &amp; Time</th>
+                        <th scope="col">Workshop Topic</th>
+                        <th scope="col">Instructor</th>
+                        <th scope="col">Studio Room</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Wed, 16:00</th>
+                        <td>Vocal Control &amp; Diaphragmatic Breathing</td>
+                        <td>Адильбек С.</td>
+                        <td>Room C1.1.142</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thu, 17:30</th>
+                        <td>Guitar Effect Chain &amp; Pedalboard Wiring</td>
+                        <td>Абразаков Рамиль</td>
+                        <td>Room C1.1.142</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fri, 15:00</th>
+                        <td>Live Digital Mixer Calibration (Behringer XR18)</td>
+                        <td>Абразаков Рамиль</td>
+                        <td>Room C1.1.142</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sat, 14:00</th>
+                        <td>Rhythm Section Synchronization for Bands</td>
+                        <td>Айварұлы Ақназар</td>
+                        <td>Main Atrium</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="terminology">
+            <h2>Audio Concepts &amp; Terminology</h2>
+            <p>Workshop participants master key audio engineering terms used in live stage environments:</p>
+
+            <dl>
+                <dt>Gain Staging</dt>
+                <dd>The process of managing signal levels at each stage of amplification to prevent harmonic distortion.</dd>
+                <dt>Equalization (EQ)</dt>
+                <dd>Adjusting specific frequency ranges to improve clarity between vocalists and instruments.</dd>
+                <dt>Monitor Feedback</dt>
+                <dd>High-pitched acoustic resonance caused when amplified sound loops back into a live microphone.</dd>
+            </dl>
+        </section>
+
+        <section>
+            <h2>Terminal Command for Digital Workstation Setup</h2>
+            <p>
+                During recording workshops, students use digital audio workstations (<abbr title="Digital Audio Workstation">DAW</abbr>). 
+                Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> on the control room PC to initialize driver routing:
+            </p>
+
+            <pre><code>daw-control --init --inputs=8
+daw-control --set-buffer=128samples
+daw-control --start-monitor</code></pre>
+
+            <p>The studio terminal will return the following status message:</p>
+            <p><samp>[OK] Audio buffers locked at 128 samples. Latency: 2.9ms.</samp></p>
+
+            <!-- A span is used here strictly to apply an inline status tag without introducing a block-level paragraph split -->
+            <p>Workshop Seat Availability: <span>12 Spots Remaining</span></p>
+        </section>
+
+        <section>
+            <h2>Instructor Guidance Quote</h2>
+            <blockquote cite="https://www.instagram.com/aitu_music">
+                <p>
+                    &ldquo;Университеттегі воркшоптар &mdash; бұл тек теория емес, аппаратпен жұмыс істеп үйренудің ең тиімді жолы.&rdquo;
+                </p>
+            </blockquote>
+            <p>&mdash; <cite>Абразаков Рамиль</cite>, Head of Technical Support, workshop briefing on October 5, 2024.</p>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><strong>AITU Music Workshop Department:</strong></p>
+        <p>
+            Workshop Coordinator: Сарсенбай Жансая | President: Айварұлы Ақназар | 
+            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> | 
+            Email: <a href="mailto:workshops.music@astanait.edu.kz">workshops.music@astanait.edu.kz</a> | 
+            Phone: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
+        </p>
+        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+    </footer>
+</body>
+</html>
