@@ -20,7 +20,7 @@ This project is built by a team of three students, totaling 8 interconnected sem
 | :--- | :--- | :--- |
 | **Бактиярова Мерейлим** (Student 1) | `about.html`<br>`events.html` | Studio history & executive board, automated booking CLI showcase, annual concert schedule table, live performer signup form. |
 | **Баимбет Ерұлан** (Student 2) | `equipment.html`<br>`bands.html` | Technical studio hardware inventory table, active university bands catalogue, reservation inquiry form. |
-| **[Student 3 Name]** (Student 3) | `auditions.html`<br>`workshops.html` | Audition candidate registration form, sound engineering and instrumental workshops table. |
+| **Сарсенбай Жансая** (Student 3) | `auditions.html`<br>`workshops.html` | Audition candidate registration form, sound engineering and instrumental workshops table. |
 | **Shared / Team Files** | `index.html`<br>`colophon.html` | Portal landing page with global navigation, site colophon detailing Git workflow and markup architecture. |
 
 ---
