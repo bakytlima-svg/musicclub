@@ -1,0 +1,34 @@
+====================================================================
+AITU MUSIC CLUB — AI INTERACTION LOG
+Course: Introduction to Web Technologies (Assignment 1)
+Team Members:
+  - Baktiyarova Mereylim (Student 1: about.html, events.html)
+  - Erlan (Student 2: equipment.html, bands.html)
+  - Zhansaya (Student 3: workshops.html, auditions.html)
+Repository: university-music-club
+====================================================================
+
+[LOG 1] Date: 2024-09-08
+Student: Mereylim
+Prompt: "Explain the file structure requirements for Assignment 1 with 8 pages for a 3-student team."
+Purpose: Understanding repository organization and page division rules.
+
+[LOG 2] Date: 2024-09-09
+Student: Erlan
+Prompt: "What is the difference between <section> and <article> tags in HTML5, and when should I use <aside>?"
+Purpose: Clarifying semantic HTML choices to avoid 5-point penalties for improper <div> usage.
+
+[LOG 3] Date: 2024-09-10
+Student: Zhansaya
+Prompt: "How to properly format a table with caption, thead, tbody, th scope, and td without using CSS border attributes?"
+Purpose: Ensuring HTML5 compliance for the equipment and events tables.
+
+[LOG 4] Date: 2024-09-11
+Student: Mereylim
+Prompt: "What attributes are mandatory for accessible forms (label for, id matching, required, placeholder)?"
+Purpose: Building valid HTML5 forms for auditions and event performer registration.
+
+[LOG 5] Date: 2024-09-12
+Student: Erlan
+Prompt: "How to correctly add internal jump links with href=#id and target sections?"
+Purpose: Adding required in-page navigation links on about.html and events.html.
