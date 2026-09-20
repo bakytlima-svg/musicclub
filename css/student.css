@@ -1,0 +1,103 @@
+/* =========================================
+   STUDENT PERSONAL STYLESHEET
+   ========================================= */
+
+/* Personal page heading */
+.article-header {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #7C3AED;
+}
+
+/* Class selector */
+.welcome-section {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #7C3AED;
+}
+
+/* Recruitment section */
+.recruitment-section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Lists */
+.gear-list,
+.audition-steps,
+.music-terms {
+    border-radius: 5px;
+}
+
+/* Form styling */
+.membership-form {
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid #7C3AED;
+}
+
+.candidate-details,
+.music-availability {
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #111827;
+}
+
+/* Form controls */
+.membership-form input,
+.membership-form select,
+.membership-form textarea {
+    padding: 8px;
+    margin: 5px;
+}
+
+/* Buttons */
+.submit-button,
+.reset-button {
+    padding: 10px 20px;
+    border: 1px solid #111827;
+    cursor: pointer;
+}
+
+.submit-button:hover,
+.reset-button:hover {
+    background-color: gold;
+}
+
+/* Contact information */
+.contact-details {
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #7C3AED;
+    width: 80%;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 15px;
+}
+
+/* =========================================
+   SPECIFICITY EXPERIMENT
+   ========================================= */
+
+/* Class selector has lower specificity */
+.special-text {
+    color: #111827;
+}
+
+/* ID selector has higher specificity, so it wins */
+#schedule-table {
+    color: #7C3AED;
+    border: 2px solid #7C3AED;
+}
+
+/* The conflict is resolved without !important */
+#schedule-table.special-text {
+    color: #7C3AED;
+}
