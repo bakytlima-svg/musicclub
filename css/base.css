@@ -1,11 +1,57 @@
-/* Palette:
-   #111827 — main dark background
-   #7C3AED — accent for buttons and links
-   rgb(255, 255, 255) — main text
-   rgba(255, 255, 255, 0.7) — secondary text
-   gold — highlights
+/* =========================================================
+   BASE.CSS
+   Shared styles for the AITU Music Club website
+   ========================================================= */
+
+
+/* =========================================================
+   COLOUR PALETTE
+   ========================================================= */
+
+/*
+   #111827
+   Main dark colour for headers, footer, and strong text.
+
+   #7C3AED
+   Purple accent used for borders, navigation, and links.
+
+   rgb(255, 255, 255)
+   Main light colour used for backgrounds and text.
+
+   rgba(255, 255, 255, 0.7)
+   Semi-transparent light background for content sections.
+
+   gold
+   Named colour used for highlights and focus indicators.
+
+   Maximum palette: five distinct colours.
 */
+
+
+/* =========================================================
+   UNIVERSAL SELECTOR
+   ========================================================= */
+
+/*
+   Universal selector (*) matches every element.
+   box-sizing makes width and height calculations predictable.
+*/
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY AND TYPOGRAPHY
+   ========================================================= */
+
 body {
+    margin: 0;
+    padding: 0;
+
+    background-color: #111827;
+    color: #111827;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -13,83 +59,229 @@ body {
     letter-spacing: 0.2px;
 }
 
-h1, h2, h3 {
+
+/*
+   Second font family.
+
+   Georgia is used for headings.
+   Times New Roman and serif provide full fallbacks.
+*/
+h1,
+h2,
+h3 {
     font-family: Georgia, "Times New Roman", serif;
-}
-* {
-    box-sizing: border-box;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
 }
 
-header, nav, main, footer {
+
+/* =========================================================
+   GROUPING SELECTOR
+   ========================================================= */
+
+/*
+   Grouping selector:
+   header, nav, main, and footer receive shared box properties.
+*/
+header,
+nav,
+main,
+footer {
     margin: 0;
     padding: 20px;
     border: 1px solid #7C3AED;
 }
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 header {
     background-color: #111827;
     color: rgb(255, 255, 255);
     text-align: center;
+
+    /*
+       STATIC POSITIONING
+
+       The header remains in normal document flow.
+       position: static is the default positioning mode.
+    */
+    position: static;
 }
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 nav {
     background-color: #7C3AED;
 }
 
-main {
-    background-color: rgba(255, 255, 255, 0.7);
-}
 
-footer {
-    background-color: gold;
-    text-align: center;
-}
+/*
+   FLEXBOX #1
+
+   Navigation is a horizontal flex row.
+*/
 nav ul {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     justify-content: center;
     align-items: center;
+
     gap: 20px;
-}
-nav a:hover {
-    text-decoration: underline;
+
+    list-style: none;
+    padding: 0;
 }
 
-nav a:focus {
-    outline: 2px solid gold;
-}
-nav li:first-child {
-    font-weight: 700;
-}
-nav li::before {
-    content: "♪ ";
-}
+
+/*
+   CHILD SELECTOR (>)
+
+   Matches only a ul that is a direct child of nav.
+*/
 nav > ul {
     margin: 0;
 }
 
+
+/*
+   ADJACENT SIBLING SELECTOR (+)
+
+   Matches the ul immediately following the nav heading.
+*/
 nav h2 + ul {
     margin-top: 10px;
 }
+
+
+/*
+   ATTRIBUTE SELECTOR
+
+   Matches links that contain an href attribute.
+*/
 a[href] {
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
+
+
+/*
+   :hover pseudo-class
+
+   Applies when the pointer is placed over a navigation link.
+*/
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/*
+   :focus pseudo-class
+
+   Applies when a navigation link receives keyboard focus.
+*/
+nav a:focus {
+    outline: 2px solid gold;
+}
+
+
+/*
+   :first-child pseudo-class
+
+   Matches the first li inside each navigation list.
+*/
+nav li:first-child {
+    font-weight: 700;
+}
+
+
+/*
+   ::before pseudo-element
+
+   Adds a musical-note decoration before each navigation item.
+*/
+nav li::before {
+    content: "♪ ";
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+main {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/*
+   DESCENDANT SELECTOR
+
+   Matches paragraphs located anywhere inside main.
+*/
 main p {
     margin-bottom: 15px;
 }
-h1, h2, h3 {
+
+
+/*
+   Heading spacing.
+*/
+h1,
+h2,
+h3 {
     margin-bottom: 10px;
 }
+
+
+/* =========================================================
+   GENERAL IMAGE STYLES
+   ========================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   INDEX PAGE IMAGES
+   ========================================================= */
+
 .rehearsal-photo,
 .acoustic-photo {
     text-align: center;
+
+    /*
+       CENTERING TECHNIQUE #2
+
+       Auto horizontal margins center a block element.
+    */
+    width: 80%;
     margin: 20px auto;
+
     padding: 15px;
     border: 2px solid #7C3AED;
 }
+
 
 .rehearsal-photo img,
 .acoustic-photo img {
     max-width: 100%;
 }
+
+
+/* =========================================================
+   STUDIO POLICY BLOCK
+   ========================================================= */
 
 .studio-policies {
     padding: 20px;
@@ -97,99 +289,256 @@ h1, h2, h3 {
     border: 2px solid gold;
 }
 
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
 .rehearsal-schedule {
     width: 100%;
     border-collapse: collapse;
 }
+
 
 .rehearsal-schedule th,
 .rehearsal-schedule td {
     padding: 12px;
     border: 1px solid #111827;
 }
-/* Flexbox for content blocks */
+
+
+/* =========================================================
+   FLEXBOX CONTENT BLOCK
+   ========================================================= */
+
+/*
+   FLEXBOX #2
+
+   Recruitment content forms a flexible row.
+   flex-wrap allows the blocks to move onto another line.
+*/
 .recruitment-section {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+
     justify-content: space-between;
     align-items: flex-start;
+
     gap: 20px;
 }
 
+
+/*
+   flex-grow: 1
+   flex-shrink: 1
+   flex-basis: 250px
+*/
 .gear-list,
 .audition-steps,
 .music-terms {
     flex: 1 1 250px;
+
     margin: 0;
     padding: 20px;
+
     border: 1px solid #7C3AED;
 }
-/* Grid layout: suitable for the schedule because it has rows and columns */
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+/*
+   GRID LAYOUT
+
+   Grid is suitable for the rehearsal schedule because
+   the information has both rows and columns.
+
+   repeat() creates four equal tracks.
+   fr distributes available space.
+   minmax() gives each track a minimum width.
+*/
 .schedule-section {
     display: grid;
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
+
+    grid-template-columns:
+        repeat(4, minmax(120px, 1fr));
+
     gap: 10px;
 }
 
+
+/*
+   Grid item spans all four columns.
+*/
 .rehearsal-schedule {
     grid-column: 1 / span 4;
 }
 
-.rehearsal-schedule th,
-.rehearsal-schedule td {
-    padding: 12px;
-}
-/* Positioning demonstration */
+
+/* =========================================================
+   POSITIONING
+   ========================================================= */
+
+/*
+   RELATIVE POSITIONING
+
+   The figure becomes a containing block for its
+   absolutely positioned generated caption.
+*/
 .rehearsal-photo {
     position: relative;
 }
 
+
+/*
+   ABSOLUTE POSITIONING
+
+   The caption is positioned relative to .rehearsal-photo.
+*/
 .rehearsal-photo::after {
     content: "Rehearsal";
+
     position: absolute;
+
     bottom: 10px;
     left: 10px;
+
     padding: 5px 10px;
+
     background-color: #111827;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
-/* Fixed element stays on the screen while scrolling */
+
+/*
+   FIXED POSITIONING
+
+   The footer stays attached to the bottom of the screen
+   while the page is scrolled.
+*/
 .site-footer {
     position: fixed;
+
     bottom: 0;
     left: 0;
+
     width: 100%;
 }
-/* Float: image is placed beside the paragraph text */
+
+
+/* =========================================================
+   FLOAT
+   ========================================================= */
+
+/*
+   FLOAT DEMONSTRATION
+
+   This rule is used by an image inside its own paragraph.
+   Text can flow around the floated image.
+*/
 .article-header img {
     float: left;
+
     width: 180px;
+
     margin: 0 20px 10px 0;
 }
 
-/* Clear prevents the next content from wrapping around the floated image */
+
+/*
+   CLEAR DEMONSTRATION
+
+   clear: both prevents the following content from
+   wrapping beside the floated image.
+*/
 .welcome-section {
     clear: both;
 }
-/* Three different centering techniques */
 
-/* 1. text-align centers inline text */
+
+/* =========================================================
+   THREE DIFFERENT CENTERING TECHNIQUES
+   ========================================================= */
+
+/*
+   CENTERING TECHNIQUE #1
+
+   text-align centers inline content/text.
+*/
 .site-header {
     text-align: center;
 }
 
-/* 2. margin auto centers a block */
+
+/*
+   CENTERING TECHNIQUE #2
+
+   margin-left/right: auto centers a block element.
+*/
 .rehearsal-photo {
-    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* 3. Flexbox centers content */
+
+/*
+   CENTERING TECHNIQUE #3
+
+   Flexbox centers items horizontally and vertically.
+*/
 .form-actions {
     display: flex;
+
     justify-content: center;
     align-items: center;
+}
+
+
+/* =========================================================
+   BOX MODEL
+   ========================================================= */
+
+figure,
+section,
+article,
+aside {
+    padding: 10px;
+}
+
+
+/*
+   Margin collapse explanation:
+
+   Vertical margins between normal block elements can collapse.
+   This means adjacent vertical margins may combine instead of
+   simply adding together. Padding and borders can prevent
+   margin collapse.
+*/
+
+
+/* =========================================================
+   FOOTER CONTENT
+   ========================================================= */
+
+footer {
+    background-color: gold;
+    color: #111827;
+    text-align: center;
+}
+
+
+/* =========================================================
+   EXTRA SHARED CLASSES
+   ========================================================= */
+
+.special-text {
+    letter-spacing: 1px;
+}
+
+
+.contact-details {
+    line-height: 1.5;
 }
