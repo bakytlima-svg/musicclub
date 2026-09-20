@@ -62,3 +62,10 @@ nav li:first-child {
 nav li::before {
     content: "♪ ";
 }
+nav > ul {
+    margin: 0;
+}
+
+nav h2 + ul {
+    margin-top: 10px;
+}
