@@ -49,3 +49,10 @@ nav ul {
     align-items: center;
     gap: 20px;
 }
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a:focus {
+    outline: 2px solid gold;
+}
