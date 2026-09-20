@@ -1,34 +1,66 @@
-====================================================================
-AITU MUSIC CLUB — AI INTERACTION LOG
-Course: Introduction to Web Technologies (Assignment 1)
-Team Members:
-  - Baktiyarova Mereylim (Student 1: about.html, events.html)
-  - Erlan (Student 2: equipment.html, bands.html)
-  - Zhansaya (Student 3: workshops.html, auditions.html)
-Repository: university-music-club
-====================================================================
+AI LOG — AITU MUSIC CLUB ASSIGNMENT 2
 
-[LOG 1] Date: 2024-09-08
-Student: Mereylim
-Prompt: "Explain the file structure requirements for Assignment 1 with 8 pages for a 3-student team."
-Purpose: Understanding repository organization and page division rules.
+Student: Мерейлим Ерулан Жансая
+Project: AITU Music Club
 
-[LOG 2] Date: 2024-09-09
-Student: Erlan
-Prompt: "What is the difference between <section> and <article> tags in HTML5, and when should I use <aside>?"
-Purpose: Clarifying semantic HTML choices to avoid 5-point penalties for improper <div> usage.
+Purpose:
+This log records the questions asked to AI during the development process.
 
-[LOG 3] Date: 2024-09-10
-Student: Zhansaya
-Prompt: "How to properly format a table with caption, thead, tbody, th scope, and td without using CSS border attributes?"
-Purpose: Ensuring HTML5 compliance for the equipment and events tables.
+1. Question:
+How should CSS be organized using a shared base stylesheet and a personal stylesheet?
 
-[LOG 4] Date: 2024-09-11
-Student: Mereylim
-Prompt: "What attributes are mandatory for accessible forms (label for, id matching, required, placeholder)?"
-Purpose: Building valid HTML5 forms for auditions and event performer registration.
+Purpose:
+To understand how base.css and student.css should be separated and linked.
 
-[LOG 5] Date: 2024-09-12
-Student: Erlan
-Prompt: "How to correctly add internal jump links with href=#id and target sections?"
-Purpose: Adding required in-page navigation links on about.html and events.html.
+2. Question:
+Which CSS selectors are required for the assignment?
+
+Purpose:
+To understand the required type, class, ID, descendant, child, adjacent sibling,
+grouping, attribute, universal, pseudo-class, and pseudo-element selectors.
+
+3. Question:
+How can Flexbox be used for the navigation and content sections?
+
+Purpose:
+To understand display:flex, flex-direction, flex-wrap, justify-content,
+align-items, gap, flex-grow, and flex-shrink.
+
+4. Question:
+How can CSS Grid be used for a page section?
+
+Purpose:
+To understand grid-template-columns, repeat(), fr units, minmax(), gap,
+and spanning multiple columns or rows.
+
+5. Question:
+What is the difference between static, relative, absolute, and fixed positioning?
+
+Purpose:
+To understand CSS positioning and how relative positioning creates a containing
+block for absolutely positioned elements.
+
+6. Question:
+How can float and clear be demonstrated?
+
+Purpose:
+To understand how an image can float beside paragraph text and how clear prevents
+later content from wrapping around the floated image.
+
+7. Question:
+How can CSS specificity be demonstrated without using !important?
+
+Purpose:
+To understand the difference between class and ID specificity and how a more
+specific selector can resolve a conflict.
+
+8. Question:
+What should be included in a CSS assignment checklist?
+
+Purpose:
+To track the required selectors, properties, layout techniques, validation,
+screenshots, sketches, and submission requirements.
+
+Note:
+AI was used to explain CSS concepts and help organize the assignment workflow.
+The final project must be checked manually and validated before submission.
