@@ -125,3 +125,71 @@ h1, h2, h3 {
     padding: 20px;
     border: 1px solid #7C3AED;
 }
+/* Grid layout: suitable for the schedule because it has rows and columns */
+.schedule-section {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.rehearsal-schedule {
+    grid-column: 1 / span 4;
+}
+
+.rehearsal-schedule th,
+.rehearsal-schedule td {
+    padding: 12px;
+}
+/* Positioning demonstration */
+.rehearsal-photo {
+    position: relative;
+}
+
+.rehearsal-photo::after {
+    content: "Rehearsal";
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    background-color: #111827;
+    color: white;
+}
+
+/* Fixed element stays on the screen while scrolling */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+/* Float: image is placed beside the paragraph text */
+.article-header img {
+    float: left;
+    width: 180px;
+    margin: 0 20px 10px 0;
+}
+
+/* Clear prevents the next content from wrapping around the floated image */
+.welcome-section {
+    clear: both;
+}
+/* Three different centering techniques */
+
+/* 1. text-align centers inline text */
+.site-header {
+    text-align: center;
+}
+
+/* 2. margin auto centers a block */
+.rehearsal-photo {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Flexbox centers content */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
