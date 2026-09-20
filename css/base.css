@@ -25,3 +25,21 @@ header, nav, main, footer {
     padding: 20px;
     border: 1px solid #7C3AED;
 }
+header {
+    background-color: #111827;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+nav {
+    background-color: #7C3AED;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+footer {
+    background-color: gold;
+    text-align: center;
+}
