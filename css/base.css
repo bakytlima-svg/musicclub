@@ -78,3 +78,32 @@ main p {
 h1, h2, h3 {
     margin-bottom: 10px;
 }
+.rehearsal-photo,
+.acoustic-photo {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px solid #7C3AED;
+}
+
+.rehearsal-photo img,
+.acoustic-photo img {
+    max-width: 100%;
+}
+
+.studio-policies {
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid gold;
+}
+
+.rehearsal-schedule {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rehearsal-schedule th,
+.rehearsal-schedule td {
+    padding: 12px;
+    border: 1px solid #111827;
+}
