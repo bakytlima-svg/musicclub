@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Audition schedule, candidate evaluation criteria, and online registration form for joining Astana IT University Music Club.">
     <meta name="author" content="Сарсенбай Жансая">
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sarsenbay.css">
+
     <title>Auditions &amp; Tryouts &mdash; AITU Music Club</title>
 </head>
+
 <body>
     <!-- Author: Сарсенбай Жансая -->
-    <header>
+
+    <header class="audition-hero">
         <h1>AITU Music Club Auditions &amp; Tryouts</h1>
+
         <!-- Jump links allow applicants to move straight to candidate requirements or the online form -->
         <nav>
             <ul>
@@ -24,52 +31,74 @@
                 <li><a href="colophon.html">Colophon</a></li>
             </ul>
         </nav>
-        <p>Quick jump: <a href="#selection-process">Audition Steps</a> | <a href="#audition-form">Candidate Registration</a></p>
+
+        <p>
+            Quick jump:
+            <a href="#selection-process">Audition Steps</a> |
+            <a href="#audition-form">Candidate Registration</a>
+        </p>
     </header>
 
     <main>
-        <article>
+
+        <article class="audition-card">
             <header>
                 <h2>Joining Our Campus Ensembles</h2>
             </header>
+
             <p>
-                At the beginning of each academic semester, the Astana IT University Music Club hosts auditions for newly enrolled and returning students. 
-                We are looking for passionate <strong>vocalists, guitarists, bassists, drummers, keyboard players, and brass instrument performers</strong>. 
+                At the beginning of each academic semester, the Astana IT University Music Club hosts auditions
+                for newly enrolled and returning students. We are looking for passionate
+                <strong>vocalists, guitarists, bassists, drummers, keyboard players, and brass instrument performers</strong>.
                 Tryouts take place in our main rehearsal space in <b>Room C1.1.142</b> between 15:00 and 20:00.
             </p>
+
             <p>
-                Our audition committee evaluates rhythm stability, pitch control, and willingness to collaborate within team ensembles. 
-                Candidates are asked to prepare two short musical fragments: one primary solo piece and one impromptu rhythm test. 
-                Remember that <em>stage confidence</em> matters more than flawless speed. 
+                Our audition committee evaluates rhythm stability, pitch control, and willingness to collaborate
+                within team ensembles. Candidates are asked to prepare two short musical fragments:
+                one primary solo piece and one impromptu rhythm test. Remember that
+                <em>stage confidence</em> matters more than flawless speed.
                 Current recruitment is <mark>active for all performance tracks</mark>.
             </p>
 
-            <figure>
-                <img src="images/audition-guitar.jpg" alt="AITU student testing an electric guitar during audition trial in room C1.1.142">
-                <figcaption>Figure 1: Instrumental evaluation on electric guitar in studio room C1.1.142.</figcaption>
+            <p class="audition-note">
+                Applicants should bring their student ID and arrive early enough to prepare before the audition.
+            </p>
+
+            <figure class="audition-image">
+                <img src="images/audition-guitar.jpg"
+                     alt="AITU student testing an electric guitar during audition trial in room C1.1.142">
+                <figcaption>
+                    Figure 1: Instrumental evaluation on electric guitar in studio room C1.1.142.
+                </figcaption>
             </figure>
 
-            <aside>
+            <aside class="audition-card">
                 <!-- Aside is selected because stage fright advice represents complementary psychological tips separate from official audition rules -->
                 <h3>Handling Stage Nerves</h3>
                 <p>
-                    Arrive 15 minutes before your time slot to warm up your hands or vocal cords. 
-                    Our mentors foster an encouraging atmosphere, so treat the tryout as a collaborative jam session rather than an exam.
+                    Arrive 15 minutes before your time slot to warm up your hands or vocal cords.
+                    Our mentors foster an encouraging atmosphere, so treat the tryout as a collaborative
+                    jam session rather than an exam.
                 </p>
             </aside>
 
-            <figure>
-                <img src="images/audition-drums.jpg" alt="Drummer executing a rhythm test on the studio electronic drum kit during auditions">
-                <figcaption>Figure 2: Rhythmic timing assessment on the electronic drum kit.</figcaption>
+            <figure class="audition-image">
+                <img src="images/audition-drums.jpg"
+                     alt="Drummer executing a rhythm test on the studio electronic drum kit during auditions">
+                <figcaption>
+                    Figure 2: Rhythmic timing assessment on the electronic drum kit.
+                </figcaption>
             </figure>
         </article>
 
         <section id="selection-process">
             <h2>Selection Stages &amp; Repertoire Categories</h2>
-            
+
             <h3>Four-Step Recruitment Workflow</h3>
+
             <!-- A numbered list is used because candidates must follow these administrative steps in chronological order -->
-            <ol type="1">
+            <ol class="audition-steps" type="1">
                 <li>Fill out and submit the official applicant registration form below.</li>
                 <li>Receive time-slot confirmation via your student email address.</li>
                 <li>Perform your prepared 3-minute piece before the evaluation panel.</li>
@@ -77,15 +106,19 @@
             </ol>
 
             <h3>Auditioned Instrument Categories</h3>
+
             <!-- Nested list required by assignment rules -->
-            <ul>
-                <li>Rhythm and Bass Section
+            <ul class="instrument-list">
+                <li>
+                    Rhythm and Bass Section
                     <ul>
                         <li>4-String and 5-String Bass Guitars</li>
                         <li>Acoustic Drums and Percussion Pads</li>
                     </ul>
                 </li>
-                <li>Melodic &amp; Lead Instruments
+
+                <li>
+                    Melodic &amp; Lead Instruments
                     <ul>
                         <li>Electric Lead Guitar and Rhythm Guitar</li>
                         <li>Synthesizers and Digital Piano</li>
@@ -99,34 +132,57 @@
 
         <section id="audition-form">
             <h2>Candidate Application Form</h2>
+
             <!-- The form does not send anything yet because server-side request processing will be introduced in a future assignment -->
             <form action="#" method="post">
+
                 <fieldset>
                     <legend>Personal Candidate Information</legend>
 
-                    <p>
+                    <p class="application-field">
                         <label for="candidate-name">Full Name:</label><br>
-                        <input type="text" id="candidate-name" name="candidate_name" placeholder="e.g., Сарсенбай Жансая" required>
+                        <input type="text"
+                               id="candidate-name"
+                               name="candidate_name"
+                               placeholder="e.g., Сарсенбай Жансая"
+                               required>
                     </p>
 
-                    <p>
+                    <p class="application-field">
                         <label for="candidate-email">AITU Student Email:</label><br>
-                        <input type="email" id="candidate-email" name="candidate_email" placeholder="student@astanait.edu.kz" required>
+                        <input type="email"
+                               id="candidate-email"
+                               name="candidate_email"
+                               placeholder="student@astanait.edu.kz"
+                               required>
                     </p>
 
-                    <p>
+                    <p class="application-field">
                         <label for="candidate-phone">Contact Phone Number:</label><br>
-                        <input type="tel" id="candidate-phone" name="candidate_phone" placeholder="+7 778 057 3242" required>
+                        <input type="tel"
+                               id="candidate-phone"
+                               name="candidate_phone"
+                               placeholder="+7 778 057 3242"
+                               required>
                     </p>
 
-                    <p>
+                    <p class="application-field">
                         <label for="years-experience">Years of Playing / Singing Experience:</label><br>
-                        <input type="number" id="years-experience" name="years_experience" min="0" max="20" placeholder="2" required>
+                        <input type="number"
+                               id="years-experience"
+                               name="years_experience"
+                               min="0"
+                               max="20"
+                               placeholder="2"
+                               required>
                     </p>
 
-                    <p>
+                    <p class="application-field">
                         <label for="preferred-date">Preferred Audition Date:</label><br>
-                        <input type="date" id="preferred-date" name="audition_date" required>
+                        <input type="date"
+                               id="preferred-date"
+                               name="audition_date"
+                               required>
                     </p>
                 </fieldset>
 
@@ -134,18 +190,34 @@
                     <legend>Instrument &amp; Performance Preferences</legend>
 
                     <p>Primary Performance Direction:</p>
-                    <p>
-                        <input type="radio" id="role-vocalist" name="primary_role" value="vocalist" required>
+
+                    <p class="application-field">
+                        <input type="radio"
+                               id="role-vocalist"
+                               name="primary_role"
+                               value="vocalist"
+                               required>
                         <label for="role-vocalist">Vocalist (Lead / Backing)</label><br>
-                        <input type="radio" id="role-musician" name="primary_role" value="instrumentalist">
+
+                        <input type="radio"
+                               id="role-musician"
+                               name="primary_role"
+                               value="instrumentalist">
                         <label for="role-musician">Instrumentalist</label><br>
-                        <input type="radio" id="role-tech" name="primary_role" value="technician">
+
+                        <input type="radio"
+                               id="role-tech"
+                               name="primary_role"
+                               value="technician">
                         <label for="role-tech">Sound Engineer / Stage Hand</label>
                     </p>
 
-                    <p>
+                    <p class="application-field">
                         <label for="instrument-type">Select Primary Instrument:</label><br>
-                        <select id="instrument-type" name="instrument_type" required>
+
+                        <select id="instrument-type"
+                                name="instrument_type"
+                                required>
                             <option value="">-- Choose an instrument --</option>
                             <option value="electric-guitar">Electric Guitar</option>
                             <option value="bass-guitar">Bass Guitar</option>
@@ -157,43 +229,78 @@
                         </select>
                     </p>
 
-                    <p>
-                        <label for="repertoire-notes">Describe your preferred music genres and prepared pieces:</label><br>
-                        <textarea id="repertoire-notes" name="repertoire_notes" rows="4" cols="45" placeholder="Playing lead guitar for two years, performing indie rock and jazz arrangements..." required></textarea>
+                    <p class="application-field">
+                        <label for="repertoire-notes">
+                            Describe your preferred music genres and prepared pieces:
+                        </label><br>
+
+                        <textarea id="repertoire-notes"
+                                  name="repertoire_notes"
+                                  rows="4"
+                                  cols="45"
+                                  placeholder="Playing lead guitar for two years, performing indie rock and jazz arrangements..."
+                                  required></textarea>
                     </p>
 
-                    <p>
-                        <input type="checkbox" id="rules-agree" name="rules_agreement" value="agreed" required>
-                        <label for="rules-agree">I agree to follow room C1.1.142 safety rules and attend scheduled band rehearsals.</label>
+                    <p class="application-field">
+                        <input type="checkbox"
+                               id="rules-agree"
+                               name="rules_agreement"
+                               value="agreed"
+                               required>
+
+                        <label for="rules-agree">
+                            I agree to follow room C1.1.142 safety rules and attend scheduled band rehearsals.
+                        </label>
                     </p>
 
                     <p>
                         <button type="submit">Submit Audition Application</button>
                         <button type="reset">Clear Form</button>
                     </p>
+
                 </fieldset>
             </form>
         </section>
 
         <!-- A div is used strictly as a structural wrapper container for room access rules where no semantic article or section tag applies -->
-        <div>
+        <div class="audition-note">
             <p>
-                <small>Audition Location: Astana IT University, Room C1.1.142.<br>
-                Please present your student ID card at security post 2 upon entering.</small>
+                <small>
+                    Audition Location: Astana IT University, Room C1.1.142.<br>
+                    Please present your student ID card at security post 2 upon entering.
+                </small>
             </p>
         </div>
+
     </main>
 
     <footer>
         <hr>
-        <p><strong>AITU Music Audition Committee:</strong></p>
+
         <p>
-            Audition Manager: Сарсенбай Жансая | President: Айварұлы Ақназар | 
-            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> | 
-            Email: <a href="mailto:auditions.music@astanait.edu.kz">auditions.music@astanait.edu.kz</a> | 
-            Audition Hotline: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
+            <strong>AITU Music Audition Committee:</strong>
         </p>
-        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+
+        <p>
+            Audition Manager: Сарсенбай Жансая |
+            President: Айварұлы Ақназар |
+            Instagram:
+            <a href="https://www.instagram.com/aitu_music"
+               target="_blank"
+               rel="noopener noreferrer">@aitu_music</a> |
+            Email:
+            <a href="mailto:auditions.music@astanait.edu.kz">
+                auditions.music@astanait.edu.kz
+            </a> |
+            Audition Hotline:
+            <a href="tel:+77780573242">+7 (778) 057-32-42</a>
+        </p>
+
+        <p>
+            &copy; 2024 Astana IT University Music Club. All rights reserved.
+        </p>
     </footer>
+
 </body>
 </html>
