@@ -56,3 +56,6 @@ nav a:hover {
 nav a:focus {
     outline: 2px solid gold;
 }
+nav li:first-child {
+    font-weight: 700;
+}
