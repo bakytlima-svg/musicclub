@@ -1,0 +1,826 @@
+/* =========================================================
+   SARSENBAY ZHANSAYA - ASSIGNMENT 2 PERSONAL STYLESHEET
+   Pages: auditions.html and workshops.html
+   ========================================================= */
+
+
+/* =========================================================
+   1. PALETTE
+   =========================================================
+   #111827 - dark navy: main text and strong contrast
+   #7C3AED - purple: headings, links and accents
+   #FFFFFF - white: main background and readable cards
+   #F3F0FF - light purple: soft section backgrounds
+   gold - named colour: small accent/highlight
+   ========================================================= */
+
+
+/* Universal selector + box sizing */
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   2. BASE / TYPE SELECTORS
+   ========================================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
+    color: #111827;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+
+
+/* Type selector */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+/* Grouping selector */
+h2,
+h3 {
+    color: #7C3AED;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+
+/* Grouping selector */
+article,
+section,
+aside,
+figure {
+    margin-bottom: 25px;
+}
+
+
+/* Paragraph type selector */
+p {
+    margin: 0 0 16px;
+}
+
+
+/* =========================================================
+   3. HEADER / NAVIGATION
+   ========================================================= */
+
+/*
+   Flexbox is used for navigation because the navigation
+   items need to stay in one row and be spaced evenly.
+*/
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0;
+    padding: 15px;
+    list-style: none;
+}
+
+
+/* Child selector */
+nav > ul > li {
+    margin: 0;
+}
+
+
+/* Descendant selector */
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 12px;
+}
+
+
+/* Hover pseudo-class */
+nav a:hover {
+    background: #7C3AED;
+    border-radius: 6px;
+}
+
+
+/* Focus pseudo-class */
+nav a:focus {
+    outline: 3px solid gold;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   4. GENERAL LINKS
+   ========================================================= */
+
+/* Descendant selector */
+main a {
+    color: #7C3AED;
+    font-weight: 700;
+}
+
+
+/* Hover */
+main a:hover {
+    text-decoration: underline;
+}
+
+
+/* Focus */
+main a:focus {
+    outline: 2px solid gold;
+}
+
+
+/* =========================================================
+   5. AUDITIONS PAGE
+   ========================================================= */
+
+
+/* Class selector */
+.audition-hero {
+    background: #F3F0FF;
+    padding: 30px;
+    border: 2px solid #7C3AED;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+
+/* Class selector */
+.audition-card {
+    background: #FFFFFF;
+    border: 1px solid #7C3AED;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Class selector */
+.audition-note {
+    background: #F3F0FF;
+    border-left: 5px solid #7C3AED;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+
+/* Image class */
+.audition-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border: 3px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   6. AUDITION LISTS
+   ========================================================= */
+
+
+/* Class selector */
+.audition-steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+
+/*
+   Grid is used here because the audition steps are
+   independent blocks that should form equal columns.
+*/
+.audition-steps li {
+    background: #F3F0FF;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/* Class selector */
+.instrument-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+
+
+/* Flex items grow and shrink */
+.instrument-list li {
+    flex: 1 1 180px;
+    background: #F3F0FF;
+    padding: 15px;
+    border: 1px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/* First-child pseudo-class */
+.instrument-list li:first-child {
+    border-top: 5px solid gold;
+}
+
+
+/* =========================================================
+   7. AUDITION FORM
+   ========================================================= */
+
+
+/*
+   Flexbox is used for the form so form fields can wrap
+   naturally while growing and shrinking.
+*/
+#audition-form form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+
+/* Flex items grow and shrink */
+#audition-form fieldset {
+    flex: 1 1 300px;
+    min-width: 280px;
+    padding: 20px;
+    border: 2px solid #7C3AED;
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+
+
+/* Class selector */
+.application-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 250px;
+    margin-bottom: 15px;
+}
+
+
+/* Attribute selector */
+input[required],
+select[required],
+textarea[required] {
+    border-left: 4px solid #7C3AED;
+}
+
+
+/* Attribute selector */
+input[type="email"] {
+    background: #F3F0FF;
+}
+
+
+/* Form controls */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #111827;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+
+/* Focus pseudo-class */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #7C3AED;
+    outline-offset: 2px;
+}
+
+
+/* Submit button */
+button[type="submit"] {
+    flex: 1 1 100%;
+    padding: 14px 20px;
+    background: #7C3AED !important;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/*
+   !important is used once because the assignment requires
+   a deliberate cascade override for the submit button.
+*/
+button[type="submit"]:hover {
+    background: #111827;
+}
+
+
+/* =========================================================
+   8. REQUIRED ID SELECTORS - AUDITIONS
+   ========================================================= */
+
+
+/*
+   ID is appropriate here because selection-process is a
+   unique section of the auditions page.
+*/
+#selection-process {
+    background: #F3F0FF;
+    padding: 25px;
+    border: 2px solid #7C3AED;
+    border-radius: 10px;
+}
+
+
+/*
+   ID is appropriate here because audition-form identifies
+   the unique application form section.
+*/
+#audition-form {
+    position: relative;
+    background: #FFFFFF;
+    padding: 25px;
+    border: 2px solid #7C3AED;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   9. SPECIFICITY EXPERIMENT
+   ========================================================= */
+
+
+/*
+   Specificity: ID = (1,0,0)
+*/
+#candidate-email {
+    border-color: #111827;
+}
+
+
+/*
+   Specificity: ID + two type selectors = (1,0,2)
+   This beats #candidate-email.
+*/
+section#audition-form input {
+    border-color: #7C3AED;
+}
+
+
+/*
+   Specificity: two IDs = (2,0,0)
+   This wins over both rules above.
+*/
+#audition-form #candidate-email {
+    border-color: gold;
+}
+
+
+/* =========================================================
+   10. GRID ON AUDITIONS PAGE
+   ========================================================= */
+
+
+/*
+   Grid is used instead of flexbox because these cards form
+   a two-dimensional layout with controlled columns.
+*/
+#audition-form .audition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+
+/* Grid item spans two columns */
+#audition-form .audition-grid > :first-child {
+    grid-column: span 2;
+}
+
+
+/* =========================================================
+   11. POSITIONING - AUDITIONS
+   ========================================================= */
+
+
+/* Relative positioning gives the section a positioning context. */
+#audition-form {
+    position: relative;
+}
+
+
+/* Absolute positioning has a real purpose: badge placement. */
+#audition-form::before {
+    content: "APPLICATION";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #7C3AED;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* Fixed positioning: persistent page label. */
+body::after {
+    content: "Music Club";
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    background: #111827;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+
+/* Static positioning demonstration */
+.audition-card {
+    position: static;
+}
+
+
+/* =========================================================
+   12. FLOAT + CLEAR
+   ========================================================= */
+
+
+/*
+   The image floats so text can wrap around it.
+*/
+.article-float-image {
+    float: left;
+    width: 180px;
+    height: auto;
+    margin: 0 20px 15px 0;
+    border: 2px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/*
+   clear: both prevents this content from sitting beside
+   the floated image and makes it start below the float.
+*/
+article aside {
+    clear: both;
+}
+
+
+/* =========================================================
+   13. CENTERING TECHNIQUES
+   ========================================================= */
+
+
+/*
+   Centering technique 1:
+   margin-left/right auto centers the image horizontally.
+*/
+.audition-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*
+   Centering technique 2:
+   flexbox centers the navigation items.
+*/
+nav ul {
+    justify-content: center;
+}
+
+
+/*
+   Centering technique 3:
+   grid centers the content of the workshop terminology.
+*/
+#terminology {
+    display: grid;
+    place-items: center;
+}
+
+
+/* =========================================================
+   14. WORKSHOPS PAGE
+   ========================================================= */
+
+
+/* Class selector */
+.workshop-hero {
+    background: #F3F0FF;
+    padding: 30px;
+    border: 2px solid #7C3AED;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+
+/* Class selector */
+.workshop-card {
+    background: #FFFFFF;
+    border: 1px solid #7C3AED;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Class selector */
+.workshop-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border: 3px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/* Class selector */
+.workshop-note {
+    background: #F3F0FF;
+    border-left: 5px solid #7C3AED;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+
+/* =========================================================
+   15. WORKSHOP TABLE
+   ========================================================= */
+
+
+/*
+   Grid is used because workshop information is naturally
+   arranged into rows and columns.
+*/
+#workshop-table {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background: #F3F0FF;
+    border: 2px solid #7C3AED;
+    border-radius: 10px;
+}
+
+
+/* The actual table remains usable and readable. */
+.workshop-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+}
+
+
+/* Table cells */
+.workshop-table th,
+.workshop-table td {
+    padding: 12px;
+    border: 1px solid #111827;
+    text-align: left;
+}
+
+
+/* Header cells */
+.workshop-table th {
+    background: #7C3AED;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+
+/* Hover effect on table rows */
+.workshop-table tr:hover {
+    background: #F3F0FF;
+}
+
+
+/* =========================================================
+   16. WORKSHOP TERMINOLOGY
+   ========================================================= */
+
+
+/*
+   Grid with minmax() creates flexible terminology columns.
+*/
+#audio-terms,
+#terminology dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+
+/* Grid item spans two columns */
+#terminology dt:first-child {
+    grid-column: span 2;
+}
+
+
+/* Audio terminology class */
+.audio-terms {
+    background: #F3F0FF;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+    border-radius: 8px;
+}
+
+
+/* Seat status class */
+.seat-status {
+    font-weight: 700;
+    color: #7C3AED;
+}
+
+
+/* =========================================================
+   17. WORKSHOP FLEX CONTAINER
+   ========================================================= */
+
+
+/*
+   Flexbox is used for workshop cards because the cards
+   should grow and shrink and wrap onto additional lines.
+*/
+.workshop-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+
+/* Flex items grow and shrink */
+.workshop-flex > * {
+    flex: 1 1 250px;
+}
+
+
+/* =========================================================
+   18. REQUIRED PSEUDO-ELEMENT
+   ========================================================= */
+
+
+/*
+   ::before adds a visual label without an extra HTML element.
+*/
+.workshop-card h3::before {
+    content: "♪ ";
+    color: gold;
+    font-weight: 700;
+}
+
+
+/* ::after adds a small decorative accent. */
+.workshop-card h3::after {
+    content: " ♫";
+    color: #7C3AED;
+}
+
+
+/* =========================================================
+   19. CHILD + ADJACENT SIBLING SELECTORS
+   ========================================================= */
+
+
+/* Child selector */
+section > h2 {
+    border-bottom: 2px solid #7C3AED;
+    padding-bottom: 8px;
+}
+
+
+/* Adjacent sibling selector */
+h2 + h3 {
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   20. BOX MODEL
+   ========================================================= */
+
+
+/*
+   Box model demonstration:
+   content + padding + border + margin.
+*/
+.workshop-card {
+    padding: 20px;
+    border: 2px solid #7C3AED;
+    margin: 20px 0;
+}
+
+
+/*
+   Margin collapse demonstration:
+   vertical margins between normal block elements can collapse;
+   padding/border can be used when separation must be preserved.
+*/
+.workshop-card + .workshop-card {
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   21. TYPOGRAPHY
+   ========================================================= */
+
+code,
+pre {
+    font-family: "Courier New", Courier, monospace;
+}
+
+
+pre {
+    background: #111827;
+    color: #FFFFFF;
+    padding: 20px;
+    overflow: auto;
+    border-radius: 8px;
+}
+
+
+code {
+    font-size: 0.95em;
+}
+
+
+/* =========================================================
+   22. ADDITIONAL PAGE ELEMENTS
+   ========================================================= */
+
+mark {
+    background: gold;
+    color: #111827;
+    padding: 2px 5px;
+}
+
+
+blockquote {
+    margin: 20px auto;
+    padding: 15px 20px;
+    border-left: 5px solid #7C3AED;
+    background: #F3F0FF;
+    max-width: 800px;
+}
+
+
+small {
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   23. FOOTER
+   ========================================================= */
+
+footer {
+    margin-top: 30px;
+    padding: 25px;
+    background: #111827;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
+footer a {
+    color: #FFFFFF;
+}
+
+
+footer a:hover {
+    color: gold;
+}
