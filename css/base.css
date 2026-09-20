@@ -107,3 +107,21 @@ h1, h2, h3 {
     padding: 12px;
     border: 1px solid #111827;
 }
+/* Flexbox for content blocks */
+.recruitment-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.gear-list,
+.audition-steps,
+.music-terms {
+    flex: 1 1 250px;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+}
