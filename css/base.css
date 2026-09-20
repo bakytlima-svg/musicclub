@@ -69,3 +69,6 @@ nav > ul {
 nav h2 + ul {
     margin-top: 10px;
 }
+a[href] {
+    text-decoration: none;
+}
