@@ -54,11 +54,13 @@ musicclub/
 ├── ai-log.txt
 └── README.md
 
-CSS Organization
-The project uses two stylesheets.
+## CSS Organization
 base.css
+
 base.css contains shared styles used across the website.
+
 It includes:
+
 colour palette
 typography
 header
@@ -71,9 +73,13 @@ shared Grid layout
 positioning examples
 common image styles
 accessibility states
+
 student.css
+
 student.css contains personal styles for the student's pages.
+
 It includes:
+
 About page layout
 Flexbox department cards
 Grid structure
@@ -87,8 +93,11 @@ Each page must load:
 css/base.css
 css/student.css
 in that order.
+
 CSS Techniques Demonstrated
+
 The assignment demonstrates the following CSS selectors:
+
 Type selectors
 Class selectors
 ID selectors
@@ -103,7 +112,9 @@ Universal selector
 :first-child
 ::before
 ::after
+
 Layout Techniques
+
 Flexbox
 Flexbox is used for:
 navigation
@@ -118,7 +129,9 @@ justify-content
 align-items
 gap
 flex grow/shrink behaviour
+
 Grid
+
 CSS Grid is used for structured page content where both rows and columns
 are useful.
 The project demonstrates:
@@ -130,7 +143,9 @@ minmax()
 gap
 items spanning multiple columns
 items spanning multiple rows
+
 Positioning
+
 The project demonstrates:
 position: static
 position: relative
@@ -139,12 +154,14 @@ position: fixed
 Relative positioning is used to create a containing block for an
 absolutely positioned generated caption.
 Fixed positioning is used for the site footer.
+
 Float and Clear
 A page image demonstrates:
 float: left;
 The following content uses:
 clear: both;
 This prevents the content from wrapping around the floated image.
+
 Typography
 Two font families with fallbacks are used.
 Body text:
@@ -156,6 +173,7 @@ font size
 font weight
 line height
 letter spacing
+
 Colour Palette
 The website uses a limited five-colour palette:
 Colour	Purpose
@@ -164,6 +182,7 @@ Colour	Purpose
 rgb(255, 255, 255)	Light backgrounds and text
 rgba(255, 255, 255, 0.7)	Transparent content background
 gold	Highlights and focus indicators
+
 Accessibility
 The project includes:
 descriptive image alt attributes
@@ -173,12 +192,14 @@ semantic HTML elements
 labelled form controls
 navigation links
 accessible link focus indicators
+
 Validation
 Before final submission:
 CSS should be checked using the W3C CSS Validator.
 HTML should be checked using the W3C HTML Validator.
 Broken links and images should be checked manually.
 The GitHub Pages website should be opened and tested.
+
 Assignment Evidence
 The final repository should contain:
 CSS files
@@ -190,6 +211,7 @@ after-CSS screenshots
 AI log
 README
 Git history with the required commits
+
 Author
 Мерейлим Ерулан Жансая
 AITU Music Club
