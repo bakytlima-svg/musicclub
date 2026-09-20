@@ -16,3 +16,12 @@ body {
 h1, h2, h3 {
     font-family: Georgia, "Times New Roman", serif;
 }
+* {
+    box-sizing: border-box;
+}
+
+header, nav, main, footer {
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+}
