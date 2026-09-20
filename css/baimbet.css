@@ -1,0 +1,415 @@
+/* baimbet.css - personal stylesheet of Baimbet Yerulan*/
+
+:root {
+    --navy: #0f1535;   
+    --violet: #7c3aed;  
+    --silver: #b9bac6;  
+    --white: #ffffff;   
+}
+/* The fifth colour, gold, is written as the named colour `gold` below. */
+/* ---------- 1. Reading rhythm and the box model ---------- */
+/* Universal selector, scoped: matches EVERY element inside a photo figure
+   (the <img> and the <figcaption>). Browsers give figures and their children
+   default margins; zeroing them lets the caption sit exactly on the image. */
+.club-photo * {
+    margin: 0;
+}
+/* MARGIN COLLAPSE. The intro paragraph has margin-bottom 1.5rem and the
+   section after it has margin-top 2rem. Vertical margins of adjacent block
+   siblings collapse into the larger one, so the gap is 2rem, not 3.5rem.
+   Check it in DevTools (Computed tab) before the defense. */
+.intro-text {
+    margin: 0 0 1.5rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+/* Child selector: only sections that are direct children of <main>. */
+main > section {
+    margin-top: 2rem;
+}
+
+/* STATIC. position: static is the default: the element stays in normal flow
+   and ignores top/right/bottom/left. Written out on purpose: the side panel
+   is NOT a containing block, so nothing inside it can be absolutely placed
+   against it (only .band-card and .club-photo are, see below). */
+.info-panel {
+    position: static;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 6px solid gold;
+    background-color: rgba(15, 21, 53, 0.08);
+}
+/* CENTERING 1/3 - GRID. Child selector: the page title, a direct child of
+   <main>. Grid centres the heading on both axes with two declarations, which
+   suits a title band with a fixed minimum height. */
+main > h1 {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    min-height: 4.5rem;
+    margin: 0 0 1.5rem;
+    border-bottom: 4px solid var(--violet);
+    letter-spacing: 0.06em;
+}
+/* CENTERING 2/3 - FLEX. The student quote is a short column (quote, name,
+   one sentence). flex-direction: column stacks them and align-items: center
+   centres each one horizontally, whatever its width. */
+#quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+blockquote {
+    margin: 0 0 0.5rem;
+    padding: 0.75rem 2rem;
+    border-top: 3px solid var(--violet);
+    border-bottom: 3px solid var(--violet);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+/* CENTERING 3/3 - MARGIN AUTO. A table is a block-level box; with a width
+  below 100% and auto side margins it sits in the middle of the section.
+   Fits because the table has one known width and no siblings beside it. */
+.inventory-table {
+    width: 90%;
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+}
+/* ID selector. #bands appears exactly once on bands.html and is the target of
+   the "Jump to student bands" link (href="#bands"), so it must be unique: an
+   id fits, a class would wrongly suggest it repeats.
+   FLEX. The two band cards sit side by side and wrap when the window is too
+   narrow. flex-wrap lets the row break; gap spaces the items. */
+#bands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+/* Child selector. flex-basis 100% forces the heading onto a line of its own,
+   so the cards start on the next line. */
+#bands > h2 {
+    flex: 0 0 100%;
+    margin: 0;
+}
+/* ID selector. #registration is the unique target of "Jump to the interest
+   form" (href="#registration"). */
+#registration {
+    padding-top: 1rem;
+    border-top: 4px solid var(--violet);
+}
+/* ID selector. #instruments is unique and is the target of "Jump to
+   instruments" (href="#instruments").
+   GRID. The instruments section has a heading, an intro line, two photos and
+   a list. Two equal columns with rows lining up, headings and the last photo
+   across both columns, is a two-axis layout: grid suits it better than
+   flexbox, which controls one axis at a time and cannot make an item span
+   exactly two columns of an aligned track.
+   repeat(2, ...) = two columns; minmax(260px, 1fr) = never narrower than
+   260px, otherwise an equal share; gap = row and column spacing. */
+#instruments {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Grouping + child selectors: heading and intro paragraph span ALL columns
+   (from line 1 to the last line, -1). */
+#instruments > h2,
+#instruments > p {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+/* Spans exactly two columns: the second photo is stretched across the grid. */
+.figure-wide {
+    grid-column: span 2;
+}
+
+/* FIXED. ID selector: the "Page Navigation" panel stays in the corner of the
+   window while the page scrolls, so the jump links are always in reach on
+   this long page. Fixed is positioned against the browser window, not against
+   any ancestor. The id is right: the block exists once per page. */
+#navigation-help {
+    position: fixed;
+    top: 40%;
+    right: 1rem;
+    z-index: 20;
+    box-sizing: border-box;
+    width: 11rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--violet);
+    box-shadow: 0 4px 12px rgba(15, 21, 53, 0.4);
+    color: var(--white);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+#navigation-help h2 {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1rem;
+}
+
+#navigation-help p {
+    margin: 0.25rem 0;
+}
+
+#navigation-help a {
+    color: var(--white);
+    font-weight: 700;
+}
+
+#navigation-help a:hover,
+#navigation-help a:focus {
+    color: gold;
+}
+
+
+/* ---------- 4. Band cards: flexbox, relative and absolute ---------- */
+
+/* RELATIVE. The card is the containing block for its name ribbon: the
+   absolute <h3> below is placed against THIS box. Without position: relative
+   the ribbon would jump to the corner of the page.
+   FLEX. flex: 1 1 320px = grow 1 (cards share leftover width), shrink 1 (they
+   may get narrower than the basis before wrapping), basis 320px (preferred
+   width). flex-direction: column stacks photo and text vertically. The top
+   padding leaves room for the ribbon. */
+.band-card {
+    position: relative;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-sizing: border-box;
+    padding: 3rem 1.25rem 1.25rem;
+    border: 2px solid var(--violet);
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+/* ABSOLUTE. Descendant selector. The band name is taken out of the flow and
+   pinned to the top-left corner of .band-card as a ribbon. */
+.band-card h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0.4rem 1rem;
+    border-radius: 0.6rem 0 0.6rem 0;
+    background-color: var(--violet);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* ::before - a note glyph in front of the band name. The rest of the pages
+   use the same glyph in the navigation. */
+.band-card h3::before {
+    content: "\266A\00a0";
+}
+
+/* :hover - the card under the pointer gets a gold border and a shadow. */
+.band-card:hover {
+    border-color: gold;
+    box-shadow: 0 4px 12px rgba(15, 21, 53, 0.35);
+}
+
+.band-details {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 4px solid var(--violet);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
+
+/* ---------- 5. Photos: relative + absolute caption, float + clear ---------- */
+
+/* RELATIVE. The figure is the containing block for its caption, so the
+   absolute figcaption sticks to the bottom of the photo. A figure inside a
+   band card is positioned too: the caption attaches to the NEAREST positioned
+   ancestor, which is the figure, not the card. */
+.club-photo {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 0 1rem;
+    border: 3px solid var(--navy);
+}
+
+.club-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ABSOLUTE. The caption is laid over the bottom edge of the photo; left: 0
+   and right: 0 stretch it across the figure. */
+.club-photo figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(15, 21, 53, 0.82);
+    color: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+}
+
+/* FLOAT. On bands.html the performance photo sits before the paragraph, so the
+   text wraps around it. Same specificity as .club-photo and written later, so
+   its margin wins (source order decides ties). */
+.photo-inset {
+    float: right;
+    width: 280px;
+    margin: 0.25rem 0 1rem 1.5rem;
+}
+
+/* CLEAR. Adjacent sibling selector: matches the <aside> that comes right
+   after the #performances section. clear: both makes it start below the
+   floated photo. Without it the section would not stretch around the float
+   (its height only counts the text), so the aside would slide up next to the
+   photo and the figure would hang out over the aside's top edge. */
+#performances + aside {
+    clear: both;
+}
+
+
+/* ---------- 6. Genres list: specificity experiment ---------- */
+
+/* Grouping selector: term names in the genre list and the table caption share
+   weight and letter-spacing. */
+.genre-list dt,
+.inventory-table caption {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.genre-list dd {
+    margin: 0 0 0.75rem 1.5rem;
+}
+
+/* SPECIFICITY EXPERIMENT (two conflicting rules on the same <dt>, then a fix)
+   Rule 1 - specificity (1,0,1): one id (#genres) + one type (dt). It paints
+   every term violet. */
+#genres dt {
+    color: var(--violet);
+}
+
+/* Rule 2 - specificity (0,1,1): one class + one type. Written later and meant
+   to make the terms navy, but it LOSES: one id outweighs any number of
+   classes, and source order is only used when specificity is equal. */
+.genre-list dt {
+    color: var(--navy);
+}
+
+/* Resolution, no !important: (1,1,1) - one id + one class + one type - beats
+   both rules, so the terms finally turn navy. */
+#genres .genre-list dt {
+    color: var(--navy);
+}
+
+
+/* ---------- 7. Inventory table ---------- */
+
+/* Grouping selector: header cells and data cells share padding and borders. */
+.inventory-table th,
+.inventory-table td {
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(15, 21, 53, 0.35);
+    text-align: left;
+}
+
+.inventory-table caption {
+    padding-bottom: 0.75rem;
+    text-align: left;
+}
+
+.inventory-table thead th {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+/* :nth-child - every even row of the table body gets a tint (zebra rows). */
+.inventory-table tbody tr:nth-child(even) {
+    background-color: rgba(124, 58, 237, 0.08);
+}
+
+/* :hover - the row under the pointer is highlighted (gold at 35% opacity). */
+.inventory-table tbody tr:hover {
+    background-color: rgba(255, 215, 0, 0.35);
+}
+
+
+/* ---------- 8. Interest form ---------- */
+
+/* box-sizing: border-box - width: 100% then INCLUDES padding and border, so
+   the fields cannot stick out of the fieldset. */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 32rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--silver);
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* :focus - the field being typed in gets a gold outline. */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid gold;
+    outline-offset: 2px;
+    background-color: var(--white);
+}
+
+/* The three role options (each in its own <p>) sit in one row: inline-block
+   makes the paragraphs shrink to their content and line up side by side. */
+.role-option {
+    display: inline-block;
+    margin: 0 1.5rem 0.5rem 0;
+}
+
+label {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+button {
+    padding: 0.6rem 1.4rem;
+    border: 2px solid var(--navy);
+    border-radius: 0.4rem;
+    background-color: var(--violet);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    border-color: gold;
+}
+
+/* Attribute selector + ::before - matches links in <main> whose href STARTS
+   with "mailto:" (the e-mail links) and puts an envelope in front of them. */
+main a[href^="mailto:"]::before {
+    content: "\2709\00a0";
+}

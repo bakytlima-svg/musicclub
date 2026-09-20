@@ -1,0 +1,480 @@
+/* 
+   baktiyarova.css - personal stylesheet of Бактиярова Мерейлим
+   Pages: events.html, colophon.html*/
+
+:root {
+    --navy: #0f1535;    
+    --violet: #7c3aed;  
+    --silver: #b9bac6;  
+    --white: #ffffff;   
+}
+/* The fifth colour, gold, is written as the named colour `gold` below. */
+
+
+/* ---------- 1. Reading rhythm and the box model ---------- */
+
+/* STATIC. position: static is the default: the element stays in normal flow
+   and ignores top/right/bottom/left. Written out on purpose to show that an
+   <article> is NOT a containing block: an absolutely positioned child looks
+   for the nearest positioned ancestor and skips it. */
+article {
+    position: static;
+}
+
+/* Descendant selector: every <p> anywhere inside an <article>. */
+article p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+
+/* Universal selector, scoped: matches EVERY element inside a <figure>
+   (the <img> and the <figcaption>). Browsers give figures and their children
+   default margins; zeroing them lets the caption sit exactly on the image. */
+figure * {
+    margin: 0;
+}
+
+/* Grouping selector: one declaration block for two different elements. It
+   matches the <h3> in the note box and the <legend> of every form group. */
+.note-box h3,
+fieldset legend {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+
+/* ---------- 2. Centering (three elements, three techniques) ---------- */
+
+/* CENTERING 1/3 - GRID. Child selector: only the <header> that is a direct
+   child of an <article> (not the page <header>). Grid centres the <h2> on
+   both axes with two declarations, which suits a box whose only job is to hold one
+   heading in the middle of a fixed minimum height. */
+article > header {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    min-height: 5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid var(--violet);
+}
+
+article > header h2 {
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.04em;
+}
+
+/* CENTERING 2/3 - FLEX. The submit and reset buttons share one row. Flex
+   with justify-content: center puts them in the middle and gap spaces them,
+   without empty elements or &nbsp;. Right tool: a row of siblings of unknown
+   width. */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+/* ---------- 3. Photos: relative + absolute, margin auto, float + clear ---------- */
+
+/* RELATIVE. The figure becomes the containing block for its caption: the
+   absolute figcaption below is placed against THIS box, not the whole page.
+   Without position: relative here the caption would jump to the bottom of the
+   viewport.
+   CENTERING 3/3 - MARGIN AUTO. A block box with a max-width and auto side
+   margins is centred horizontally; it fits because the figure is a single
+   block of known maximum width.
+   MARGIN COLLAPSE: the last <p> above has margin-bottom 1rem and this figure
+   has margin-top 2rem. Adjacent vertical margins of block siblings collapse
+   into the larger one, so the gap is 2rem, not 3rem. Check it in DevTools
+   (Computed tab) before the defense. */
+.photo-frame {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 640px;
+    margin: 2rem auto;
+    border: 3px solid var(--navy);
+}
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ABSOLUTE. The caption is laid over the bottom edge of the photo. left: 0
+   and right: 0 stretch it across the figure; the figure is its containing
+   block (see .photo-frame above). */
+.photo-frame figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(15, 21, 53, 0.82);
+    color: var(--white);
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+}
+
+/* FLOAT. On colophon.html the figure is moved between the two paragraphs, so
+   the second paragraph wraps around it. Same specificity as .photo-frame and
+   written later, so its margin and max-width win (source order decides ties).
+   Floated margins never collapse. */
+.photo-inset {
+    float: left;
+    width: 260px;
+    margin: 0.25rem 1.5rem 1rem 0;
+}
+
+/* CLEAR. Adjacent sibling selector: matches the <section> that comes right
+   after an <article>. clear: both makes it start below the floated figure.
+   Without it the article would not stretch around the float (its height only
+   counts the text), so the next section's heading and text would slide up
+   next to the photo and the figure would hang over their top edge. */
+article + section {
+    clear: both;
+}
+
+
+/* ---------- 4. Ids ---------- */
+
+/* ID selector. #events-schedule occurs exactly once on events.html and is the
+   target of the "Annual Schedule" jump link (href="#events-schedule"). An id
+   is the right choice: it must be unique for the link to work, and a class
+   would wrongly suggest the block repeats. */
+#events-schedule {
+    padding-top: 1rem;
+    border-top: 4px solid var(--violet);
+}
+
+/* ID selector. Same reasoning: #performer-signup is the unique target of the
+   "Performer Registration" jump link. */
+#performer-signup {
+    padding-top: 1rem;
+    border-top: 4px solid var(--violet);
+}
+
+
+/* ---------- 5. Timetable ---------- */
+
+.timetable {
+    width: 100%;
+    margin: 1rem 0 2rem;
+    border-collapse: collapse;
+}
+
+.timetable caption {
+    padding-bottom: 0.75rem;
+    text-align: left;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+/* Grouping selector: header cells and data cells share padding and borders. */
+.timetable th,
+.timetable td {
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(15, 21, 53, 0.35);
+    text-align: left;
+}
+
+/* SPECIFICITY EXPERIMENT (two conflicting rules on the same <th>, then a fix)
+   Rule 1 - specificity (0,1,1): one class + one type. Paints EVERY <th>
+   navy, including the row headers in <tbody>. */
+.timetable th {
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+/* Rule 2 - specificity (0,0,2): two types. It is written later and is meant
+   to make the row headers pale, but it LOSES to rule 1: (0,1,1) outweighs
+   (0,0,2), and source order is only used when specificity is equal. */
+tbody th {
+    background-color: rgba(124, 58, 237, 0.15);
+    color: var(--navy);
+}
+
+/* Resolution, no !important: (0,1,2) - one class + two types - beats rule 1
+   and rule 2, so the row headers finally turn pale. */
+.timetable tbody th {
+    background-color: rgba(124, 58, 237, 0.15);
+    color: var(--navy);
+}
+
+/* :nth-child - every even row of the table body gets a tint (zebra rows). */
+.timetable tbody tr:nth-child(even) {
+    background-color: rgba(124, 58, 237, 0.08);
+}
+
+/* :hover - the row under the pointer is highlighted (gold at 35% opacity). */
+.timetable tbody tr:hover {
+    background-color: rgba(255, 215, 0, 0.35);
+}
+
+
+/* ---------- 6. Application steps: flexbox ---------- */
+
+/* FLEX. The four steps sit in a row and wrap onto a new line when they do not
+   fit. flex-wrap: wrap lets the row break; gap spaces the items. */
+.workflow-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+}
+
+/* flex: 1 1 200px = grow 1 (steps share leftover space), shrink 1 (they may
+   get narrower than the basis before wrapping), basis 200px (preferred
+   width). */
+.workflow-step {
+    flex: 1 1 200px;
+    counter-increment: step;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 2px solid var(--violet);
+    border-radius: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+/* ::before - draws the step number from a CSS counter. The steps really are
+   a sequence, so a number is information, not decoration. Matches a
+   generated box placed before the content of each step. */
+.workflow-step::before {
+    content: counter(step);
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--violet);
+    color: var(--white);
+    line-height: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Child selector + :first-child - the first step (submit the application
+   form) is the one everything starts from, so it gets a thicker border. */
+.workflow-steps > li:first-child {
+    border-width: 4px;
+}
+
+/* :hover - a step lights up when the pointer is over it. */
+.workflow-step:hover {
+    border-color: var(--navy);
+    background-color: rgba(255, 215, 0, 0.3);
+}
+
+
+/* ---------- 7. Note box: flex-direction ---------- */
+
+/* FLEX with flex-direction: column. The heading and paragraphs stack
+   vertically and gap sets the spacing between them. */
+.note-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border: 2px dashed var(--violet);
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+/* (0,1,1) beats article p (0,0,2): the class wins, so paragraphs inside the
+   note box lose their bottom margin; gap already spaces them. */
+.note-box p {
+    margin: 0;
+}
+
+
+/* ---------- 8. Registration form: grid ---------- */
+
+fieldset {
+    margin: 0 0 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 2px solid var(--violet);
+    border-radius: 0.6rem;
+}
+
+/* GRID. The first fieldset has five fields. Two equal columns, with the
+   applicant name across both and the other four in a 2x2 block, need rows AND
+   columns at once. Grid suits it better than flexbox, which arranges one axis
+   at a time and cannot make the name span exactly two columns.
+   repeat(2, ...) = two columns; minmax(220px, 1fr) = never narrower than
+   220px, otherwise an equal share; gap sets row and column spacing. */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1rem 2rem;
+}
+
+.form-grid > p {
+    margin: 0;
+}
+
+/* Spans two columns. */
+.form-wide {
+    grid-column: span 2;
+}
+
+label {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Attribute selector: matches only the fields that carry the `required`
+   attribute (all fields of both fieldsets); they get a violet left edge. */
+input[required],
+select[required],
+textarea[required] {
+    border-left: 6px solid var(--violet);
+}
+
+/* box-sizing: border-box - width: 100% then INCLUDES padding and border, so
+   the fields cannot stick out of their grid cell. */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--silver);
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* :focus - the field being typed in gets a gold outline. */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid gold;
+    outline-offset: 2px;
+    background-color: var(--white);
+}
+
+button {
+    padding: 0.6rem 1.4rem;
+    border: 2px solid var(--navy);
+    border-radius: 0.4rem;
+    background-color: var(--violet);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+}
+
+/* Attribute selector with a value: only the reset button, styled quieter. */
+button[type="reset"] {
+    background-color: transparent;
+    color: var(--navy);
+}
+
+button:hover {
+    border-color: gold;
+}
+
+button:focus {
+    outline: 3px solid gold;
+    outline-offset: 2px;
+}
+
+
+/* ---------- 9. Status badge ---------- */
+
+.status-badge {
+    display: inline-block;
+    padding: 0.15rem 0.8rem;
+    border: 2px solid gold;
+    border-radius: 1rem;
+    background-color: var(--navy);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* ::before - a small gold dot before the badge text. */
+.status-badge::before {
+    content: "\25CF\00a0";
+    color: gold;
+}
+
+
+/* ---------- 10. Colophon: code, keys, external links ---------- */
+
+pre {
+    overflow-x: auto;
+    padding: 1rem 1.25rem;
+    border-left: 6px solid gold;
+    background-color: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+}
+
+kbd {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--navy);
+    border-radius: 0.3rem;
+    background-color: var(--white);
+    box-shadow: 0 2px 0 rgba(15, 21, 53, 0.5);
+    font-weight: 700;
+}
+
+samp {
+    padding: 0.1rem 0.5rem;
+    background-color: rgba(15, 21, 53, 0.1);
+}
+
+/* Attribute selector + ::after - matches links inside <main> that open in a
+   new tab (target="_blank", e.g. the W3C validator link) and adds an arrow. */
+main a[target="_blank"]::after {
+    content: "\00a0\2197";
+}
+
+
+/* ---------- 11. Fixed jump links on events.html ---------- */
+
+/* FIXED. The "Section navigation" line stays on screen at the right edge
+   while the page scrolls, so a visitor can jump to the schedule or the form
+   from anywhere on this long page. Fixed is positioned against the browser
+   window, not against any ancestor. */
+.section-jump {
+    position: fixed;
+    top: 40%;
+    right: 1rem;
+    z-index: 20;
+    box-sizing: border-box;
+    width: 10rem;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--violet);
+    box-shadow: 0 4px 12px rgba(15, 21, 53, 0.4);
+    color: var(--white);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.section-jump a {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.section-jump a:hover,
+.section-jump a:focus {
+    color: gold;
+}
