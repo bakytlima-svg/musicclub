@@ -1,8 +1,41 @@
-/* =========================================
+/* =========================================================
    STUDENT PERSONAL STYLESHEET
-   ========================================= */
+   Used for the student's two pages.
+   ========================================================= */
 
-/* Personal page heading */
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+/* Main About page block */
+.about-main {
+    position: static;
+    padding-bottom: 100px;
+}
+
+/*
+   Static positioning:
+   this block stays in the normal document flow.
+   Static is the default CSS positioning mode.
+*/
+.about-static-block {
+    position: static;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #7C3AED;
+}
+
+
+/* Navigation heading */
+.nav-title {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/* About article heading */
 .article-header {
     text-align: center;
     padding: 15px;
@@ -10,7 +43,264 @@
     border-bottom: 2px solid #7C3AED;
 }
 
-/* Class selector */
+
+/* Introduction paragraph */
+.about-introduction {
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+
+/*
+   FLOAT DEMONSTRATION
+
+   The image is floated to the left so text can flow
+   around it inside the paragraph.
+*/
+.about-float-image {
+    float: left;
+    width: 180px;
+    height: auto;
+    margin: 0 20px 10px 0;
+    border: 2px solid #7C3AED;
+}
+
+
+/* Caption connected to the floated image */
+.image-caption {
+    clear: both;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+
+/*
+   CLEAR DEMONSTRATION
+
+   clear: both prevents this section from moving up beside
+   the floated image and forces it below the float.
+*/
+.leadership-section {
+    clear: both;
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid #7C3AED;
+}
+
+
+/* Studio booking information */
+.studio-booking {
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid gold;
+}
+
+
+/*
+   RELATIVE POSITIONING
+
+   The figure becomes the containing block for its
+   absolutely positioned ::after caption.
+*/
+.about-team-photo {
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    border: 2px solid #7C3AED;
+    text-align: center;
+}
+
+
+/*
+   ABSOLUTE POSITIONING
+
+   The generated caption is positioned relative to
+   .about-team-photo.
+*/
+.about-team-photo::after {
+    content: "Rehearsal session";
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    background-color: #111827;
+    color: rgb(255, 255, 255);
+}
+
+
+/* Image inside the relative figure */
+.about-team-photo img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   FLEXBOX
+   ========================================================= */
+
+/*
+   FLEXBOX is suitable for the department cards because
+   the cards form a flexible row and can wrap when needed.
+*/
+.department-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+
+    grid-column: 1 / span 2;
+    grid-row: span 2;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+/*
+   flex-grow: 1
+   flex-shrink: 1
+   flex-basis: 250px
+
+   This allows department cards to grow or shrink.
+*/
+.department-card {
+    flex: 1 1 250px;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+    margin: 0;
+}
+
+
+/* Nested department lists */
+.department-card ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+/*
+   GRID is suitable here because the Club Structure section
+   has a clear two-dimensional arrangement of columns and rows.
+
+   repeat() creates three columns.
+   fr distributes available space.
+   minmax() prevents columns from becoming too narrow.
+*/
+.structure-section {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 20px;
+
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid #7C3AED;
+}
+
+
+/* Grid item spanning all three columns */
+.structure-section > h2 {
+    grid-column: 1 / span 3;
+}
+
+
+/* Paragraph also spans all three columns */
+.structure-section > p {
+    grid-column: 1 / span 3;
+}
+
+
+/* Heading spans multiple columns */
+.structure-section > h3 {
+    grid-column: 1 / span 3;
+}
+
+
+/*
+   Executive roles occupy the third column.
+   The department list occupies columns 1 and 2
+   and spans more than one grid row.
+*/
+.executive-roles {
+    grid-column: 3;
+    grid-row: span 2;
+
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+}
+
+
+/* Definition list spacing */
+.executive-roles dt {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+
+/* Definition descriptions */
+.executive-roles dd {
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   TERMINAL SECTION
+   ========================================================= */
+
+.terminal-section {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #111827;
+}
+
+
+.booking-result {
+    padding: 15px;
+    border-left: 4px solid #7C3AED;
+}
+
+
+/* =========================================================
+   CONTACT AREA
+   ========================================================= */
+
+/*
+   FLEXBOX CENTERING TECHNIQUE #3
+
+   The contact block is centered using flexbox.
+*/
+.about-contact {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #7C3AED;
+}
+
+
+/* =========================================================
+   EXISTING INDEX PAGE STYLES
+   ========================================================= */
+
+/* Main welcome section */
 .welcome-section {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 20px;
@@ -18,12 +308,14 @@
     border: 1px solid #7C3AED;
 }
 
+
 /* Recruitment section */
 .recruitment-section {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     margin: 20px 0;
 }
+
 
 /* Lists */
 .gear-list,
@@ -32,6 +324,7 @@
     border-radius: 5px;
 }
 
+
 /* Form styling */
 .membership-form {
     padding: 20px;
@@ -39,12 +332,15 @@
     border: 2px solid #7C3AED;
 }
 
+
+/* Form field groups */
 .candidate-details,
 .music-availability {
     padding: 15px;
     margin: 15px 0;
     border: 1px solid #111827;
 }
+
 
 /* Form controls */
 .membership-form input,
@@ -54,6 +350,7 @@
     margin: 5px;
 }
 
+
 /* Buttons */
 .submit-button,
 .reset-button {
@@ -62,10 +359,13 @@
     cursor: pointer;
 }
 
+
+/* Hover state for buttons */
 .submit-button:hover,
 .reset-button:hover {
     background-color: gold;
 }
+
 
 /* Contact information */
 .contact-details {
@@ -76,28 +376,59 @@
     width: 80%;
 }
 
+
 /* Footer */
 .site-footer {
     text-align: center;
     padding: 15px;
 }
 
-/* =========================================
-   SPECIFICITY EXPERIMENT
-   ========================================= */
 
-/* Class selector has lower specificity */
+/* =========================================================
+   SPECIFICITY EXPERIMENT
+   ========================================================= */
+
+/*
+   First rule:
+   class selector specificity = 0,1,0
+*/
 .special-text {
     color: #111827;
 }
 
-/* ID selector has higher specificity, so it wins */
+
+/*
+   Second rule:
+   ID selector specificity = 1,0,0
+
+   The ID selector is more specific, so it wins.
+*/
 #schedule-table {
     color: #7C3AED;
     border: 2px solid #7C3AED;
 }
 
-/* The conflict is resolved without !important */
+
+/*
+   Final resolution:
+   ID + class specificity = 1,1,0.
+
+   This selector resolves the conflict without using
+   !important.
+*/
 #schedule-table.special-text {
     color: #7C3AED;
 }
+
+
+/* =========================================================
+   MARGIN COLLAPSE NOTE
+   ========================================================= */
+
+/*
+   Vertical margins between normal block elements can collapse:
+   instead of adding together, adjacent vertical margins may
+   combine into the larger margin value.
+
+   Padding and borders can prevent this collapse.
+*/
