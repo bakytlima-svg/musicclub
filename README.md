@@ -15,7 +15,14 @@ Official semantic HTML website for the Astana IT University Music Club (`@aitu_m
 
 ## 👥 Team Members & Work Distribution
 This project is built by a team of three students, totaling 8 interconnected semantic HTML pages:
+This project is a website for the Astana IT University Music Club.
 
+The website provides information about the club, its members, musical
+departments, rehearsal space, events, equipment, auditions, and other
+club activities.
+
+The project was originally created for Assignment 1 and is being extended
+for Assignment 2 with CSS styling and layout techniques.
 | Student Name | Assigned Pages | Key Page Features |
 | :--- | :--- | :--- |
 | **Бактиярова Мерейлим** (Student 1) | `about.html`<br>`events.html` | Studio history & executive board, automated booking CLI showcase, annual concert schedule table, live performer signup form. |
@@ -27,21 +34,22 @@ This project is built by a team of three students, totaling 8 interconnected sem
 
 ## 🗂 Repository Structure
 ```text
-├── index.html              # Main landing page with full 8-page navigation
-├── colophon.html           # Technical authoring documentation, terminal workflow
-├── about.html              # Club history, leadership, instruments, booking bot
-├── events.html             # Annual concert schedule table & performer signup form
-├── equipment.html          # Studio hardware inventory table & specifications
-├── bands.html              # University bands roster & style breakdown
-├── workshops.html          # Masterclass schedule table & registration form
-├── auditions.html          # Tryout procedure & candidate application form
+musicclub/
 │
-├── images/                 # Original, non-AI photographs taken by the team
-│   ├── about-team.jpg
-│   ├── rehearsal-jam.jpg
-│   └── halloween-concert.jpg
+├── index.html
+├── about.html
+├── auditions.html
+├── bands.html
+├── colophon.html
+├── equipment.html
+├── events.html
 │
-├── report.pdf              # Task A analysis, hand-drawn sketch, Task B write-up
-├── tag-checklist.pdf       # Comprehensive checklist of required tags and line numbers
-├── ai-log.txt              # Complete transcript of AI prompts used during research
-└── README.md               # Project documentation
+├── css/
+│   ├── base.css
+│   └── student.css
+│
+├── images/
+│
+├── css-checklist.md
+├── ai-log.txt
+└── README.md
