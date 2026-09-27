@@ -11,6 +11,10 @@
 
     <title>Student Bands - Music Club</title>
 
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/baimbet.css">
 </head>
@@ -19,283 +23,242 @@
 
     <!-- Author: Baimbet Yerulan -->
 
-    <header>
-        <p>University Music Club</p>
+    <header class="club-hero">
+        <div class="container py-4">
+
+            <h1 class="display-4 fw-bold text-center mb-4">Student Bands</h1>
+
+            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+                <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavigation">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
+                            <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="equipment.html">Studio &amp; Gear</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="bands.html">Student Bands</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                            <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <p class="text-center lead mt-4 mb-0 d-none d-md-block">
+                <a class="link-light" href="#bands">Jump to student bands</a> |
+                <a class="link-light" href="#registration">Jump to the interest form</a>
+            </p>
+
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="equipment.html">Studio &amp; Gear</a></li>
-            <li><a href="bands.html">Student Bands</a></li>
-            <li><a href="workshops.html">Workshops</a></li>
-            <li><a href="auditions.html">Auditions</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-        </ul>
-    </nav>
+    <main class="container py-5">
 
-    <main>
-
-        <h1>Student Bands</h1>
-
-        <p>
-            The University Music Club unites students for rehearsals, performances and other musical collaborations. This page introduces 
-            the student bands and performers connected with the club — their genres, members, instruments, and experience of performance. 
-            Group styles range from acoustic and pop to rock, jazz and electronic music, and the lineup shifts throughout the academic year 
-            as students join, graduate, form new groups or prepare for performance. Here you can learn about the current student groups, and 
+        <p class="krab lead">
+            The University Music Club unites students for rehearsals, performances and other musical collaborations. This page introduces
+            the student bands and performers connected with the club — their genres, members, instruments, and experience of performance.
+            Group styles range from acoustic and pop to rock, jazz and electronic music, and the lineup shifts throughout the academic year
+            as students join, graduate, form new groups or prepare for performance. Here you can learn about the current student groups, and
             see what musical activities may be of interest to you.
         </p>
 
-        <section id="bands">
+        <section id="bands" class="py-3">
 
-            <h2>Student Groups</h2>
+            <h2 class="h3 fw-bold mb-4">Student Groups</h2>
 
-            <article>
+            <!-- Bootstrap Card component (getbootstrap.com/docs/5.3/components/card/), adapted for band profiles: card-img-top holds the band photo and card-body holds the name, genre, members and description that used to sit in a plain figure and paragraphs. The row/col wrapper is also the "three different blocks respond to screen width" grid: full width on phones, two side by side from md up. -->
+            <div class="row g-4">
 
-                <h3>NEON PULSE</h3>
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 shadow-sm">
+                        <img class="club-photo card-img-top" src="images/band1.jpg"
+                             alt="Members NEON PULSE performing with the Music Club">
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-bold">NEON PULSE</h3>
+                            <p class="card-text mb-2">
+                                <strong>Genre:</strong> K-POP<br>
+                                <strong>Members:</strong> Arujan, Jibek, Yerasyl, Dinmuhammed, Arsen, Vlad<br>
+                                <strong>Instruments:</strong> Vocals, Electric guitar, Bass guitar, Drum kit, Keyboard
+                            </p>
+                            <p class="card-text mb-0">
+                                A five-member group combining striking vocals, synchronized choreography, and energetic rhythms.
+                                They rehearse twice a week and prepare performances for club shows and student events.
+                            </p>
+                        </div>
+                        <figcaption class="card-footer text-muted small">NEON PULSE at a Music Club activity.</figcaption>
+                    </article>
+                </div>
 
-                <figure>
-                    <img src="images/band1.jpg"
-                         alt="Members NEON PULSE performing with the Music Club">
-                    <figcaption>NEON PULSE at a Music Club activity.</figcaption>
-                </figure>
+                <div class="col-12 col-md-6">
+                    <article class="card h-100 shadow-sm">
+                        <img class="club-photo card-img-top" src="images/band2.jpg"
+                             alt="Members of MOLDIK at a Music Club performance">
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-bold">MOLDIK</h3>
+                            <p class="card-text mb-2">
+                                <strong>Genre:</strong> Lyrics<br>
+                                <strong>Members:</strong> Yersultан, Meruert, Dankibek, Asem, Sherkhan<br>
+                                <strong>Instruments:</strong> Vocals, Electric guitar, Bass guitar, Drum kit, Keyboard
+                            </p>
+                            <p class="card-text mb-0">
+                                A five-member group focused on original lyrics and live guitar-based performances. Their sets are built
+                                around stories and personal experiences and are frequently performed at the club's open mic nights.
+                            </p>
+                        </div>
+                        <figcaption class="card-footer text-muted small">MOLDIK at a Music Club performance.</figcaption>
+                    </article>
+                </div>
 
-                <p>
-                    <strong>Genre:</strong> K-POP<br>
-                    <strong>Members:</strong> Arujan, Jibek, Yerasyl, Dinmuhammed, Arsen, Vlad<br>
-                    <strong>Instruments:</strong> Vocals, Electric guitar, Bass guitar, Drum kit, Keyboard
-                </p>
-
-                <p>
-                    A five-member group combining striking vocals, synchronized choreography, and energetic rhythms. 
-                    They rehearse twice a week and prepare performances for club shows and student events.
-                </p>
-
-            </article>
-
-            <article>
-
-                <h3>MOLDIK</h3>
-
-                <figure>
-                    <img src="images/band2.jpg"
-                         alt="Members of MOLDIK at a Music Club performance">
-                    <figcaption>MOLDIK at a Music Club performance.</figcaption>
-                </figure>
-
-                <p>
-                    <strong>Genre:</strong> Lyrics<br>
-                    <strong>Members:</strong> Yersultan, Meruert, Dankibek, Asem, Sherkhan <br>
-                    <strong>Instruments:</strong> Vocals, Electric guitar, Bass guitar, Drum kit, Keyboard
-                </p>
-
-                <p>
-                    A five-member group focused on original lyrics and live guitar-based performances. Their sets are built 
-                    around stories and personal experiences and are frequently performed at the club's open mic nights.
-                </p>
-
-            </article>
+            </div>
 
         </section>
 
-        <section id="genres">
-
-            <h2>Genres and Musical Directions</h2>
-
-            <dl>
-                <dt>K-pop</dt>
-                <dd>Neon Pulse</dd>
-
-                <dt>Lyrics</dt>
-                <dd>MOLDIK</dd>
+        <section id="genres" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Genres and Musical Directions</h2>
+            <dl class="genre-list row mb-0">
+                <dt class="col-sm-3">K-pop</dt>
+                <dd class="col-sm-9">Neon Pulse</dd>
+                <dt class="col-sm-3">Lyrics</dt>
+                <dd class="col-sm-9">MOLDIK</dd>
             </dl>
-
         </section>
 
-        <section id="performances">
-
-            <h2>Performances</h2>
-
+        <section id="performances" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Performances</h2>
             <p>
                 Student bands can participate in concerts, university events, club activities,
-                workshops, and other performances. 
+                workshops, and other performances.
             </p>
-
-            <figure>
-                <img src="images/performance.jpg"
+            <figure class="text-center my-4">
+                <img class="club-photo img-fluid rounded shadow w-75" src="images/performance.jpg"
                      alt="Music Club students performing at a university event">
-                <figcaption>Students performing at a Music Club event.</figcaption>
+                <figcaption class="text-muted small mt-2">Students performing at a Music Club event.</figcaption>
             </figure>
-
-            <ol start="1">
-                <li>Hellowen event</li>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Hellowen event</li>
             </ol>
-
         </section>
 
-        <aside>
-
-            <h2>About Student Participation</h2>
-
+        <aside class="alert alert-light border border-warning my-4">
+            <h2 class="h5 fw-bold">About Student Participation</h2>
             <p>
                 Students can participate as singers, instrumentalists, songwriters, producers,
                 or other musical contributors depending on the activities offered by the club.
             </p>
-
-            <p>
+            <p class="mb-0">
                 The club can be contacted through
                 <a href="mailto:music.club@astanait.edu.kz">email</a>
                 or by
                 <a href="tel:+77771234567">telephone</a>.
             </p>
-
         </aside>
 
-        <section id="quote">
-
-            <h2>Student Voice</h2>
-
-            <blockquote>
-                "I really like our club; we often have events."
+        <section id="quote" class="p-4 p-md-5 bg-light rounded shadow-sm my-5 text-center">
+            <h2 class="h3 fw-bold mb-3">Student Voice</h2>
+            <blockquote class="mb-2">
+                <p class="lead mb-0">"I really like our club; we often have events."</p>
             </blockquote>
-
-            <p>
-                <cite>Mereylim</cite>
-            </p>
-
-            <p>
-                One student described the club as <q>very friendly</q>.
-            </p>
-
+            <p class="mb-2"><cite>Mereylim</cite></p>
+            <p class="mb-0">One student described the club as <q>very friendly</q>.</p>
         </section>
 
-        <hr>
+        <hr class="my-5">
 
-        <section id="registration">
+        <section id="registration" class="py-3">
 
-            <h2>Student Band Interest Form</h2>
+            <h2 class="h3 fw-bold mb-4">Student Band Interest Form</h2>
 
             <!-- The form does not send information to a server because this HTML project has no backend yet. -->
-
             <form method="post" action="#">
 
-                <fieldset>
+                <fieldset class="border rounded p-4 shadow-sm">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Band Participation</legend>
 
-                    <legend>Band Participation</legend>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="student-name" class="form-label fw-semibold">Name:</label>
+                            <input type="text" class="form-control" id="student-name" name="student-name"
+                                   placeholder="Enter your name" required>
+                        </div>
 
-                    <p>
-                        <label for="student-name">Name:</label>
-                        <input type="text"
-                               id="student-name"
-                               name="student-name"
-                               placeholder="Enter your name"
-                               required>
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="student-email" class="form-label fw-semibold">Email:</label>
+                            <input type="email" class="form-control" id="student-email" name="student-email"
+                                   placeholder="Enter your email" required>
+                        </div>
 
-                    <p>
-                        <label for="student-email">Email:</label>
-                        <input type="email"
-                               id="student-email"
-                               name="student-email"
-                               placeholder="Enter your email"
-                               required>
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="student-phone" class="form-label fw-semibold">Phone:</label>
+                            <input type="tel" class="form-control" id="student-phone" name="student-phone"
+                                   placeholder="Enter your phone number">
+                        </div>
 
-                    <p>
-                        <label for="student-phone">Phone:</label>
-                        <input type="tel"
-                               id="student-phone"
-                               name="student-phone"
-                               placeholder="Enter your phone number">
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="experience" class="form-label fw-semibold">Years of experience:</label>
+                            <input type="number" class="form-control" id="experience" name="experience"
+                                   min="0" placeholder="0">
+                        </div>
 
-                    <p>
-                        <label for="experience">Years of experience:</label>
-                        <input type="number"
-                               id="experience"
-                               name="experience"
-                               min="0"
-                               placeholder="0">
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="preferred-date" class="form-label fw-semibold">Preferred audition date:</label>
+                            <input type="date" class="form-control" id="preferred-date" name="preferred-date">
+                        </div>
 
-                    <p>
-                        <label for="preferred-date">Preferred audition date:</label>
-                        <input type="date"
-                               id="preferred-date"
-                               name="preferred-date">
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="genre" class="form-label fw-semibold">Preferred genre:</label>
+                            <select class="form-select" id="genre" name="genre">
+                                <option value="">Select a genre</option>
+                                <option value="rock">Rock</option>
+                                <option value="pop">Pop</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <p>
-                        Preferred role:
-                    </p>
+                    <p class="fw-semibold mt-4 mb-2">Preferred role:</p>
 
-                    <p>
-                        <input type="radio"
-                               id="singer"
-                               name="role"
-                               value="singer"
-                               required>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" id="singer" name="role" value="singer" required>
+                        <label class="form-check-label" for="singer">Singer</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" id="instrumentalist" name="role" value="instrumentalist">
+                        <label class="form-check-label" for="instrumentalist">Instrumentalist</label>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" id="producer" name="role" value="producer">
+                        <label class="form-check-label" for="producer">Producer</label>
+                    </div>
 
-                        <label for="singer">Singer</label>
-                    </p>
-
-                    <p>
-                        <input type="radio"
-                               id="instrumentalist"
-                               name="role"
-                               value="instrumentalist">
-
-                        <label for="instrumentalist">Instrumentalist</label>
-                    </p>
-
-                    <p>
-                        <input type="radio"
-                               id="producer"
-                               name="role"
-                               value="producer">
-
-                        <label for="producer">Producer</label>
-                    </p>
-
-                    <p>
-                        <input type="checkbox"
-                               id="club-rules"
-                               name="club-rules"
-                               required>
-
-                        <label for="club-rules">
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="club-rules" name="club-rules" required>
+                        <label class="form-check-label" for="club-rules">
                             I understand that this form is for collecting interest only.
                         </label>
-                    </p>
+                    </div>
 
-                    <p>
-                        <label for="genre">Preferred genre:</label>
-
-                        <select id="genre" name="genre">
-                            <option value="">Select a genre</option>
-                            <option value="rock">Rock</option>
-                            <option value="pop">Pop</option>
-                            <option value="jazz">Jazz</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </p>
-
-                    <p>
-                        <label for="message">Tell us about your musical experience:</label>
-                    </p>
-
-                    <p>
-                        <textarea id="message"
-                                  name="message"
-                                  rows="6"
-                                  cols="40"
+                    <div class="mb-4">
+                        <label for="message" class="form-label fw-semibold">Tell us about your musical experience:</label>
+                        <textarea class="form-control" id="message" name="message" rows="5"
                                   placeholder="Describe your musical experience"></textarea>
-                    </p>
+                    </div>
 
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        <button type="reset" class="btn btn-outline-danger">Reset</button>
+                    </div>
 
                 </fieldset>
 
@@ -303,39 +266,33 @@
 
         </section>
 
-        <section id="links">
-
-            <h2>Useful Links</h2>
-
-            <p>
-                <a href="#bands">Jump to student bands</a>
-            </p>
-
-            <p>
-                <a href="#registration">Jump to the interest form</a>
-            </p>
-
-            <p>
-                The club regularly features <b>live performances</b> by <i>independent</i>, <mark>student-run bands</mark>. 
-                Anyone interested in joining an existing group or forming a new one can fill out 
+        <section id="links" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Useful Links</h2>
+            <p><a href="#bands">Jump to student bands</a></p>
+            <p><a href="#registration">Jump to the interest form</a></p>
+            <p class="mb-0">
+                The club regularly features <b>live performances</b> by <i>independent</i>, <mark>student-run bands</mark>.
+                Anyone interested in joining an existing group or forming a new one can fill out
                 the interest form linked above.
             </p>
-
         </section>
 
     </main>
 
-    <footer>
-        <hr>
-        <p><strong>AITU Music Club Administration:</strong></p>
-        <p>
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль | 
-            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> | 
-            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> | 
+    <footer class="site-footer container py-5 text-center">
+        <hr class="my-4">
+        <p><strong class="d-block mb-2">AITU Music Club Administration:</strong></p>
+        <p class="text-muted">
+            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> |
+            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
             Hotline: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
         </p>
-        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+        <p class="small text-muted mb-0">&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+
+    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -12,169 +12,148 @@
 
     <title>About Us — AITU Music Club</title>
 
-    <!-- Shared stylesheet must be loaded first -->
-    <link rel="stylesheet" href="css/base.css">
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Student's personal stylesheet must be loaded second -->
+    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/student.css">
 </head>
 
 <body>
 
-    <header class="site-header">
+    <header class="club-hero">
+        <div class="container py-4">
 
-        <h1>Astana IT University Music Club</h1>
+            <h1 class="display-4 fw-bold text-center mb-4">About AITU Music Club</h1>
 
-        <nav class="main-navigation">
+            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+                <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavigation">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="about.html">About Club</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="equipment.html">Studio &amp; Gear</a></li>
+                            <li class="nav-item"><a class="nav-link" href="bands.html">Student Bands</a></li>
+                            <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                            <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-            <!-- This heading makes the adjacent sibling selector nav h2 + ul meaningful -->
-            <h2 class="nav-title">Club Navigation</h2>
-
-            <ul class="page-navigation">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Club</a></li>
-                <li><a href="events.html">Events &amp; Gigs</a></li>
-                <li><a href="equipment.html">Studio &amp; Gear</a></li>
-                <li><a href="bands.html">Student Bands</a></li>
-                <li><a href="workshops.html">Workshops</a></li>
-                <li><a href="auditions.html">Auditions</a></li>
-                <li><a href="colophon.html">Colophon</a></li>
-            </ul>
-
-        </nav>
-
-        <p class="quick-navigation">
-            Quick jump:
-            <a href="#club-profile">Club Foundation</a> |
-            <a href="#leadership-board">Leadership Board</a>
-        </p>
-
-    </header>
-
-
-    <main class="main-content about-main">
-
-        <!--
-            ID is appropriate here because this is one unique destination
-            for the "Club Foundation" jump link.
-        -->
-        <article id="club-profile" class="about-article">
-
-            <header class="article-header">
-                <h2>Our Community, History &amp; Rehearsal Space</h2>
-            </header>
-
-            <p class="about-introduction">
-
-                <img
-                    class="about-float-image"
-                    src="images/about-team.jpg"
-                    alt="AITU Music Club officers and members gathered inside rehearsal room C1.1.142 with guitars and sound hardware">
-
-                Founded in 2024 at
-                <abbr title="Astana IT University">AITU</abbr>,
-                our music club brings together student musicians,
-                sound techs, and vocalists across all academic degrees.
-
-                Our headquarters is located in <b>Room C1.1.142</b>,
-                providing a specialized soundproof studio where student
-                bands rehearse across multiple genres.
-
-                The facility operates daily from 09:00 to 22:00.
-                Because multiple ensembles share the rehearsal area,
-                members book practice slots in advance via our dedicated
-                automated system.
-
+            <p class="quick-navigation text-center lead mt-4 mb-0 d-none d-md-block">
+                Quick jump:
+                <a class="link-light" href="#club-profile">Club Foundation</a> |
+                <a class="link-light" href="#leadership-board">Leadership Board</a>
             </p>
 
-            <p class="image-caption">
+        </div>
+    </header>
+
+    <main class="main-content about-main container py-5">
+
+        <!-- ID is appropriate here because this is one unique destination for the "Club Foundation" jump link. -->
+        <article id="club-profile" class="about-article">
+
+            <header class="article-header text-center border-bottom pb-3 mb-4">
+                <h2 class="display-6 fw-bold">Our Community, History &amp; Rehearsal Space</h2>
+            </header>
+
+            <!-- Bootstrap grid replaces the old floated image: the photo and intro text sit side by side from md up and stack on phones. -->
+            <div class="row g-4 align-items-center mb-2">
+                <div class="col-12 col-md-4">
+                    <img class="about-float-image img-fluid rounded shadow"
+                         src="images/about-team.jpg"
+                         alt="AITU Music Club officers and members gathered inside rehearsal room C1.1.142 with guitars and sound hardware">
+                </div>
+                <div class="col-12 col-md-8">
+                    <p class="about-introduction lead mb-0">
+                        Founded in 2024 at
+                        <abbr title="Astana IT University">AITU</abbr>,
+                        our music club brings together student musicians,
+                        sound techs, and vocalists across all academic degrees.
+                        Our headquarters is located in <b>Room C1.1.142</b>,
+                        providing a specialized soundproof studio where student
+                        bands rehearse across multiple genres.
+                        The facility operates daily from 09:00 to 22:00.
+                        Because multiple ensembles share the rehearsal area,
+                        members book practice slots in advance via our dedicated
+                        automated system.
+                    </p>
+                </div>
+            </div>
+
+            <p class="image-caption text-muted small fst-italic mb-4">
                 Figure 1: Club officers and active band musicians gathered
                 inside studio room C1.1.142.
             </p>
 
-
             <p class="about-description">
-
                 The club accommodates a diverse sonic palette.
-
                 We feature instrumental tracks for
-                <strong>
-                    electric guitar, bass, drums, keyboards,
-                    saxophone, and violin
-                </strong>,
+                <strong>electric guitar, bass, drums, keyboards, saxophone, and violin</strong>,
                 alongside solo and backing vocalists.
-
                 Every rehearsal session adheres to the principle that
                 musical practice builds stage confidence:
-
-                <q>
-                    Show must go on, no matter how tough the university
-                    exam week gets.
-                </q>
-
+                <q>Show must go on, no matter how tough the university exam week gets.</q>
                 Currently, general registration for new instrumentalists is
                 <mark>active for the autumn term</mark>.
-
             </p>
 
-
-            <aside class="studio-booking">
-
-                <h3>Studio Booking Protocol</h3>
-
-                <p>
-
+            <aside class="studio-booking alert alert-light border border-warning my-4">
+                <h3 class="h5 fw-bold">Studio Booking Protocol</h3>
+                <p class="mb-0">
                     Rehearsal room C1.1.142 is managed through our
                     automated reservation bot.
-
                     Ensembles must reserve slots 24 hours in advance
                     to avoid scheduling conflicts between rock bands
                     and acoustic duos.
-
                     Volume levels must strictly stay under 85
                     <abbr title="Decibels">dB</abbr> after 20:00.
-
                 </p>
-
             </aside>
 
-
-            <figure class="about-team-photo">
-
-                <img
-                    src="images/rehearsal-jam.jpg"
-                    alt="Saxophone and electric guitar players jamming together during an evening rehearsal session in room C1.1.142">
-
-                <figcaption>
+            <figure class="about-team-photo text-center my-4">
+                <img class="img-fluid rounded shadow w-75"
+                     src="images/rehearsal-jam.jpg"
+                     alt="Saxophone and electric guitar players jamming together during an evening rehearsal session in room C1.1.142">
+                <figcaption class="text-muted small mt-2">
                     Figure 2: Saxophone and guitar section rehearsing
                     an upcoming concert arrangement.
                 </figcaption>
-
             </figure>
 
         </article>
 
+        <!-- ID is appropriate because this is one unique section used as a destination for the "Leadership Board" link. -->
+        <section id="leadership-board" class="leadership-section p-4 p-md-5 bg-light rounded shadow-sm my-5">
 
-        <!--
-            ID is appropriate because this is one unique section
-            used as a destination for the "Leadership Board" link.
-        -->
-        <section id="leadership-board" class="leadership-section">
+            <!-- Text alignment utilities re-align this heading: centred on small/medium screens, left-aligned on lg and up once there is enough width for it to sit naturally beside the wide blockquote. -->
+            <h2 class="h3 fw-bold text-center text-lg-start mb-3">President's Welcome &amp; Club Guiding Motto</h2>
 
-            <h2>President's Welcome &amp; Club Guiding Motto</h2>
-
-            <blockquote cite="https://www.instagram.com/aitu_music">
-
-                <p>
+            <blockquote cite="https://www.instagram.com/aitu_music" class="mb-3">
+                <p class="lead mb-0">
                     &ldquo;Біздің басты мақсатымыз — әр студентке өзінің
                     шығармашылық қырын ашуға мүмкіндік беру.
                     The show must go on: сахна мен дайындық бөлмесінде біз
                     нағыз музыкалық отбасы құрамыз.&rdquo;
                 </p>
-
             </blockquote>
 
-            <p>
+            <p class="mb-0">
                 — <cite>Айварұлы Ақназар</cite>,
                 President of AITU Music Club, interview recorded in room
                 C1.1.142 on September 10, 2024.
@@ -182,209 +161,132 @@
 
         </section>
 
+        <section class="structure-section py-3">
 
-        <section class="structure-section">
-
-            <h2>Club Structure &amp; Departments</h2>
-
+            <h2 class="h3 fw-bold mb-3">Club Structure &amp; Departments</h2>
             <p>
                 Our ensemble welcomes students starting from their
                 1<sup>st</sup> year of university studies.
             </p>
 
+            <h3 class="h5 fw-bold mt-4 mb-3">Instrumental &amp; Performance Tracks</h3>
 
-            <h3>Instrumental &amp; Performance Tracks</h3>
+            <!-- Bootstrap grid: three responsive department cards that change layout at the md and lg breakpoints. -->
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="department-card card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title h6 fw-bold">Rhythm and String Section</h4>
+                            <ul class="mb-0">
+                                <li>Electric Lead &amp; Rhythm Guitar</li>
+                                <li>4-String Electric Bass</li>
+                                <li>Acoustic Drum Kit &amp; Percussion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="department-card card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title h6 fw-bold">Melodic &amp; Classical Section</h4>
+                            <ul class="mb-0">
+                                <li>Alto and Tenor Saxophone</li>
+                                <li>Acoustic and Electric Violin</li>
+                                <li>Digital Stage Piano &amp; Synthesizers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="department-card card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title h6 fw-bold">Vocal Department</h4>
+                            <ul class="mb-0">
+                                <li>Solo Lead Vocalists</li>
+                                <li>Backing Harmony Vocalists</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Flexbox container -->
-            <ul class="department-list">
-
-                <li class="department-card">
-
-                    <strong>Rhythm and String Section</strong>
-
-                    <ul>
-                        <li>Electric Lead &amp; Rhythm Guitar</li>
-                        <li>4-String Electric Bass</li>
-                        <li>Acoustic Drum Kit &amp; Percussion</li>
-                    </ul>
-
-                </li>
-
-
-                <li class="department-card">
-
-                    <strong>Melodic &amp; Classical Section</strong>
-
-                    <ul>
-                        <li>Alto and Tenor Saxophone</li>
-                        <li>Acoustic and Electric Violin</li>
-                        <li>Digital Stage Piano &amp; Synthesizers</li>
-                    </ul>
-
-                </li>
-
-
-                <li class="department-card">
-
-                    <strong>Vocal Department</strong>
-
-                    <ul>
-                        <li>Solo Lead Vocalists</li>
-                        <li>Backing Harmony Vocalists</li>
-                    </ul>
-
-                </li>
-
-            </ul>
-
-
-            <h3>Executive Committee Roles</h3>
+            <h3 class="h5 fw-bold mb-3">Executive Committee Roles</h3>
 
             <dl class="executive-roles">
-
-                <dt>
-                    Айварұлы Ақназар — Club President
-                </dt>
-
-                <dd>
+                <dt class="fw-bold">Айварұлы Ақназар — Club President</dt>
+                <dd class="mb-3">
                     Oversees general strategic direction, concert permits,
                     administrative coordination, and inter-university
                     performance events.
                 </dd>
-
-
-                <dt>
-                    Билялова Адия — Head of Marketing
-                </dt>
-
-                <dd>
+                <dt class="fw-bold">Билялова Адия — Head of Marketing</dt>
+                <dd class="mb-3">
                     Manages social media presence on Instagram, photographic
                     coverage, promotional posters, and event announcements.
                 </dd>
-
-
-                <dt>
-                    Абразаков Рамиль — Head of Technical Support
-                </dt>
-
-                <dd>
+                <dt class="fw-bold">Абразаков Рамиль — Head of Technical Support</dt>
+                <dd class="mb-0">
                     Directs audio engineering, cable routing, instrument
                     maintenance, live mixer calibration, and soundcheck
                     arrangements.
                 </dd>
-
             </dl>
 
         </section>
 
+        <hr class="my-5">
 
-        <hr>
+        <section class="terminal-section about-static-block border rounded p-4 p-md-5 shadow-sm my-4">
 
-
-        <section class="terminal-section about-static-block">
-
-            <h2>Terminal Reservation Interface</h2>
+            <h2 class="h3 fw-bold mb-3">Terminal Reservation Interface</h2>
 
             <p>
-
                 Band leaders can verify studio availability through our
                 automated booking console.
-
                 Press <kbd>Ctrl</kbd> + <kbd>B</kbd> in the student portal
                 terminal or trigger the booking routine directly:
-
             </p>
-
 
             <pre><code>aitu-music-bot --room=C1.1.142 --check
 aitu-music-bot --reserve --from=18:00 --to=20:00 --genre=rock</code></pre>
 
+            <p>The automated reservation system returns the following confirmation response:</p>
 
-            <p>
-
-                The automated reservation system returns the following
-                confirmation response:
-
-            </p>
-
-
-            <p class="booking-result">
-
-                <samp>
-                    [SUCCESS] Slot 18:00-20:00 reserved for Overdrive Band.
-                    Keys dispatched via Post 2.
-                </samp>
-
+            <p class="booking-result mb-0">
+                <samp>[SUCCESS] Slot 18:00-20:00 reserved for Overdrive Band. Keys dispatched via Post 2.</samp>
             </p>
 
         </section>
 
-
-        <div class="contact-details about-contact">
-
-            <p>
-
-                <small>
-
-                    Physical Location: Astana IT University,
-                    EXPO Business Center, Block C1,
-                    Room C1.1.142.<br>
-
-                    Rehearsal hours:
-                    Monday through Sunday, 09:00 – 22:00.<br>
-
-                    Operating rules strictly enforced.
-
-                </small>
-
-            </p>
-
+        <div class="contact-details about-contact text-center text-muted my-4">
+            <small>
+                Physical Location: Astana IT University,
+                EXPO Business Center, Block C1,
+                Room C1.1.142.<br>
+                Rehearsal hours: Monday through Sunday, 09:00 – 22:00.<br>
+                Operating rules strictly enforced.
+            </small>
         </div>
 
     </main>
 
-
-    <footer class="site-footer">
-
-        <hr>
-
-        <p>
-            <strong>AITU Music Club Administration:</strong>
-        </p>
-
-        <p>
-
+    <footer class="site-footer container py-5 text-center">
+        <hr class="my-4">
+        <p><strong class="d-block mb-2">AITU Music Club Administration:</strong></p>
+        <p class="text-muted">
             President: Айварұлы Ақназар |
             Marketing: Билялова Адия |
             Sound: Абразаков Рамиль |
-
             Instagram:
-            <a
-                href="https://www.instagram.com/aitu_music"
-                target="_blank"
-                rel="noopener noreferrer">
-                @aitu_music
-            </a> |
-
-            Email:
-            <a href="mailto:music.club@astanait.edu.kz">
-                music.club@astanait.edu.kz
-            </a> |
-
-            Hotline:
-            <a href="tel:+77771234567">
-                +7 (777) 123-45-67
-            </a>
-
+            <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> |
+            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
+            Hotline: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
         </p>
-
-        <p>
-            &copy; 2024 Astana IT University Music Club.
-            All rights reserved.
-        </p>
-
+        <p class="small text-muted mb-0">&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
     </footer>
 
-</body>
+    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 </html>

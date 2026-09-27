@@ -11,6 +11,10 @@
 
     <title>Studio &amp; Gear - Music Club</title>
 
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/baimbet.css">
 </head>
@@ -19,28 +23,49 @@
 
     <!-- Author: Baimbet Yerulan-->
 
-    <header>
-        <h1>University Music Club</h1>
+    <header class="club-hero">
+        <div class="container py-4">
+
+            <h1 class="display-4 fw-bold text-center mb-4">Studio &amp; Gear</h1>
+
+            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+                <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavigation">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
+                            <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="equipment.html">Studio &amp; Gear</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="bands.html">Student Bands</a></li>
+                            <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                            <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <p class="text-center lead mt-4 mb-0 d-none d-md-block">
+                <a class="link-light" href="#instruments">Jump to instruments</a> |
+                <a class="link-light" href="#inventory">Jump to the equipment inventory</a>
+            </p>
+
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="equipment.html">Studio &amp; Gear</a></li>
-            <li><a href="bands.html">Student Bands</a></li>
-            <li><a href="workshops.html">Workshops</a></li>
-            <li><a href="auditions.html">Auditions</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
-        </ul>
-    </nav>
+    <main class="container py-5">
 
-    <main>
-
-        <h1>Studio &amp; Gear</h1>
-
-        <p>
+        <p class="lead">
             This page provides information about the musical equipment provided in the University Music Club.
             The aim of this part of the page is to illustrate what students may use during rehearsals,
             practices, shows, and other activities of the club. Information that will be provided
@@ -55,165 +80,152 @@
         </p>
 
         <!-- I used section here because the equipment information is divided into a clear thematic part of the page. -->
-        <section id="instruments">
+        <section id="instruments" class="py-3">
 
-            <h2>Musical Instruments</h2>
+            <h2 class="h3 fw-bold mb-3">Musical Instruments</h2>
 
             <p>
                 The band maintains an assortment of instruments that is small but effective for rehearsals,
                 accompaniment, song writing, and live shows.
             </p>
 
-            <!-- PHOTO 1: Replace the file name with your own photo of the club studio or music room. -->
-            <figure>
-                <img src="images/studio.jpg"
-                     alt="Music Club studio and rehearsal room">
-                <figcaption>Music Club studio and rehearsal room.</figcaption>
+            <figure class="text-center my-4">
+                <img class="img-fluid rounded shadow w-75" src="images/studio.jpg" alt="Music Club studio and rehearsal room">
+                <figcaption class="text-muted small mt-2">Music Club studio and rehearsal room.</figcaption>
             </figure>
 
-            <!-- This article is used because each instrument can be treated as an independent piece of information. -->
-            <article>
-
-                <h3>Instrument Collection</h3>
-
-                <ul>
-                    <li>
-                        String Instruments
-                        <ul>
-                            <li>Yamaha F310 acoustic guitar</li>
-                            <li>Fender Squier Stratocaster electric guita</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        Keyboard Instruments
-                        <ul>
-                            <li>Yamaha PSR-E373 61-key digital keyboard</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        Percussion Instruments
-                        <ul>
-                            <li>5-piece standard drum kit with cymbals</li>
-                        </ul>
-                    </li>
-                </ul>
-
+            <!-- Bootstrap grid: three responsive blocks that change layout at the md and lg breakpoints, one card per instrument category. -->
+            <article class="mt-4">
+                <h3 class="h5 fw-bold mb-3">Instrument Collection</h3>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title h6 fw-bold">String Instruments</h4>
+                                <ul class="mb-0">
+                                    <li>Yamaha F310 acoustic guitar</li>
+                                    <li>Fender Squier Stratocaster electric guitar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title h6 fw-bold">Keyboard Instruments</h4>
+                                <ul class="mb-0">
+                                    <li>Yamaha PSR-E373 61-key digital keyboard</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title h6 fw-bold">Percussion Instruments</h4>
+                                <ul class="mb-0">
+                                    <li>5-piece standard drum kit with cymbals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
 
-            <!-- PHOTO 2: Choose a photo showing real instruments used by the Music Club. -->
-            <figure>
-                <img src="images/instruments.jpg"
-                     alt="Musical instruments used in the Music Club">
-                <figcaption>Musical instruments used in the Music Club.</figcaption>
+            <figure class="text-center my-4">
+                <img class="img-fluid rounded shadow w-75" src="images/instruments.jpg" alt="Musical instruments used in the Music Club">
+                <figcaption class="text-muted small mt-2">Musical instruments used in the Music Club.</figcaption>
             </figure>
 
         </section>
 
-        <section id="audio-equipment">
+        <section id="audio-equipment" class="py-3">
 
-            <h2>Audio Equipment</h2>
+            <h2 class="h3 fw-bold mb-3">Audio Equipment</h2>
 
-            <p>
-                The club's audio equipment supports rehearsals, recording, communication, and live sound.
-            </p>
+            <p>The club's audio equipment supports rehearsals, recording, communication, and live sound.</p>
 
             <article>
-
-                <h3>Sound Equipment</h3>
-
+                <h3 class="h5 fw-bold mb-3">Sound Equipment</h3>
                 <p>
                     The following audio equipment may be used by the club: microphones, loudspeakers, mixing
                     desks, amplifiers, cables, etc.
                 </p>
-
-                <ol start="1">
-                    <li>Check the equipment before use.</li>
-                    <li>Connect the required cables carefully.</li>
-                    <li>Test the sound before rehearsal or performance.</li>
-                    <li>Return shared equipment after use.</li>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Check the equipment before use.</li>
+                    <li class="list-group-item">Connect the required cables carefully.</li>
+                    <li class="list-group-item">Test the sound before rehearsal or performance.</li>
+                    <li class="list-group-item">Return shared equipment after use.</li>
                 </ol>
-
             </article>
 
-            <!-- PHOTO 3: Choose a photo of real microphones, speakers, mixer, amplifier, or similar equipment. -->
-            <figure>
-                <img src="images/audio-equipment.jpg"
-                     alt="Audio equipment in the Music Club">
-                <figcaption>Audio equipment used during Music Club activities.</figcaption>
+            <figure class="text-center my-4">
+                <img class="img-fluid rounded shadow w-75" src="images/audio-equipment.jpg" alt="Audio equipment in the Music Club">
+                <figcaption class="text-muted small mt-2">Audio equipment used during Music Club activities.</figcaption>
             </figure>
 
         </section>
 
-        <section id="inventory">
+        <section id="inventory" class="py-3">
 
-            <h2>Equipment Inventory</h2>
+            <h2 class="h3 fw-bold mb-4">Equipment Inventory</h2>
 
-            <p>
-                Table Below Is Designed to Capture The Verified Inventory of the Club.
-            </p>
+            <p>Table below is designed to capture the verified inventory of the club.</p>
 
-            <table>
-                <caption>Music Club Equipment Inventory</caption>
-
-                <thead>
-                    <tr>
-                        <th scope="col">Equipment</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Use</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Yamaha F310</td>
-                        <td>Acoustic guitar</td>
-                        <td>2</td>
-                        <td>Rehearsal, songwriting</td>
-                    </tr>
-
-                    <tr>
-                        <td>Yamaha PSR-E373</td>
-                        <td>Digital keyboard</td>
-                        <td>1</td>
-                        <td>Accompaniment, rehearsal</td>
-                    </tr>
-
-                    <tr>
-                        <td>Shure SM58</td>
-                        <td>Microphone</td>
-                        <td>2</td>
-                        <td>Vocals, live performance</td>
-                    </tr>
-
-                    <tr>
-                        <td>Behringer Xenyx Q802USB</td>
-                        <td>Mixer</td>
-                        <td>1</td>
-                        <td>Live sound, recording</td>
-                    </tr>
-
-                    <tr>
-                        <td>Yamaha DBR12</td>
-                        <td>PA speaker</td>
-                        <td>2</td>
-                        <td>Live performance</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle inventory-table">
+                    <caption>Music Club Equipment Inventory</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Equipment</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Yamaha F310</td>
+                            <td>Acoustic guitar</td>
+                            <td>2</td>
+                            <td>Rehearsal, songwriting</td>
+                        </tr>
+                        <tr>
+                            <td>Yamaha PSR-E373</td>
+                            <td>Digital keyboard</td>
+                            <td>1</td>
+                            <td>Accompaniment, rehearsal</td>
+                        </tr>
+                        <tr>
+                            <td>Shure SM58</td>
+                            <td>Microphone</td>
+                            <td>2</td>
+                            <td>Vocals, live performance</td>
+                        </tr>
+                        <tr>
+                            <td>Behringer Xenyx Q802USB</td>
+                            <td>Mixer</td>
+                            <td>1</td>
+                            <td>Live sound, recording</td>
+                        </tr>
+                        <tr>
+                            <td>Yamaha DBR12</td>
+                            <td>PA speaker</td>
+                            <td>2</td>
+                            <td>Live performance</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </section>
 
-        <aside>
-            <h2>Equipment Notes</h2>
-
+        <aside class="alert alert-light border border-warning my-4">
+            <h2 class="h5 fw-bold">Equipment Notes</h2>
             <p>
                 The students are expected to abide by the equipment policy of the Music Club and consult the representative of the Music Club regarding the equipment that needs permission.
             </p>
-
-            <p>
+            <p class="mb-0">
                 For equipment questions, contact the club by
                 <a href="mailto:music.club@astanait.edu.kz">email</a>
                 or use the club's real
@@ -221,52 +233,41 @@
             </p>
         </aside>
 
-        <hr>
+        <hr class="my-5">
 
-        <section id="details">
-
-            <h2>Useful Details</h2>
-
-            <p>
-                For more information, visit the official Music Club website
-            </p>
-
-            <p>
-                - Equipment can be booked in advance through the club representative to avoid conflicts during exam season and event weeks.
-                - New members are given a short equipment orientation at their first rehearsal.
-                - Any malfunction or damage should be reported immediately so it can be repaired before the next session.
-                - Personal instruments and gear are welcome, but club equipment always has priority for scheduled rehearsals.
-            </p>
-
+        <section id="details" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Useful Details</h2>
+            <p>For more information, visit the official Music Club website.</p>
+            <ul>
+                <li>Equipment can be booked in advance through the club representative to avoid conflicts during exam season and event weeks.</li>
+                <li>New members are given a short equipment orientation at their first rehearsal.</li>
+                <li>Any malfunction or damage should be reported immediately so it can be repaired before the next session.</li>
+                <li>Personal instruments and gear are welcome, but club equipment always has priority for scheduled rehearsals.</li>
+            </ul>
         </section>
 
-        <section id="navigation-help">
-
-            <h2>Page Navigation</h2>
-
-            <p>
-                <a href="#instruments">Jump to instruments</a>
-            </p>
-
-            <p>
-                <a href="#inventory">Jump to the equipment inventory</a>
-            </p>
-
+        <section id="navigation-help" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Page Navigation</h2>
+            <p><a href="#instruments">Jump to instruments</a></p>
+            <p class="mb-0"><a href="#inventory">Jump to the equipment inventory</a></p>
         </section>
 
     </main>
 
-    <footer>
-        <hr>
-        <p><strong>AITU Music Club Administration:</strong></p>
-        <p>
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль | 
-            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> | 
-            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> | 
+    <footer class="site-footer container py-5 text-center">
+        <hr class="my-4">
+        <p><strong class="d-block mb-2">AITU Music Club Administration:</strong></p>
+        <p class="text-muted">
+            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> |
+            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
             Hotline: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
         </p>
-        <p>&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+        <p class="small text-muted mb-0">&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+
+    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

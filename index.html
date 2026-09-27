@@ -8,59 +8,73 @@
     <meta name="author" content="Мерейлим Ерулан Жансая">
     <title>AITU Music Club &mdash; Astana IT University Rehearsals</title>
 
-    <!-- Base stylesheet must be loaded first -->
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
     <link rel="stylesheet" href="css/base.css">
-
-    <!-- Personal student stylesheet must be loaded second -->
     <link rel="stylesheet" href="css/student.css">
-
-    <!-- Internal CSS: demonstrates cascade and overrides external styles -->
-    <style>
-        .page-navigation {
-            letter-spacing: 1px;
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- Author: Ерулан Жансая Мерейлим -->
-    <!-- Two jump links target internal element IDs on this exact document -->
 
-    <header class="site-header">
+    <header class="club-hero">
+        <div class="container py-4">
 
-        <h1>Astana IT University Music Club</h1>
+            <h1 class="display-4 fw-bold text-center mb-4">Astana IT University Music Club</h1>
 
-        <nav class="main-navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Club</a></li>
-                <li><a href="events.html">Events &amp; Gigs</a></li>
-                <li><a href="equipment.html">Gear &amp; Studio</a></li>
-                <li><a href="bands.html">Student Bands</a></li>
-                <li><a href="workshops.html">Workshops</a></li>
-                <li><a href="auditions.html">Auditions</a></li>
-                <li><a href="colophon.html">Colophon</a></li>
-            </ul>
-        </nav>
+            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
 
-        <p class="page-navigation">
-            Direct page navigation:
-            <a href="#schedule-table">Rehearsal Schedule</a> |
-            <a href="#audition-form">Membership Form</a>
-        </p>
+                <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
+                <div class="container-fluid">
 
+                    <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="mainNavigation">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
+                            <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="equipment.html">Studio &amp; Gear</a></li>
+                            <li class="nav-item"><a class="nav-link" href="bands.html">Student Bands</a></li>
+                            <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                            <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Utility classes hide this line on phones (the collapsed navbar already reaches every page) and bring it back from md up, once there's room to show it without crowding the hero. -->
+            <p class="page-navigation text-center lead mt-4 mb-0 d-none d-md-block">
+                Direct page navigation:
+                <a class="link-light" href="#schedule-table">Rehearsal Schedule</a> |
+                <a class="link-light" href="#audition-form">Membership Form</a>
+            </p>
+
+        </div>
     </header>
 
-    <main class="main-content">
+    <main class="container py-5">
 
         <article class="club-overview">
 
-            <header class="article-header">
-                <h2>Student Sound Community in Room C1.1.142</h2>
+            <header class="article-header text-center border-bottom pb-3 mb-4">
+                <h2 class="display-6 fw-bold">Student Sound Community in Room C1.1.142</h2>
             </header>
 
-            <p>
+            <p class="lead">
                 The Astana IT University Music Club brings together instrumentalists, vocalists,
                 and sound production enthusiasts from across all IT faculties.
                 Whether you prefer practicing high-energy rock rhythms at 180
@@ -79,305 +93,242 @@
                 bassists, and drummers.
             </p>
 
-            <figure class="rehearsal-photo">
-
-                <img src="images/rehearsal.jpg"
+            <figure class="rehearsal-photo text-center my-4">
+                <img src="images/rehearsal.jpg" class="img-fluid rounded shadow w-75"
                      alt="Astana IT University music club members rehearsing guitar and drum parts inside room C1.1.142">
-
-                <figcaption>
+                <figcaption class="text-muted small mt-2">
                     Figure 1: Evening rehearsal and instrument soundcheck in Astana IT University
                     studio room C1.1.142.
                 </figcaption>
-
             </figure>
 
-            <aside class="studio-policies">
-
-                <h3>Studio Sound Policies</h3>
-
-                <p>
+            <aside class="studio-policies alert alert-light border border-warning my-4">
+                <h3 class="h5 fw-bold">Studio Sound Policies</h3>
+                <p class="mb-0">
                     Rehearsals scheduled after 20:00 must maintain output levels strictly under 85
                     <abbr title="Sound Pressure Level">SPL</abbr> to avoid disturbing adjacent
                     lecture wings.
                     Please switch all guitar amplifiers into <i>standby</i> mode prior to
                     disconnecting 6.35mm instrument cables.
                 </p>
-
             </aside>
 
-            <figure class="acoustic-photo">
-
-                <img src="images/acoustic-session.jpg"
+            <figure class="acoustic-photo text-center my-4">
+                <img src="images/acoustic-session.jpg" class="img-fluid rounded shadow w-75"
                      alt="Acoustic jam session organized by AITU music club students in the campus co-working area">
-
-                <figcaption>
+                <figcaption class="text-muted small mt-2">
                     Figure 2: Open acoustic jam session hosted for AITU applicants.
                 </figcaption>
-
             </figure>
 
         </article>
 
-        <section class="welcome-section">
-
-            <h2>President's Welcome Address</h2>
-
-            <blockquote cite="https://www.instagram.com/aitu_music">
-                <p>
+        <section class="welcome-section p-4 p-md-5 bg-light rounded shadow-sm my-5">
+            <h2 class="h3 fw-bold mb-3">President's Welcome Address</h2>
+            <blockquote cite="https://www.instagram.com/aitu_music" class="mb-3">
+                <p class="lead mb-0">
                     &ldquo;Музыка в универе &mdash; это не про академическую безупречность,
                     а про людей, которые находят свой голос и единомышленников среди пар
                     и бесконечных дедлайнов.&rdquo;
                 </p>
             </blockquote>
-
-            <p>
+            <p class="mb-0">
                 &mdash; <cite>Акназар</cite>, President of AITU Music Club,
                 collected during interview in room C1.1.142 on September 10, 2024.
             </p>
-
         </section>
 
-        <section class="recruitment-section">
+        <section class="recruitment-section py-3">
 
-            <h2>Studio Gear &amp; Recruitment Process</h2>
-
+            <h2 class="h3 fw-bold mb-3">Studio Gear &amp; Recruitment Process</h2>
             <p>
                 We invite candidates across all university courses to take part in the
                 1<sup>st</sup> round of auditions.
             </p>
 
-            <h3>Studio Gear Inventory</h3>
+            <!-- Bootstrap grid: three responsive blocks that change layout at the md and lg breakpoints, as suggested by the assignment brief. -->
+            <div class="row g-4 mt-2">
 
-            <ul class="gear-list">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-bold">Studio Gear Inventory</h3>
 
-                <li>
-                    String Instruments
+                            <!-- Nested grid: a row inside this column splits the two instrument groups into their own sub-columns from the sm breakpoint up, and stacks them on narrower phones. -->
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <p class="fw-semibold mb-1 small text-muted">String Instruments</p>
+                                    <ul class="gear-list small">
+                                        <li>Fender Jazz Bass (4-string passive)</li>
+                                        <li>Yamaha Pacifica solid-body electric guitar</li>
+                                        <li>Takamine dreadnought acoustic guitar</li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <p class="fw-semibold mb-1 small text-muted">Rhythm Section &amp; Keyboards</p>
+                                    <ul class="gear-list small mb-0">
+                                        <li>Roland V-Drums electric mesh kit</li>
+                                        <li>Yamaha digital stage piano with weighted hammer action</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <ul>
-                        <li>Fender Jazz Bass (4-string passive)</li>
-                        <li>Yamaha Pacifica solid-body electric guitar</li>
-                        <li>Takamine dreadnought acoustic guitar</li>
-                    </ul>
-                </li>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-bold">Audition Procedure</h3>
+                            <ol class="audition-steps mb-0" type="A">
+                                <li>Submit the digital registration form provided below.</li>
+                                <li>Attend an assigned 15-minute live soundcheck in room C1.1.142.</li>
+                                <li>
+                                    Perform one solo piece and participate in an unscripted
+                                    10-minute improvisation session.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
 
-                <li>
-                    Rhythm Section and Keyboards
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title h5 fw-bold">Essential Musical Terms</h3>
+                            <dl class="music-terms mb-0">
+                                <dt>Jam Session</dt>
+                                <dd>
+                                    An informal musical gathering where players improvise arrangements
+                                    collaboratively without pre-written score sheets.
+                                </dd>
+                                <dt>Soundcheck</dt>
+                                <dd>
+                                    The procedure of balancing monitor mixes and instrument levels prior
+                                    to rehearsals or stage presentations.
+                                </dd>
+                                <dt class="mb-0">Stage Rider</dt>
+                                <dd class="mb-0">
+                                    A formal technical specification listing microphones, channels,
+                                    and electrical gear required by an ensemble.
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
 
-                    <ul>
-                        <li>Roland V-Drums electric mesh kit</li>
-                        <li>Yamaha digital stage piano with weighted hammer action</li>
-                    </ul>
-                </li>
-
-            </ul>
-
-            <h3>Audition Procedure</h3>
-
-            <ol class="audition-steps" type="A">
-
-                <li>Submit the digital registration form provided below.</li>
-
-                <li>Attend an assigned 15-minute live soundcheck in room C1.1.142.</li>
-
-                <li>
-                    Perform one solo piece and participate in an unscripted
-                    10-minute improvisation session.
-                </li>
-
-            </ol>
-
-            <h3>Essential Musical Terms</h3>
-
-            <dl class="music-terms">
-
-                <dt>Jam Session</dt>
-                <dd>
-                    An informal musical gathering where players improvise arrangements
-                    collaboratively without pre-written score sheets.
-                </dd>
-
-                <dt>Soundcheck</dt>
-                <dd>
-                    The procedure of balancing monitor mixes and instrument levels prior
-                    to rehearsals or stage presentations.
-                </dd>
-
-                <dt>Stage Rider</dt>
-                <dd>
-                    A formal technical specification listing microphones, channels,
-                    and electrical gear required by an ensemble.
-                </dd>
-
-            </dl>
-
-        </section>
-
-        <hr>
-
-        <!-- ID is used because this section is a unique jump-link destination.
-             The special-text class is used for the CSS specificity experiment. -->
-
-        <section id="schedule-table" class="schedule-section special-text">
-
-            <h2>Weekly Rehearsal Hall Allocation</h2>
-
-            <table class="rehearsal-schedule">
-
-                <caption>
-                    Weekly schedule for Studio <b>Room C1.1.142</b>
-                </caption>
-
-                <thead>
-
-                    <tr>
-                        <th scope="col">Weekday</th>
-                        <th scope="col">Time Slot</th>
-                        <th scope="col">Registered Band</th>
-                        <th scope="col">Genre Focus</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <th scope="row">Monday</th>
-                        <td>17:00 &ndash; 19:00</td>
-                        <td>AITU Acoustic Band</td>
-                        <td>Indie Folk</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Wednesday</th>
-                        <td>18:30 &ndash; 20:30</td>
-                        <td>Overdrive Collective</td>
-                        <td>Alternative Rock</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Friday</th>
-                        <td>16:00 &ndash; 18:00</td>
-                        <td>Astana IT Jazz Project</td>
-                        <td>Bossa Nova &amp; Swing</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
+            </div>
 
         </section>
 
-        <section id="audition-form" class="application-section">
+        <hr class="my-5">
 
-            <h2>Audition &amp; Membership Application</h2>
+        <!-- ID is used because this section is a unique jump-link destination. -->
+        <section id="schedule-table" class="schedule-section py-3">
 
+            <h2 class="h3 fw-bold mb-4">Weekly Rehearsal Hall Allocation</h2>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle rehearsal-schedule">
+                    <caption>Weekly schedule for Studio <b>Room C1.1.142</b></caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Weekday</th>
+                            <th scope="col">Time Slot</th>
+                            <th scope="col">Registered Band</th>
+                            <th scope="col">Genre Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Monday</th>
+                            <td>17:00 &ndash; 19:00</td>
+                            <td>AITU Acoustic Band</td>
+                            <td>Indie Folk</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wednesday</th>
+                            <td>18:30 &ndash; 20:30</td>
+                            <td>Overdrive Collective</td>
+                            <td>Alternative Rock</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Friday</th>
+                            <td>16:00 &ndash; 18:00</td>
+                            <td>Astana IT Jazz Project</td>
+                            <td>Bossa Nova &amp; Swing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <hr class="my-5">
+
+        <section id="audition-form" class="application-section py-3">
+
+            <h2 class="h3 fw-bold mb-4">Audition &amp; Membership Application</h2>
+
+            <!-- The form is currently visual/client-side only; server processing is not included. -->
             <form class="membership-form" action="#" method="post">
 
-                <fieldset class="candidate-details">
+                <fieldset class="candidate-details border rounded p-4 mb-4 shadow-sm">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Candidate Personal Details</legend>
 
-                    <legend>Candidate Personal Details</legend>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="candidate-name" class="form-label fw-semibold">Full Name:</label>
+                            <input type="text" class="form-control" id="candidate-name" name="candidate_name"
+                                   placeholder="e.g., Бактиярова Мерейлим" required>
+                        </div>
 
-                    <p>
-                        <label for="candidate-name">Full Name:</label><br>
+                        <div class="col-12 col-md-6">
+                            <label for="candidate-email" class="form-label fw-semibold">AITU Student Email:</label>
+                            <input type="email" class="form-control" id="candidate-email" name="candidate_email"
+                                   placeholder="student@astanait.edu.kz" required>
+                        </div>
 
-                        <input type="text"
-                               id="candidate-name"
-                               name="candidate_name"
-                               placeholder="e.g., Бактиярова Мерейлим"
-                               required>
-                    </p>
+                        <div class="col-12 col-md-6">
+                            <label for="candidate-phone" class="form-label fw-semibold">Contact Phone Number:</label>
+                            <input type="tel" class="form-control" id="candidate-phone" name="candidate_phone"
+                                   placeholder="+7 777 000 1122" required>
+                        </div>
 
-                    <p>
-                        <label for="candidate-email">AITU Student Email:</label><br>
+                        <div class="col-12 col-md-6">
+                            <label for="experience-years" class="form-label fw-semibold">Years of Musical Practice:</label>
+                            <input type="number" class="form-control" id="experience-years" name="experience_years"
+                                   min="0" max="25" placeholder="2" required>
+                        </div>
 
-                        <input type="email"
-                               id="candidate-email"
-                               name="candidate_email"
-                               placeholder="student@astanait.edu.kz"
-                               required>
-                    </p>
-
-                    <p>
-                        <label for="candidate-phone">Contact Phone Number:</label><br>
-
-                        <input type="tel"
-                               id="candidate-phone"
-                               name="candidate_phone"
-                               placeholder="+7 777 000 1122"
-                               required>
-                    </p>
-
-                    <p>
-                        <label for="experience-years">Years of Musical Practice:</label><br>
-
-                        <input type="number"
-                               id="experience-years"
-                               name="experience_years"
-                               min="0"
-                               max="25"
-                               placeholder="2"
-                               required>
-                    </p>
-
-                    <p>
-                        <label for="audition-date">Preferred Audition Date:</label><br>
-
-                        <input type="date"
-                               id="audition-date"
-                               name="audition_date"
-                               required>
-                    </p>
-
+                        <div class="col-12">
+                            <label for="audition-date" class="form-label fw-semibold">Preferred Audition Date:</label>
+                            <input type="date" class="form-control" id="audition-date" name="audition_date" required>
+                        </div>
+                    </div>
                 </fieldset>
 
-                <fieldset class="music-availability">
+                <fieldset class="music-availability border rounded p-4 shadow-sm">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Musical Track &amp; Availability</legend>
 
-                    <legend>Musical Track &amp; Availability</legend>
+                    <p class="fw-semibold mb-2">Choose Primary Participation Role:</p>
 
-                    <p>Choose Primary Participation Role:</p>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" id="role-vocal" name="club_role" value="vocalist" required>
+                        <label class="form-check-label" for="role-vocal">Lead or Backing Vocalist</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" id="role-instrument" name="club_role" value="instrumentalist">
+                        <label class="form-check-label" for="role-instrument">Instrumentalist (Guitar, Bass, Drums, Keys)</label>
+                    </div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="radio" id="role-sound" name="club_role" value="technician">
+                        <label class="form-check-label" for="role-sound">Sound Engineering &amp; Live Audio</label>
+                    </div>
 
-                    <p>
-
-                        <input type="radio"
-                               id="role-vocal"
-                               name="club_role"
-                               value="vocalist"
-                               required>
-
-                        <label for="role-vocal">
-                            Lead or Backing Vocalist
-                        </label><br>
-
-                        <input type="radio"
-                               id="role-instrument"
-                               name="club_role"
-                               value="instrumentalist">
-
-                        <label for="role-instrument">
-                            Instrumentalist (Guitar, Bass, Drums, Keys)
-                        </label><br>
-
-                        <input type="radio"
-                               id="role-sound"
-                               name="club_role"
-                               value="technician">
-
-                        <label for="role-sound">
-                            Sound Engineering &amp; Live Audio
-                        </label>
-
-                    </p>
-
-                    <p>
-
-                        <label for="primary-instrument">
-                            Main Instrument Choice:
-                        </label><br>
-
-                        <select id="primary-instrument"
-                                name="primary_instrument"
-                                required>
-
+                    <div class="mb-4">
+                        <label for="primary-instrument" class="form-label fw-semibold">Main Instrument Choice:</label>
+                        <select class="form-select" id="primary-instrument" name="primary_instrument" required>
                             <option value="">-- Select an instrument --</option>
                             <option value="electric-guitar">Electric Guitar</option>
                             <option value="acoustic-guitar">Acoustic Guitar</option>
@@ -385,68 +336,33 @@
                             <option value="drums">Drum Kit &amp; Percussion</option>
                             <option value="keys">Keys / Synthesizer</option>
                             <option value="other">Other Acoustic Instrument</option>
-
                         </select>
+                    </div>
 
-                    </p>
-
-                    <p>
-
-                        <label for="candidate-bio">
-                            Describe your musical background, favorite artists,
-                            and genre influences:
-                        </label><br>
-
-                        <textarea id="candidate-bio"
-                                  name="candidate_bio"
-                                  rows="4"
-                                  cols="45"
-                                  placeholder="Playing rhythm guitar for two years, inspired by Arctic Monkeys, Kino, and Radiohead..."
-                                  required></textarea>
-
-                    </p>
-
-                    <p>
-
-                        <input type="checkbox"
-                               id="rules-agree"
-                               name="rules_agreement"
-                               value="yes"
-                               required>
-
-                        <label for="rules-agree">
-                            I agree to attend weekly club rehearsals and preserve studio
-                            equipment in room C1.1.142.
+                    <div class="mb-4">
+                        <label for="candidate-bio" class="form-label fw-semibold">
+                            Describe your musical background, favorite artists, and genre influences:
                         </label>
+                        <textarea class="form-control" id="candidate-bio" name="candidate_bio" rows="4"
+                                  placeholder="Playing rhythm guitar for two years, inspired by Arctic Monkeys, Kino, and Radiohead..." required></textarea>
+                    </div>
 
-                    </p>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="rules-agree" name="rules_agreement" value="yes" required>
+                        <label class="form-check-label" for="rules-agree">
+                            I agree to attend weekly club rehearsals and preserve studio equipment in room C1.1.142.
+                        </label>
+                    </div>
 
                     <p class="intake-status">
-
                         Current Intake Status:
-
-                        <span>
-                            Accepting Audition Forms
-                        </span>
-
+                        <span class="club-highlight">Accepting Audition Forms</span>
                     </p>
 
-                    <p class="form-actions">
-
-                        <!-- Inline CSS is intentionally used once to demonstrate cascade. -->
-
-                        <button class="submit-button"
-                                type="submit"
-                                style="font-weight: 700;">
-                            Submit Application
-                        </button>
-
-                        <button class="reset-button"
-                                type="reset">
-                            Clear Form
-                        </button>
-
-                    </p>
+                    <div class="form-actions d-flex flex-wrap gap-2">
+                        <button class="submit-button btn btn-primary btn-lg" type="submit">Submit Application</button>
+                        <button class="reset-button btn btn-outline-secondary" type="reset">Clear Form</button>
+                    </div>
 
                 </fieldset>
 
@@ -454,64 +370,33 @@
 
         </section>
 
-        <div class="contact-details">
-
-            <p>
-                <small>
-                    Physical Address: Astana IT University, EXPO Business Center,
-                    Block C1, Room C1.1.142.<br>
-                    For room bookings and key clearance, contact club administration.
-                </small>
-            </p>
-
+        <div class="contact-details text-center text-muted my-4">
+            <small>
+                Physical Address: Astana IT University, EXPO Business Center,
+                Block C1, Room C1.1.142.<br>
+                For room bookings and key clearance, contact club administration.
+            </small>
         </div>
 
     </main>
 
-    <footer class="site-footer">
-
-        <hr>
-
-        <p>
-            <strong>Astana IT University Music Club Contacts:</strong>
-        </p>
-
-        <p>
-
+    <footer class="site-footer container py-5 text-center">
+        <hr class="my-4">
+        <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
+        <p class="text-muted">
             Club President: Акназар |
-
             Official Instagram:
-
-            <a href="https://www.instagram.com/aitu_music"
-               target="_blank"
-               rel="noopener noreferrer">
-                @aitu_music
-            </a>
-
+            <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
+            <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
-
-            Email:
-
-            <a href="mailto:music.club@astanait.edu.kz">
-                music.club@astanait.edu.kz
-            </a>
-
-            |
-
-            Phone:
-
-            <a href="tel:+77771234567">
-                +7 (777) 123-45-67
-            </a>
-
+            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
+            Phone: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
         </p>
-
-        <p>
-            &copy; 2024 Astana IT University Music Club. All rights reserved.
-        </p>
-
+        <p class="small text-muted mb-0">&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+
+    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
-Finalize index page for Assignment 2
