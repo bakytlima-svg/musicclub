@@ -1,9 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Masterclasses and practical workshops on vocal technique, guitar setup, and sound engineering hosted by AITU Music Club.">
+
+    <meta name="description"
+          content="Masterclasses and practical workshops on vocal technique, guitar setup, and sound engineering hosted by AITU Music Club.">
+
     <meta name="author" content="Сарсенбай Жансая">
 
     <link rel="stylesheet" href="css/base.css">
@@ -13,12 +18,14 @@
 </head>
 
 <body>
+
     <!-- Author: Сарсенбай Жансая -->
 
     <header class="workshop-hero">
+
         <h1>AITU Music Club Workshops</h1>
 
-        <!-- Jump links allow users to navigate directly to the schedule without manual scrolling -->
+        <!-- Navigation menu -->
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -32,16 +39,21 @@
             </ul>
         </nav>
 
+        <!-- Jump links allow users to navigate directly to sections -->
         <p>
             Quick navigation:
             <a href="#workshop-table">Workshop Schedule</a> |
             <a href="#terminology">Audio Concepts</a>
         </p>
+
     </header>
+
 
     <main>
 
+        <!-- Main educational workshop information -->
         <article class="workshop-card">
+
             <header>
                 <h2>Educational Sessions &amp; Practical Skill Building</h2>
             </header>
@@ -51,7 +63,8 @@
                 <abbr title="Astana IT University">AITU</abbr> Music Club organizes weekly educational
                 workshops for beginner and intermediate musicians.
                 Our educational program covers vocal breathing exercises, guitar pedalboard routing,
-                drum tuning, and live mixing console operation inside <b>Room C1.1.142</b>.
+                drum tuning, and live mixing console operation inside
+                <b>Room C1.1.142</b>.
                 These interactive sessions are open to all university students regardless of their current skill level.
             </p>
 
@@ -66,30 +79,43 @@
                 <mark>currently open for registration</mark>.
             </p>
 
+
             <figure class="workshop-image">
+
                 <img src="images/workshop-vocal.jpg"
                      alt="AITU Music Club mentor demonstrating vocal warm-up techniques to students in room C1.1.142">
+
                 <figcaption>
                     Figure 1: Practical vocal warm-up and mic handling session in room C1.1.142.
                 </figcaption>
+
             </figure>
 
+
+            <!-- Supplementary information about workshop requirements -->
             <aside class="workshop-note">
-                <!-- Aside is selected because instrument requirements represent supplementary advice separate from the main workshop syllabus -->
+
                 <h3>What to Bring to Workshops</h3>
+
                 <p>
-                    Acoustic and electric instrument players should bring their own instruments and 6.35mm jack cables.
-                    Vocalists and sound engineering students are provided with dynamic microphones and digital mixing
-                    consoles on site.
+                    Acoustic and electric instrument players should bring their own instruments
+                    and 6.35mm jack cables.
+                    Vocalists and sound engineering students are provided with dynamic microphones
+                    and digital mixing consoles on site.
                 </p>
+
             </aside>
+
         </article>
 
+
+        <!-- Workshop schedule -->
         <section id="workshop-table" class="workshop-table">
-            <!-- A table is used instead of a list because workshop schedules form a structured two-dimensional matrix of dates, topics, instructors, and locations -->
+
             <h2>Upcoming Masterclass Schedule</h2>
 
             <table>
+
                 <caption>
                     Practical workshop timetable for the current academic semester
                 </caption>
@@ -104,6 +130,7 @@
                 </thead>
 
                 <tbody>
+
                     <tr>
                         <th scope="row">Wed, 16:00</th>
                         <td>Vocal Control &amp; Diaphragmatic Breathing</td>
@@ -131,11 +158,17 @@
                         <td>Айварұлы Ақназар</td>
                         <td>Main Atrium</td>
                     </tr>
+
                 </tbody>
+
             </table>
+
         </section>
 
+
+        <!-- Audio terminology -->
         <section id="terminology" class="audio-terms">
+
             <h2>Audio Concepts &amp; Terminology</h2>
 
             <p>
@@ -143,9 +176,11 @@
             </p>
 
             <dl>
+
                 <dt>Gain Staging</dt>
                 <dd>
-                    The process of managing signal levels at each stage of amplification to prevent harmonic distortion.
+                    The process of managing signal levels at each stage of amplification
+                    to prevent harmonic distortion.
                 </dd>
 
                 <dt>Equalization (EQ)</dt>
@@ -157,22 +192,32 @@
                 <dd>
                     High-pitched acoustic resonance caused when amplified sound loops back into a live microphone.
                 </dd>
+
             </dl>
+
         </section>
 
+
+        <!-- Digital workstation setup -->
         <section class="workshop-card">
+
             <h2>Terminal Command for Digital Workstation Setup</h2>
 
             <p>
                 During recording workshops, students use digital audio workstations
                 (<abbr title="Digital Audio Workstation">DAW</abbr>).
-                Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> on the control room PC
-                to initialize driver routing:
+
+                Press
+                <kbd>Ctrl</kbd> +
+                <kbd>Shift</kbd> +
+                <kbd>R</kbd>
+                on the control room PC to initialize driver routing:
             </p>
 
             <pre><code>daw-control --init --inputs=8
 daw-control --set-buffer=128samples
 daw-control --start-monitor</code></pre>
+
 
             <p>
                 The studio terminal will return the following status message:
@@ -182,32 +227,44 @@ daw-control --start-monitor</code></pre>
                 <samp>[OK] Audio buffers locked at 128 samples. Latency: 2.9ms.</samp>
             </p>
 
-            <!-- A span is used here strictly to apply an inline status tag without introducing a block-level paragraph split -->
+
+            <!-- Span is used for an inline seat availability status -->
             <p>
                 Workshop Seat Availability:
                 <span class="seat-status">12 Spots Remaining</span>
             </p>
+
         </section>
 
+
+        <!-- Instructor quote -->
         <section class="workshop-card">
+
             <h2>Instructor Guidance Quote</h2>
 
             <blockquote cite="https://www.instagram.com/aitu_music">
+
                 <p>
-                    &ldquo;Университеттегі воркшоптар &mdash; бұл тек теория емес, аппаратпен жұмыс істеп
-                    үйренудің ең тиімді жолы.&rdquo;
+                    &ldquo;Университеттегі воркшоптар &mdash; бұл тек теория емес,
+                    аппаратпен жұмыс істеп үйренудің ең тиімді жолы.&rdquo;
                 </p>
+
             </blockquote>
 
             <p>
-                &mdash; <cite>Абразаков Рамиль</cite>,
+                &mdash;
+                <cite>Абразаков Рамиль</cite>,
                 Head of Technical Support, workshop briefing on October 5, 2024.
             </p>
+
         </section>
 
     </main>
 
+
+    <!-- Footer -->
     <footer>
+
         <hr>
 
         <p>
@@ -218,21 +275,37 @@ daw-control --start-monitor</code></pre>
             Workshop Coordinator: Сарсенбай Жансая |
             President: Айварұлы Ақназар |
             Instagram:
+
             <a href="https://www.instagram.com/aitu_music"
                target="_blank"
-               rel="noopener noreferrer">@aitu_music</a> |
+               rel="noopener noreferrer">
+                @aitu_music
+            </a>
+
+            |
+
             Email:
+
             <a href="mailto:workshops.music@astanait.edu.kz">
                 workshops.music@astanait.edu.kz
-            </a> |
+            </a>
+
+            |
+
             Phone:
-            <a href="tel:+77780573242">+7 (778) 057-32-42</a>
+
+            <a href="tel:+77780573242">
+                +7 (778) 057-32-42
+            </a>
         </p>
 
         <p>
             &copy; 2024 Astana IT University Music Club. All rights reserved.
         </p>
+
     </footer>
 
 </body>
+
 </html>
+```
