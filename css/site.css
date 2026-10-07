@@ -1,0 +1,77 @@
+.hidden {
+    display: none !important;
+}
+
+/* active: the item that is currently in focus */
+.card.active {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+.table > tbody > tr.active > * {
+    --bs-table-bg-state: #cfe2ff;
+}
+
+/* selected: the item the visitor has chosen */
+.card.selected,
+.form-check.selected,
+.list-group-item.selected {
+    border-color: #198754;
+    background-color: #e8f5ee;
+}
+.table > tbody > tr.selected > * {
+    --bs-table-bg-state: #d1e7dd;
+    font-weight: 600;
+}
+
+/* error: a field, a fieldset or a message that failed validation */
+.form-control.error,
+.form-select.error,
+.form-check-input.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+.form-check-input.error ~ .form-check-label {
+    color: #dc3545;
+}
+fieldset.error {
+    border-color: #dc3545 !important;
+}
+.field-error {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+.alert.error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+/* success: a field, a fieldset or a message that passed */
+.form-control.success,
+.form-select.success {
+    border-color: #198754;
+}
+fieldset.success {
+    border-color: #198754 !important;
+}
+.field-success {
+    color: #198754;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+.alert.success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Audition page card: violet border in the club colour */
+.audition-card {
+    border: 1px solid var(--club-violet);
+}

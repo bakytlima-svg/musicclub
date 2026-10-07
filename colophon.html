@@ -4,40 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Technical colophon detailing the authoring process, Git workflow, and semantic HTML standards for the Astana IT University Music Club site.">
-    <meta name="author" content="Бактиярова Мерейлим">
-    <title>Colophon &mdash; AITU Music Club Website</title>
+    <meta name="author" content="AITU Music Club">
+    <title>Colophon &mdash; AITU Music Club</title>
+    <link rel="icon" href="data:,">
 
     <!-- Bootstrap 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
+    <!-- The same two stylesheets on every page, loaded after Bootstrap so brand colours, small corrections and state classes win. -->
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/baktiyarova.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-    <!-- Author: Бактиярова Мерейлим -->
-
     <header class="club-hero">
         <div class="container py-4">
 
             <h1 class="display-4 fw-bold text-center mb-4">Colophon &amp; Technical Specifications</h1>
 
-            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
+            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="mainNavigation">
+                    <div class="navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
                             <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
-                            <li class="nav-item"><a class="nav-link" href="equipment.html">Gear &amp; Studio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="equipment.html">Studio &amp; Gear</a></li>
                             <li class="nav-item"><a class="nav-link" href="bands.html">Student Bands</a></li>
                             <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                             <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
@@ -48,6 +42,12 @@
                     </div>
                 </div>
             </nav>
+
+            <p class="quick-navigation text-center lead mt-4 mb-0 d-none d-md-block">
+                Quick jump:
+                <a class="link-primary" href="#git-routine">Git Routine</a> |
+                <a class="link-primary" href="#validation">Validation</a>
+            </p>
 
         </div>
     </header>
@@ -60,13 +60,16 @@
             </header>
 
             <p class="lead">
-                This website was authored by <strong>Бактиярова Мерейлим</strong> for the Astana IT University student community as part of the <em>Introduction to Web Technologies</em> curriculum.
-                In strict compliance with Assignment 1 criteria, the project utilizes semantic <abbr title="HyperText Markup Language 5">HTML5</abbr>
-                without any external or inline CSS styling, JavaScript scripts, frameworks, or code generators.
+                This website was built by the AITU Music Club web team for the Astana IT University student community
+                as part of the <em>Introduction to Web Technologies</em> course.
+                The pages use semantic <abbr title="HyperText Markup Language 5">HTML5</abbr> for structure,
+                Bootstrap 5.3.3 for layout and components, and one small custom stylesheet for brand colours and corrections.
+                The markup is prepared for JavaScript, which will be added in later assignments; no custom scripts are used at this stage.
             </p>
             <p>
                 The document source was composed in <strong>Visual Studio Code</strong> with UTF-8 character encoding.
-                The HTML files are stored in the repository root, while the images are stored in the images folder.
+                The HTML files are stored in the repository root, the stylesheets are stored in the css folder,
+                and the images are stored in the images folder.
             </p>
 
             <figure class="text-center my-4">
@@ -75,43 +78,45 @@
             </figure>
         </article>
 
-        <section class="border rounded p-4 p-md-5 shadow-sm my-4">
+        <section id="git-routine" class="border rounded p-4 p-md-5 shadow-sm my-4">
             <h2 class="h3 fw-bold mb-3">Git Routine &amp; Terminal Commands</h2>
             <p>
-                To maintain revision history and meet multi-day submission requirements, file revisions were staged through the integrated terminal.
-                Press <kbd>Ctrl</kbd> + <kbd>`</kbd> to launch the command line interface, then execute the following sequence:
+                To maintain revision history, every team member committed from their own account across several days.
+                Press <kbd>Ctrl</kbd> + <kbd>`</kbd> to launch the integrated terminal, then execute the following sequence.
+                The final command marks the frozen state of the HTML and CSS:
             </p>
 
             <!-- Code and pre are used here because terminal commands are presented as literal code. -->
             <pre><code>git status
-git add index.html colophon.html
-git commit -m "feat: complete semantic structure for index and colophon"
-git push origin main</code></pre>
+git add .
+git commit -m "feat: finish markup and prepare hooks for JavaScript"
+git push origin main
+git tag midterm
+git push origin midterm</code></pre>
 
             <p>Terminal output confirmation from Git client:</p>
-            <p class="mb-0"><samp>Working tree clean</samp></p>
+            <p class="mb-0"><samp>nothing to commit, working tree clean</samp></p>
         </section>
 
-        <section class="py-3">
+        <section id="validation" class="py-3">
             <h2 class="h3 fw-bold mb-3">Standards Verification &amp; Validation</h2>
             <!-- The external link opens the validator separately so the current page remains open. -->
             <p>
-                All documents in this repository are verified using the official
-                <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Nu HTML Checker</a>.
-                The documents are checked using the official W3C Nu HTML Checker before submission.
+                All documents in this repository are verified with the official
+                <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Nu HTML Checker</a>
+                before submission. Every link and every form is also clicked through at desktop and phone width.
             </p>
             <p>
                 Deprecated presentation elements like <code>&lt;font&gt;</code> and <code>&lt;center&gt;</code> were omitted.
-                From Assignment 3 onward, layout, spacing, navigation and buttons are built with Bootstrap classes rather than hand-written CSS.
+                Layout, spacing, navigation and buttons are built with Bootstrap classes rather than hand-written CSS.
             </p>
 
-            <!-- Comment explaining why: Aside is selected because browser rendering defaults represent secondary technical background notes -->
             <aside class="alert alert-light border border-warning">
-                <!-- Comment explaining why: Span is used to isolate the engine version string inline without altering sentence paragraph semantics -->
-                <h3 class="h5 fw-bold">Browser Engine Defaults</h3>
+                <h3 class="h5 fw-bold">Prepared for JavaScript</h3>
                 <p class="mb-0">
-                    Because presentation styling is forbidden for this milestone, browsers apply native user-agent styles.
-                    Target rendering engine: <span>Standards-Compliant Blink/Gecko</span>.
+                    Every form, input, button and changing block has an English, lowercase id. Each form is followed by an empty
+                    error area and an empty confirmation area, and the state classes <code>hidden</code>, <code>active</code>,
+                    <code>selected</code>, <code>error</code> and <code>success</code> are already written in the shared stylesheet.
                 </p>
             </aside>
         </section>
@@ -119,18 +124,17 @@ git push origin main</code></pre>
 
     <footer class="site-footer container py-5 text-center">
         <hr class="my-4">
-        <p><strong class="d-block mb-2">Page Author &amp; Technical Support:</strong></p>
-        <p class="text-muted">
-            Author: Бактиярова Мерейлим |
-            Official Club Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> |
-            Webmaster Email: <a href="mailto:251196@astanait.edu.kz">251196@astanait.edu.kz</a> |
-            Studio Phone: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
+        <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
+        <p class="text-muted text-break">
+            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
+            <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
+            |
+            Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
+            Phone: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
         </p>
-        <p class="small text-muted mb-0">&copy; 2019 Astana IT University Music Club. All rights reserved.</p>
+        <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
-
-    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

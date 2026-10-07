@@ -4,20 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="History, leadership board, musical departments, and studio rehearsal hours of the Astana IT University Music Club in Room C1.1.142.">
-
-    <meta name="author" content="Мерейлим Ерулан Жансая">
-
-    <title>About Us — AITU Music Club</title>
+    <meta name="description" content="History, leadership board, musical departments, and studio rehearsal hours of the Astana IT University Music Club in Room C1.1.142.">
+    <meta name="author" content="AITU Music Club">
+    <title>About Club &mdash; AITU Music Club</title>
+    <link rel="icon" href="data:,">
 
     <!-- Bootstrap 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Own stylesheets are loaded after Bootstrap so brand colours and small corrections win. -->
+    <!-- The same two stylesheets on every page, loaded after Bootstrap so brand colours, small corrections and state classes win. -->
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 
 <body>
@@ -27,17 +24,12 @@
 
             <h1 class="display-4 fw-bold text-center mb-4">About AITU Music Club</h1>
 
-            <!-- Bootstrap Navbar: collapses into a working toggler below the lg breakpoint. -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
+            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#mainNavigation" aria-controls="mainNavigation"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="mainNavigation">
+                    <div class="navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item">
@@ -57,7 +49,8 @@
             <p class="quick-navigation text-center lead mt-4 mb-0 d-none d-md-block">
                 Quick jump:
                 <a class="link-primary" href="#club-profile">Club Foundation</a> |
-                <a class="link-primary" href="#leadership-board">Leadership Board</a>
+                <a class="link-primary" href="#leadership-board">Leadership Board</a> |
+                <a class="link-primary" href="#studio-booking">Book a Rehearsal</a>
             </p>
 
         </div>
@@ -90,8 +83,7 @@
                         bands rehearse across multiple genres.
                         The facility operates daily from 09:00 to 22:00.
                         Because multiple ensembles share the rehearsal area,
-                        members book practice slots in advance via our dedicated
-                        automated system.
+                        members book practice slots in advance with the <a href="#studio-booking">studio booking form</a> on this page.
                     </p>
                 </div>
             </div>
@@ -116,8 +108,7 @@
             <aside class="studio-booking alert alert-light border border-warning my-4">
                 <h3 class="h5 fw-bold">Studio Booking Protocol</h3>
                 <p class="mb-0">
-                    Rehearsal room C1.1.142 is managed through our
-                    automated reservation bot.
+                    Rehearsal room C1.1.142 is managed through the <a href="#studio-booking">studio booking form</a> on this page.
                     Ensembles must reserve slots 24 hours in advance
                     to avoid scheduling conflicts between rock bands
                     and acoustic duos.
@@ -236,15 +227,94 @@
 
         <hr class="my-5">
 
+        <section id="studio-booking" class="booking-section py-3">
+
+            <h2 class="h3 fw-bold mb-4">Rehearsal Slot Booking</h2>
+
+            <p>
+                Room C1.1.142 is open every day from 09:00 to 22:00. Choose a date and a time slot for your
+                ensemble below; slots must be reserved at least 24 hours in advance.
+            </p>
+
+            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
+            <form id="studio-booking-form" class="booking-form" method="get">
+
+                <fieldset class="booking-details border rounded p-4 shadow-sm">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Ensemble &amp; Time Slot</legend>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="booking-name" class="form-label fw-semibold">Contact Name:</label>
+                            <input type="text" class="form-control" id="booking-name" name="booking_name" placeholder="Name and surname" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="booking-email" class="form-label fw-semibold">AITU Student Email:</label>
+                            <input type="email" class="form-control" id="booking-email" name="booking_email" placeholder="student@astanait.edu.kz" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="booking-band" class="form-label fw-semibold">Band or Ensemble Name:</label>
+                            <input type="text" class="form-control" id="booking-band" name="booking_band" placeholder="Name of your band" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="booking-members" class="form-label fw-semibold">Number of Musicians:</label>
+                            <input type="number" class="form-control" id="booking-members" name="booking_members" placeholder="4" min="1" max="15" required>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="booking-date" class="form-label fw-semibold">Rehearsal Date:</label>
+                            <input type="date" class="form-control" id="booking-date" name="booking_date" required>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="booking-start" class="form-label fw-semibold">Start Time (from 09:00):</label>
+                            <input type="time" class="form-control" id="booking-start" name="booking_start" min="09:00" max="22:00" required>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="booking-end" class="form-label fw-semibold">End Time (until 22:00):</label>
+                            <input type="time" class="form-control" id="booking-end" name="booking_end" min="09:00" max="22:00" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="booking-genre" class="form-label fw-semibold">Genre Focus:</label>
+                            <select class="form-select" id="booking-genre" name="booking_genre" required>
+                                <option value="">-- Choose a genre --</option>
+                                <option value="rock">Rock</option>
+                                <option value="acoustic">Acoustic / Indie Folk</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="pop">Pop / K-pop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4"></div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="booking-rules" name="booking_rules" value="agreed" required>
+                        <label class="form-check-label" for="booking-rules">I agree to keep volume levels under 85 dB after 20:00.</label>
+                    </div>
+                    <p class="form-note text-muted small">
+                        After you submit, a confirmation of your reserved time slot will appear below this form.
+                    </p>
+                    <div class="form-actions d-flex flex-wrap gap-2">
+                        <button id="studio-booking-submit" type="submit" class="submit-button btn btn-primary btn-lg">Reserve Slot</button>
+                        <button id="studio-booking-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
+                    </div>
+                </fieldset>
+
+            </form>
+
+            <!-- Error area: stays hidden until JavaScript writes a message into it and removes the "hidden" class. -->
+            <div id="studio-booking-error" class="hidden alert alert-danger mt-4" role="alert"></div>
+
+            <!-- Confirmation area: stays hidden until JavaScript writes the result into it and removes the "hidden" class. -->
+            <div id="studio-booking-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
+
+        </section>
+
+        <hr class="my-5">
+
         <section class="terminal-section about-static-block border rounded p-4 p-md-5 shadow-sm my-4">
 
             <h2 class="h3 fw-bold mb-3">Terminal Reservation Interface</h2>
 
             <p>
-                Band leaders can verify studio availability through our
-                automated booking console.
-                Press <kbd>Ctrl</kbd> + <kbd>B</kbd> in the student portal
-                terminal or trigger the booking routine directly:
+                Behind the booking form above, the studio control room runs the same routine from its console.
+                Press <kbd>Ctrl</kbd> + <kbd>B</kbd> in the control-room terminal or trigger the booking routine directly:
             </p>
 
             <pre><code>aitu-music-bot --room=C1.1.142 --check
@@ -272,21 +342,17 @@ aitu-music-bot --reserve --from=18:00 --to=20:00 --genre=rock</code></pre>
 
     <footer class="site-footer container py-5 text-center">
         <hr class="my-4">
-        <p><strong class="d-block mb-2">AITU Music Club Administration:</strong></p>
-        <p class="text-muted">
-            President: Айварұлы Ақназар |
-            Marketing: Билялова Адия |
-            Sound: Абразаков Рамиль |
-            Instagram:
-            <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a> |
+        <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
+        <p class="text-muted text-break">
+            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
+            <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
+            |
             Email: <a href="mailto:music.club@astanait.edu.kz">music.club@astanait.edu.kz</a> |
-            Hotline: <a href="tel:+77771234567">+7 (777) 123-45-67</a>
+            Phone: <a href="tel:+77780573242">+7 (778) 057-32-42</a>
         </p>
-        <p class="small text-muted mb-0">&copy; 2024 Astana IT University Music Club. All rights reserved.</p>
+        <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
-
-    <!-- Bootstrap JavaScript bundle enables the mobile Navbar toggler. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
