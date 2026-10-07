@@ -59,8 +59,8 @@
             <!-- Utility classes hide this line on phones (the collapsed navbar already reaches every page) and bring it back from md up, once there's room to show it without crowding the hero. -->
             <p class="page-navigation text-center lead mt-4 mb-0 d-none d-md-block">
                 Direct page navigation:
-                <a class="link-light" href="#schedule-table">Rehearsal Schedule</a> |
-                <a class="link-light" href="#audition-form">Membership Form</a>
+                <a class="link-primary" href="#schedule-table">Rehearsal Schedule</a> |
+                <a class="link-primary" href="#audition-form">Membership Form</a>
             </p>
 
         </div>
@@ -271,7 +271,7 @@
             <h2 class="h3 fw-bold mb-4">Audition &amp; Membership Application</h2>
 
             <!-- The form is currently visual/client-side only; server processing is not included. -->
-            <form class="membership-form" action="#" method="post">
+            <form id="membership-form" class="membership-form" action="#" method="post">
 
                 <fieldset class="candidate-details border rounded p-4 mb-4 shadow-sm">
                     <legend class="float-none w-auto px-2 h5 fw-bold">Candidate Personal Details</legend>
@@ -356,17 +356,24 @@
 
                     <p class="intake-status">
                         Current Intake Status:
-                        <span class="club-highlight">Accepting Audition Forms</span>
+                        <span class="badge bg-warning text-dark">Accepting Audition Forms</span>
+                    </p>
+
+                    <p class="form-note text-muted small">
+                        After you submit, a confirmation with your assigned audition time slot will appear below this form.
                     </p>
 
                     <div class="form-actions d-flex flex-wrap gap-2">
-                        <button class="submit-button btn btn-primary btn-lg" type="submit">Submit Application</button>
-                        <button class="reset-button btn btn-outline-secondary" type="reset">Clear Form</button>
+                        <button id="membership-submit" class="submit-button btn btn-primary btn-lg" type="submit">Submit Application</button>
+                        <button id="membership-reset" class="reset-button btn btn-outline-secondary" type="reset">Clear Form</button>
                     </div>
 
                 </fieldset>
 
             </form>
+
+            <!-- Confirmation panel: hidden until a future assignment's JavaScript fills it in and removes the "hidden" class. -->
+            <div id="membership-form-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
 
         </section>
 

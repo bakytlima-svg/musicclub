@@ -9,7 +9,7 @@
 
     <meta name="author" content="Baimbet Yerulan">
 
-    <title>Student Bands - Music Club</title>
+    <title>Student Bands &mdash; AITU Music Club</title>
 
     <!-- Bootstrap 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,8 +56,8 @@
             </nav>
 
             <p class="text-center lead mt-4 mb-0 d-none d-md-block">
-                <a class="link-light" href="#bands">Jump to student bands</a> |
-                <a class="link-light" href="#registration">Jump to the interest form</a>
+                <a class="link-primary" href="#bands">Jump to student bands</a> |
+                <a class="link-primary" href="#registration">Jump to the interest form</a>
             </p>
 
         </div>
@@ -96,7 +96,7 @@
                                 They rehearse twice a week and prepare performances for club shows and student events.
                             </p>
                         </div>
-                        <figcaption class="card-footer text-muted small">NEON PULSE at a Music Club activity.</figcaption>
+                        <div class="card-footer text-muted small">NEON PULSE at a Music Club activity.</div>
                     </article>
                 </div>
 
@@ -116,7 +116,7 @@
                                 around stories and personal experiences and are frequently performed at the club's open mic nights.
                             </p>
                         </div>
-                        <figcaption class="card-footer text-muted small">MOLDIK at a Music Club performance.</figcaption>
+                        <div class="card-footer text-muted small">MOLDIK at a Music Club performance.</div>
                     </article>
                 </div>
 
@@ -180,7 +180,7 @@
             <h2 class="h3 fw-bold mb-4">Student Band Interest Form</h2>
 
             <!-- The form does not send information to a server because this HTML project has no backend yet. -->
-            <form method="post" action="#">
+            <form id="band-interest-form" method="post" action="#">
 
                 <fieldset class="border rounded p-4 shadow-sm">
                     <legend class="float-none w-auto px-2 h5 fw-bold">Band Participation</legend>
@@ -255,14 +255,21 @@
                                   placeholder="Describe your musical experience"></textarea>
                     </div>
 
+                    <p class="form-note text-muted small mt-3">
+                        After you submit, a confirmation message will appear below this form.
+                    </p>
+
                     <div class="d-flex flex-wrap gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                        <button type="reset" class="btn btn-outline-danger">Reset</button>
+                        <button id="band-interest-submit" type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        <button id="band-interest-reset" type="reset" class="btn btn-outline-danger">Reset</button>
                     </div>
 
                 </fieldset>
 
             </form>
+
+            <!-- Confirmation panel: hidden until a future assignment's JavaScript fills it in and removes the "hidden" class. -->
+            <div id="band-interest-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
 
         </section>
 
