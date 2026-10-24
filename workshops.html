@@ -38,7 +38,6 @@
                                 <a class="nav-link active" aria-current="page" href="workshops.html">Workshops</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
-                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
                         </ul>
                     </div>
                 </div>
@@ -263,31 +262,6 @@
             </div>
         </section>
 
-        <section class="workshop-card border rounded p-4 p-md-5 shadow-sm my-4">
-            <h2 class="h3 fw-bold mb-3">Terminal Command for Digital Workstation Setup</h2>
-
-            <p>
-                During recording workshops, students use digital audio workstations
-                (<abbr title="Digital Audio Workstation">DAW</abbr>).
-                Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> on the control room PC
-                to initialize driver routing:
-            </p>
-
-            <pre><code>daw-control --init --inputs=8
-daw-control --set-buffer=128samples
-daw-control --start-monitor</code></pre>
-
-            <p>The studio terminal will return the following status message:</p>
-
-            <p><samp>[OK] Audio buffers locked at 128 samples. Latency: 2.9ms.</samp></p>
-
-            <!-- A span is used here strictly to apply an inline status tag without introducing a block-level paragraph split -->
-            <p class="mb-0">
-                Workshop Seat Availability:
-                <span id="seats-remaining" class="seat-status badge bg-success">12 Spots Remaining</span>
-            </p>
-        </section>
-
         <section class="workshop-card p-4 p-md-5 bg-light rounded shadow-sm my-5">
             <h2 class="h3 fw-bold mb-3">Instructor Guidance Quote</h2>
             <blockquote class="mb-2">
@@ -316,6 +290,9 @@ daw-control --start-monitor</code></pre>
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/workshops.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

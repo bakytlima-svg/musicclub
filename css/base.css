@@ -3,10 +3,19 @@
     --club-violet: #7C3AED;
     --club-tint: #F3F0FF;
     --club-gold: gold;
+    --bs-light-rgb: 243, 240, 255;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #FAF8FF;
+    background-image:
+        radial-gradient(circle at 6% 4%, rgba(124, 58, 237, 0.18), transparent 36%),
+        radial-gradient(circle at 96% 20%, rgba(255, 215, 0, 0.22), transparent 32%),
+        radial-gradient(circle at 10% 75%, rgba(124, 58, 237, 0.12), transparent 38%),
+        radial-gradient(circle at 92% 94%, rgba(255, 215, 0, 0.18), transparent 34%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='%237C3AED' fill-opacity='0.07'%3E%3Cellipse cx='30' cy='56' rx='9' ry='6.5' transform='rotate(-20 30 56)'/%3E%3Crect x='37' y='22' width='3' height='34'/%3E%3Cpath d='M40 22 C54 26 56 38 49 45 C51 36 47 31 40 32 Z'/%3E%3Cellipse cx='120' cy='140' rx='9' ry='6.5' transform='rotate(-20 120 140)'/%3E%3Crect x='127' y='106' width='3' height='34'/%3E%3Cpath d='M130 106 C144 110 146 122 139 129 C141 120 137 115 130 116 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
 }
 
 h1, h2, h3, .navbar-brand {
@@ -23,9 +32,14 @@ footer a:hover {
 }
 
 .club-hero {
+    position: relative;
+    overflow: hidden;
+    margin: 1rem;
     background-color: var(--club-tint);
+    background-image: linear-gradient(135deg, #F3F0FF 0%, #E4D9FF 55%, #FFF3B0 100%);
     border: 2px solid var(--club-violet);
     border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(17, 24, 39, 0.15);
 }
 
 .club-highlight {
@@ -53,4 +67,89 @@ samp {
     padding: 0.1rem 0.5rem;
     background-color: rgba(17, 24, 39, 0.08);
     border-radius: 0.2rem;
+}
+/* ===== Design refresh (one-time change approved by the teacher; logged in README) ===== */
+
+/* decorative notes in the corners of the hero */
+.club-hero::before,
+.club-hero::after {
+    position: absolute;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 7rem;
+    line-height: 1;
+    pointer-events: none;
+}
+.club-hero::before {
+    content: "\266B";
+    top: -0.5rem;
+    left: 1rem;
+    color: rgba(124, 58, 237, 0.14);
+}
+.club-hero::after {
+    content: "\266A";
+    right: 1.5rem;
+    bottom: -1.5rem;
+    color: rgba(255, 215, 0, 0.5);
+}
+.club-hero > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* navigation: gold hover and a gold line under the current page */
+.navbar-dark {
+    --bs-navbar-hover-color: var(--club-gold);
+    --bs-navbar-active-color: var(--club-gold);
+}
+.navbar .nav-link.active {
+    border-bottom: 2px solid var(--club-gold);
+}
+
+/* section headings get a violet bar */
+main section > h2 {
+    padding-left: 0.75rem;
+    border-left: 6px solid var(--club-violet);
+}
+
+/* cards: violet top edge and a small lift on hover */
+.card {
+    border-top: 4px solid var(--club-violet);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* quote blocks and other tinted panels: gold edge */
+main .bg-light {
+    border-left: 6px solid var(--club-gold);
+}
+
+/* notes: warm yellow background */
+.alert-light {
+    --bs-alert-bg: #FFFBE0;
+    --bs-alert-color: var(--club-navy);
+}
+
+/* tables: dark header row, white body, rounded corners */
+.table > thead > tr > th {
+    color: #fff;
+    background-color: var(--club-navy);
+}
+.table-responsive {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(17, 24, 39, 0.12);
+}
+
+/* forms: white panels so the fields stay readable on the coloured background */
+main fieldset {
+    background-color: #fff;
+}
+
+/* footer: soft violet panel with a gold line on top */
+.site-footer {
+    margin-top: 2rem;
+    background-image: linear-gradient(180deg, rgba(243, 240, 255, 0), var(--club-tint));
+    border-top: 4px solid var(--club-gold);
+    border-radius: 0.75rem 0.75rem 0 0;
 }

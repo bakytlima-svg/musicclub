@@ -40,7 +40,6 @@
                             <li class="nav-item"><a class="nav-link" href="bands.html">Student Bands</a></li>
                             <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
                             <li class="nav-item"><a class="nav-link" href="auditions.html">Auditions</a></li>
-                            <li class="nav-item"><a class="nav-link" href="colophon.html">Colophon</a></li>
                         </ul>
                     </div>
                 </div>
@@ -306,26 +305,6 @@
 
         <hr class="my-5">
 
-        <section class="terminal-section about-static-block border rounded p-4 p-md-5 shadow-sm my-4">
-
-            <h2 class="h3 fw-bold mb-3">Terminal Reservation Interface</h2>
-
-            <p>
-                Behind the booking form above, the studio control room runs the same routine from its console.
-                Press <kbd>Ctrl</kbd> + <kbd>B</kbd> in the control-room terminal or trigger the booking routine directly:
-            </p>
-
-            <pre><code>aitu-music-bot --room=C1.1.142 --check
-aitu-music-bot --reserve --from=18:00 --to=20:00 --genre=rock</code></pre>
-
-            <p>The automated reservation system returns the following confirmation response:</p>
-
-            <p class="booking-result mb-0">
-                <samp>[SUCCESS] Slot 18:00-20:00 reserved for Overdrive Band. Keys dispatched via Post 2.</samp>
-            </p>
-
-        </section>
-
         <div class="contact-details about-contact text-center text-muted my-4">
             <small>
                 Physical Location: Astana IT University,
@@ -351,6 +330,9 @@ aitu-music-bot --reserve --from=18:00 --to=20:00 --genre=rock</code></pre>
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <script src="js/data.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/about.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
