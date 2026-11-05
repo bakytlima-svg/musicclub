@@ -535,9 +535,25 @@ function showNextConcert() {
     main.prepend(banner);
 }
 
+function setupNavToggle() {
+    const $nav = $('#main-navigation').removeClass('navbar-expand-lg');
+    const $menu = $nav.find('.navbar-collapse').hide();
+    const $toggle = $('<button>', {
+        type: 'button',
+        'class': 'navbar-toggler ms-auto',
+        'aria-label': 'Toggle navigation',
+        'aria-expanded': 'false'
+    }).append($('<span>', { 'class': 'navbar-toggler-icon' }));
+    $toggle.insertAfter($nav.find('.navbar-brand'));
+    $toggle.on('click', function () {
+        $menu.stop(true, true).slideToggle(250);
+        $(this).attr('aria-expanded', $(this).attr('aria-expanded') === 'false' ? 'true' : 'false');
+    });
+}
 // jQuery 3.7.1 (the full build: the slim one has no effects) is loaded from the CDN before this file,
 // and $(function () {...}) is the short form of $(document).ready: it waits until the page is built.
 $(function () {
     setupSiteSearch();
     showNextConcert();
+    setupNavToggle();
 });
