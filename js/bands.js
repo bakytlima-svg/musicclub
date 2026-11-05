@@ -3,96 +3,82 @@
 /* bands.js - band finder, upcoming performances list and the band interest form. */
 
 function initBandsPage() {
-    const form = byId('band-interest-form');
-    const row = document.querySelector('#bands .row');
-    if (form === null || row === null) {
+    const $row = $('#bands .row').first();
+    if ($('#band-interest-form').length === 0 || $row.length === 0) {
         return;
     }
 
-    /* ----- Band finder: search by name, genre or member + genre filter ----- */
-    const searchInput = createSearchInput('bands-search', 'Band, genre or member name');
+    // jQuery version: $(...) with .toggleClass, .closest and .on replaces querySelector, classList.toggle and addEventListener.
+    // It is a little shorter and the filter reads better, but the page-building code is not much clearer than the plain helpers.
+    const $search = jqSearch('bands-search', 'Band, genre or member name');
     const genreOptions = [['all', 'All genres']];
-    BANDS.forEach(function (band) {
+    $.each(BANDS, function (index, band) {
         genreOptions.push([band.genreKey, band.genre]);
     });
-    const genreSelect = createSelect('bands-genre', genreOptions);
-    const resetButton = createButton('Reset', 'btn btn-outline-secondary w-100', 'bands-reset');
-    const resetColumn = document.createElement('div');
-    resetColumn.className = 'col-12 col-md-3';
-    resetColumn.append(resetButton);
-    const controls = document.createElement('div');
-    controls.className = 'row g-2 align-items-end mb-2';
-    controls.append(
-        createField(searchInput, 'Find a band:', 'col-12 col-md-6'),
-        createField(genreSelect, 'Genre:', 'col-12 col-md-3'),
-        resetColumn);
-    const count = document.createElement('p');
-    count.id = 'bands-count';
-    count.className = 'small text-muted mb-3';
-    count.setAttribute('aria-live', 'polite');
-    const emptyBox = document.createElement('div');
-    emptyBox.id = 'bands-empty';
-    emptyBox.className = 'hidden alert alert-info mt-3';
-    emptyBox.textContent = 'No student group matches your search. Use “Reset” to see all groups, or send us the interest form below to start a new one.';
-    row.before(controls, count);
-    row.after(emptyBox);
+    const $genre = jqSelect('bands-genre', genreOptions);
+    const $reset = jqButton('Reset', 'btn btn-outline-secondary w-100', 'bands-reset');
+    const $count = $('<p>', { id: 'bands-count', 'class': 'small text-muted mb-3', 'aria-live': 'polite' });
+    const $empty = $('<div>', { id: 'bands-empty', 'class': 'hidden alert alert-info mt-3' })
+        .html('No student group matches your search. Use <strong>Reset</strong> to see all groups, or send us the interest form below to start a new one.');
+    const $controls = $('<div>', { 'class': 'row g-2 align-items-end mb-2' }).append(
+        jqField($search, 'Find a band:', 'col-12 col-md-6'),
+        jqField($genre, 'Genre:', 'col-12 col-md-3'),
+        $('<div>', { 'class': 'col-12 col-md-3' }).append($reset));
+    $row.before($controls, $count).after($empty);
 
     function matchesBand(band, query, genre) {
         const text = (band.name + ' ' + band.genre + ' ' + band.members.join(' ')).toLowerCase();
         return text.includes(query) && (genre === 'all' || band.genreKey === genre);
     }
 
+    function toggleEmpty(isEmpty) {
+        $empty.stop(true, true);
+        if (isEmpty && $empty.hasClass('hidden')) {
+            $empty.removeClass('hidden').hide().slideDown(200);
+        } else if (!isEmpty && !$empty.hasClass('hidden')) {
+            $empty.slideUp(200, function () {
+                $(this).addClass('hidden').removeAttr('style');
+            });
+        }
+    }
+
     function renderBands() {
-        const query = searchInput.value.trim().toLowerCase();
+        const query = $search.val().trim().toLowerCase();
         let shown = 0;
-        BANDS.forEach(function (band) {
-            const column = byId(band.id).closest('.col-12');
-            const visible = matchesBand(band, query, genreSelect.value);
-            column.classList.toggle('hidden', !visible);
+        $.each(BANDS, function (index, band) {
+            const visible = matchesBand(band, query, $genre.val());
+            $('#' + band.id).closest('.col-12').toggleClass('hidden', !visible);
             if (visible) {
                 shown++;
             }
         });
-        emptyBox.classList.toggle('hidden', shown > 0);
-        count.textContent = 'Showing ' + shown + ' of ' + BANDS.length + ' student groups.';
+        toggleEmpty(shown === 0);
+        $count.text('Showing ' + shown + ' of ' + BANDS.length + ' student groups.');
     }
 
-    searchInput.addEventListener('input', renderBands);
-    searchInput.addEventListener('keydown', function (event) {
+    $search.on('input', renderBands).on('keydown', function (event) {
         if (event.key === 'Escape') {
-            searchInput.value = '';
+            $(this).val('');
             renderBands();
         }
     });
-    genreSelect.addEventListener('change', renderBands);
-    resetButton.addEventListener('click', function () {
-        searchInput.value = '';
-        genreSelect.value = 'all';
+    $genre.on('change', renderBands);
+    $reset.on('click', function () {
+        $search.val('');
+        $genre.val('all');
         renderBands();
     });
 
-    /* ----- Upcoming performances (calculated from the shared concert list) ----- */
-    function createPerformanceItem(event) {
-        const item = document.createElement('li');
-        item.className = 'list-group-item';
-        const link = document.createElement('a');
-        link.href = 'events.html#events-schedule';
-        link.textContent = 'see the full concert calendar';
-        item.append(event.title + ' — ' + MONTH_NAMES[event.month - 1] + ' ' + event.day + ', ' + event.place +
-            ' (' + describeDays(daysUntil(event.date)) + ') · ', link);
-        return item;
-    }
-
-    const performances = document.querySelector('#performances ol');
-    if (performances !== null) {
-        performances.replaceChildren();
-        getUpcomingEvents().slice(0, 3).forEach(function (event) {
-            performances.append(createPerformanceItem(event));
-        });
-    }
+    const $performances = $('#performances ol').empty();
+    $.each(getUpcomingEvents().slice(0, 3), function (index, event) {
+        const text = event.title + ' — ' + MONTH_NAMES[event.month - 1] + ' ' + event.day + ', ' + event.place +
+            ' (' + describeDays(daysUntil(event.date)) + ') · ';
+        // $('<li>') creates the item -> .text() fills it with the concert -> .append() adds the link -> .appendTo() puts it into the list
+        $('<li>', { 'class': 'list-group-item' }).text(text).append($('<a>', { href: 'events.html#events-schedule', text: 'see the full concert calendar' })).appendTo($performances);
+    });
 
     /* ----- Interest form ----- */
-    byId('preferred-date').min = formatDateInput(addDays(getToday(), 1));
+    $('#preferred-date').attr('min', formatDateInput(addDays(getToday(), 1)));
 
     function validate() {
         const errors = [];
@@ -117,7 +103,7 @@ function initBandsPage() {
         } else if (message.length > 500) {
             addIf(errors, 'message', 'Write at most 500 characters (now ' + message.length + ').');
         }
-        if (!byId('club-rules').checked) {
+        if (!$('#club-rules').prop('checked')) {
             addIf(errors, 'club-rules', 'Please confirm that this form only collects interest.');
         }
         return errors;
@@ -154,4 +140,6 @@ function initBandsPage() {
     renderBands();
 }
 
-initBandsPage();
+$(function () {
+    initBandsPage();
+});

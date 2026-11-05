@@ -183,7 +183,7 @@ function initEquipmentPage() {
         }
 
         addIf(errors, 'request-details-text', textProblem(getValue('request-details-text'), 10, 400, 'Details'));
-        if (!byId('request-agree').checked) {
+        if (!$('#request-agree').prop('checked')) {
             addIf(errors, 'request-agree', 'You must agree to return shared equipment after use.');
         }
         return errors;

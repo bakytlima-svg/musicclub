@@ -200,7 +200,7 @@ function initEventsPage() {
         }
 
         addIf(errors, 'song-list', textProblem(getValue('song-list'), 10, 500, 'Setlist and technical requirements'));
-        if (!byId('rehearsal-pledge').checked) {
+        if (!$('#rehearsal-pledge').prop('checked')) {
             addIf(errors, 'rehearsal-pledge', 'You must agree to attend the pre-concert soundchecks.');
         }
         return errors;
