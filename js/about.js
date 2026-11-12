@@ -195,7 +195,7 @@ function initBookingPage() {
                 }
             }
         }
-        if (!$('#booking-rules').prop('checked')) {
+        if (!byId('booking-rules').checked) {
             addIf(errors, 'booking-rules', 'You must agree to keep the volume under 85 dB after 20:00.');
         }
         return errors;

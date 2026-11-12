@@ -28,6 +28,30 @@ function initSchedule() {
     controls.append(createField(daySelect, 'Show weekday:', ''), todayButton, resetButton);
     table.parentElement.before(controls, count);
 
+    function findNextRehearsal() {
+        let next = null;
+        REHEARSAL_SCHEDULE.forEach(function (slot) {
+            const date = getNextWeekdayDate(slot.weekday, slot.start);
+            if (next === null || date < next.date) {
+                next = { slot: slot, date: date };
+            }
+        });
+        return next;
+    }
+
+    const next = findNextRehearsal();
+    const nextLine = document.createElement('p');
+    nextLine.id = 'next-rehearsal';
+    nextLine.className = 'fw-semibold mb-2';
+    if (next === null) {
+        nextLine.textContent = 'No rehearsals are scheduled yet.';
+    } else {
+        const day = new Date(next.date.getFullYear(), next.date.getMonth(), next.date.getDate());
+        nextLine.textContent = 'Next rehearsal: ' + next.slot.band + ', ' + formatDateLong(day) + ' at ' + next.slot.start +
+            ' (' + describeDays(daysUntil(day)) + ').';
+    }
+    controls.before(nextLine);
+
     function filterSchedule(day) {
         if (day === 'all') {
             return REHEARSAL_SCHEDULE;

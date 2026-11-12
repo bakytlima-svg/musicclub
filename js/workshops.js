@@ -158,6 +158,56 @@ function initWorkshopsPage() {
     }
     notes.addEventListener('input', updateCounter);
 
+    /* ----- My registrations (made in this browser tab) ----- */
+    const myBox = document.createElement('div');
+    myBox.id = 'my-registrations';
+    myBox.className = 'mt-4';
+    const myTitle = document.createElement('h3');
+    myTitle.className = 'h5 fw-bold';
+    myTitle.textContent = 'My workshop registrations';
+    const myCount = document.createElement('p');
+    myCount.className = 'small text-muted mb-2';
+    myCount.setAttribute('aria-live', 'polite');
+    const myList = document.createElement('ul');
+    myList.id = 'my-registrations-list';
+    myList.className = 'list-group';
+    myBox.append(myTitle, myCount, myList);
+    byId('workshop-registration-result').after(myBox);
+
+    function showMyRegistrations() {
+        myList.replaceChildren();
+        if (registered.length === 0) {
+            myCount.textContent = 'You have not registered for any workshop yet. Choose one in the timetable above.';
+            return;
+        }
+        myCount.textContent = 'You are registered for ' + registered.length + (registered.length === 1 ? ' workshop.' : ' workshops.');
+        for (let i = 0; i < registered.length; i++) {
+            const entry = registered[i];
+            const workshop = findWorkshop(entry.id);
+            const item = document.createElement('li');
+            item.className = 'list-group-item d-flex flex-wrap justify-content-between align-items-center gap-2';
+            const info = document.createElement('span');
+            info.textContent = workshop.topic + ' — ' + formatSession(workshop) + ' (' + entry.name + ')';
+            const cancelButton = createButton('Cancel registration', 'btn btn-outline-danger btn-sm');
+            cancelButton.dataset.index = String(i);
+            item.append(info, cancelButton);
+            myList.append(item);
+        }
+    }
+
+    myList.addEventListener('click', function (event) {
+        const button = event.target.closest('button[data-index]');
+        if (button === null) {
+            return;
+        }
+        const index = Number(button.dataset.index);
+        const entry = registered[index];
+        registered.splice(index, 1);
+        seatsLeft[entry.id] = seatsLeft[entry.id] + 1;
+        showMyRegistrations();
+        render();
+    });
+
     /* ----- Registration form ----- */
     function validate() {
         const errors = [];
@@ -191,7 +241,8 @@ function initWorkshopsPage() {
     function buildSummary() {
         const workshop = findWorkshop(getValue('workshop-choice'));
         seatsLeft[workshop.id] = seatsLeft[workshop.id] - 1;
-        registered.push({ email: getValue('workshop-email').toLowerCase(), id: workshop.id });
+        registered.push({ email: getValue('workshop-email').toLowerCase(), name: getValue('workshop-name'), id: workshop.id });
+        showMyRegistrations();
         render();
         const lines = [
             ['Name', getValue('workshop-name')],
@@ -222,6 +273,7 @@ function initWorkshopsPage() {
     });
     updateCounter();
     render();
+    showMyRegistrations();
 }
 
 initWorkshopsPage();

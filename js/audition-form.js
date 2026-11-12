@@ -69,7 +69,7 @@ function initAuditionForm() {
         }
 
         addIf(errors, 'repertoire-notes', textProblem(getValue('repertoire-notes'), 20, 500, 'Genres and prepared pieces'));
-        if (!$('#rules-agree').prop('checked')) {
+        if (!byId('rules-agree').checked) {
             addIf(errors, 'rules-agree', 'You must agree to the room rules to apply.');
         }
         return errors;

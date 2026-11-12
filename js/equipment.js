@@ -72,6 +72,16 @@ function initEquipmentPage() {
         }, 0);
     }
 
+    function countRequests(itemId) {
+        let total = 0;
+        bookings.forEach(function (booking) {
+            if (booking.itemId === itemId) {
+                total++;
+            }
+        });
+        return total;
+    }
+
     // One function builds every row of the inventory.
     function createItemRow(item) {
         const row = document.createElement('tr');
@@ -82,6 +92,13 @@ function initEquipmentPage() {
         const button = createButton('Request this item', 'btn btn-outline-primary btn-sm d-block mt-2');
         button.dataset.itemId = item.id;
         nameCell.append(item.name, button);
+        const requested = countRequests(item.id);
+        if (requested > 0) {
+            const note = document.createElement('small');
+            note.className = 'd-block text-success';
+            note.textContent = requested + ' of ' + item.quantity + ' requested in this session';
+            nameCell.append(note);
+        }
         row.append(nameCell, makeCell(item.type), makeCell(String(item.quantity)), makeCell(item.use));
         return row;
     }
@@ -183,7 +200,7 @@ function initEquipmentPage() {
         }
 
         addIf(errors, 'request-details-text', textProblem(getValue('request-details-text'), 10, 400, 'Details'));
-        if (!$('#request-agree').prop('checked')) {
+        if (!byId('request-agree').checked) {
             addIf(errors, 'request-agree', 'You must agree to return shared equipment after use.');
         }
         return errors;
@@ -194,6 +211,7 @@ function initEquipmentPage() {
         const type = getChecked('request_type');
         if (type === 'book') {
             bookings.push({ itemId: item.id, date: getValue('request-date') });
+            render();
         }
         return {
             title: type === 'book' ? 'Demonstration booking request prepared' : 'Demonstration malfunction report prepared',

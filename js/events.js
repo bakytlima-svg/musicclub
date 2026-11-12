@@ -200,7 +200,7 @@ function initEventsPage() {
         }
 
         addIf(errors, 'song-list', textProblem(getValue('song-list'), 10, 500, 'Setlist and technical requirements'));
-        if (!$('#rehearsal-pledge').prop('checked')) {
+        if (!byId('rehearsal-pledge').checked) {
             addIf(errors, 'rehearsal-pledge', 'You must agree to attend the pre-concert soundchecks.');
         }
         return errors;
@@ -226,6 +226,27 @@ function initEventsPage() {
         };
     }
 
+    function showLineupStatus() {
+        const badge = byId('lineup-status');
+        if (badge === null) {
+            return;
+        }
+        const concerts = getUpcomingEvents();
+        let open = 0;
+        for (let i = 0; i < concerts.length; i++) {
+            if (daysUntil(concerts[i].date) >= DEADLINE_DAYS) {
+                open++;
+            }
+        }
+        if (open > 0) {
+            badge.textContent = 'Applications active: ' + open + ' of ' + concerts.length + ' concerts open';
+            badge.className = 'badge bg-warning text-dark';
+        } else {
+            badge.textContent = 'Applications closed: wait for the next season';
+            badge.className = 'badge bg-secondary';
+        }
+    }
+
     setupForm('performer-signup-form', validate, buildSummary);
     byId('performer-signup-form').addEventListener('reset', function () {
         selectedId = '';
@@ -233,6 +254,7 @@ function initEventsPage() {
         render();
     });
     render();
+    showLineupStatus();
 }
 
 initEventsPage();
