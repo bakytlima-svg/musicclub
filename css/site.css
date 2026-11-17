@@ -2,24 +2,28 @@
     display: none !important;
 }
 
+/* ===== States: light versions for the light cards and forms ===== */
+
 /* active: the item that is currently in focus */
 .card.active {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    border-color: var(--club-violet);
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
 }
+
 .table > tbody > tr.active > * {
-    --bs-table-bg-state: #cfe2ff;
+    --bs-table-bg-state: rgba(124, 58, 237, 0.15);
 }
 
 /* selected: the item the visitor has chosen */
 .card.selected,
 .form-check.selected,
 .list-group-item.selected {
-    border-color: #198754;
-    background-color: #e8f5ee;
+    border-color: #2F9E6B;
+    background-color: #E6F4EA;
 }
+
 .table > tbody > tr.selected > * {
-    --bs-table-bg-state: #d1e7dd;
+    --bs-table-bg-state: #D1E7DD;
     font-weight: 600;
 }
 
@@ -27,51 +31,123 @@
 .form-control.error,
 .form-select.error,
 .form-check-input.error {
-    border-color: #dc3545;
-    background-color: #fff5f5;
+    border-color: #DC3545;
+    background-color: #FDECEE;
 }
+
 .form-check-input.error ~ .form-check-label {
-    color: #dc3545;
+    color: #B02A37;
 }
+
 fieldset.error {
-    border-color: #dc3545 !important;
+    border-color: #DC3545 !important;
 }
+
 .field-error {
-    color: #dc3545;
+    color: #B02A37;
     font-size: 0.875em;
     margin-top: 0.25rem;
 }
+
 .alert.error {
     color: #842029;
-    background-color: #f8d7da;
-    border-color: #f5c2c7;
+    background-color: #F8D7DA;
+    border-color: #F5C2C7;
 }
 
 /* success: a field, a fieldset or a message that passed */
 .form-control.success,
 .form-select.success {
-    border-color: #198754;
+    border-color: #2F9E6B;
 }
+
 fieldset.success {
-    border-color: #198754 !important;
+    border-color: #2F9E6B !important;
 }
+
 .field-success {
-    color: #198754;
+    color: #146C43;
     font-size: 0.875em;
     margin-top: 0.25rem;
 }
+
 .alert.success {
-    color: #0f5132;
-    background-color: #d1e7dd;
-    border-color: #badbcc;
+    color: #0F5132;
+    background-color: #D1E7DD;
+    border-color: #BADBCC;
 }
 
+/* band photos keep their own proportions: nothing is cropped */
 .card-img-top {
-    height: 200px;
-    object-fit: cover;
+    height: auto;
 }
 
-/* Audition page card: violet border in the club colour */
+/* Audition page card: light panel with a violet border in the club colour */
 .audition-card {
+    background-color: #fff;
     border: 1px solid var(--club-violet);
+}
+
+/* photos: natural proportions, centred, never wider than the screen or taller than the viewport */
+.page-photo {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(100%, 40rem);
+    max-height: 70vh;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(124, 58, 237, 0.35);
+}
+
+.page-photo.page-photo-portrait {
+    max-width: min(100%, 22rem);
+}
+
+/* a photo that fills the top of a card needs no frame */
+.card-img-top.page-photo {
+    border: 0;
+}
+
+/* a portrait band photo is narrower than its card, so it gets room above it, its own rounded corners and its frame back */
+.card-img-top.page-photo-portrait {
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    margin-top: 1rem;
+    border-radius: 0.375rem;
+}
+
+/* navigation on tablets: seven links do not fit in one row between 768px and 991px, so they wrap */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+/* back-to-top button: club violet with a gold ring, fixed in the lower right corner */
+.back-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1030;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: #fff;
+    background-color: var(--club-violet);
+    border: 2px solid var(--club-gold);
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.75rem rgba(17, 24, 39, 0.25);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    background-color: var(--club-navy);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--club-gold);
+    outline-offset: 2px;
 }

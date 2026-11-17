@@ -1,6 +1,6 @@
 'use strict';
 
-/* audition-form.js - audition application form. The same form exists on index.html and auditions.html. */
+/* audition-form.js - club application and audition request (the only membership form of the site). */
 
 function initAuditionForm() {
     const form = byId('audition-application-form');
@@ -10,18 +10,24 @@ function initAuditionForm() {
 
     const ROLE_LABELS = {
         vocalist: 'Vocalist',
-        instrumentalist: 'Instrumentalist',
-        technician: 'Sound engineer / stage hand'
+        instrumentalist: 'Instrumentalist'
     };
 
-    // Tryouts run from 15:00 to 20:00: one example slot every 30 minutes.
-    const slots = [];
-    for (let hour = 15; hour < 20; hour++) {
-        slots.push(hour + ':00', hour + ':30');
-    }
-
     const instrumentSelect = byId('instrument-type');
+    const instrumentGroup = byId('instrument-group');
+    const hint = byId('audition-hint');
     byId('preferred-date').min = formatDateInput(addDays(getToday(), 1));
+
+    // Tryouts run from 15:00 to 20:00: one time slot every 30 minutes.
+    const timeSelect = byId('preferred-time');
+    for (let hour = 15; hour < 20; hour++) {
+        [':00', ':30'].forEach(function (minutes) {
+            const option = document.createElement('option');
+            option.value = hour + minutes;
+            option.textContent = hour + minutes;
+            timeSelect.append(option);
+        });
+    }
 
     function findInstrument(value) {
         return AUDITION_INSTRUMENTS.find(function (item) {
@@ -29,77 +35,81 @@ function initAuditionForm() {
         });
     }
 
-    // Hint under the instrument select: section and what to prepare.
-    const hint = document.createElement('div');
-    hint.id = 'instrument-hint';
-    hint.className = 'form-text hidden';
-    hint.setAttribute('aria-live', 'polite');
-    instrumentSelect.after(hint);
+    function showHint(text) {
+        hint.textContent = text;
+        hint.classList.toggle('hidden', text === '');
+    }
 
-    function showInstrumentHint() {
-        const item = findInstrument(instrumentSelect.value);
-        if (item === undefined) {
-            hint.classList.add('hidden');
-            hint.textContent = '';
-            return;
+    // A vocalist gets no instrument field; an instrumentalist gets the instrument list and a tip for the chosen one.
+    function showRoleDetails() {
+        const role = getChecked('primary_role');
+        instrumentGroup.classList.toggle('hidden', role !== 'instrumentalist');
+        if (role !== 'instrumentalist') {
+            instrumentSelect.value = '';
+            clearFieldError(instrumentSelect);
         }
-        hint.textContent = 'Section: ' + item.section + '. ' + item.tip;
-        hint.classList.remove('hidden');
+        const item = findInstrument(instrumentSelect.value);
+        if (role === 'vocalist') {
+            showHint(VOCALIST_TIP);
+        } else if (role === 'instrumentalist' && item !== undefined) {
+            showHint('Section: ' + item.section + '. ' + item.tip);
+        } else {
+            showHint('');
+        }
     }
 
     function validate() {
         const errors = [];
         addIf(errors, 'candidate-name', nameProblem(getValue('candidate-name')));
         addIf(errors, 'candidate-email', emailProblem(getValue('candidate-email'), true));
-        addIf(errors, 'candidate-phone', phoneProblem(getValue('candidate-phone')));
-        addIf(errors, 'years-experience', numberProblem(getValue('years-experience'), 0, 20, 'Years of experience'));
+        addIf(errors, 'experience-level', choiceProblem(getValue('experience-level'), 'Choose your experience level.'));
         addIf(errors, 'preferred-date', dateProblem(getValue('preferred-date'), addDays(getToday(), 1),
             'Choose a future date: auditions can be requested from tomorrow.'));
+        addIf(errors, 'preferred-time', choiceProblem(getValue('preferred-time'), 'Choose a time slot.'));
 
         const role = getChecked('primary_role');
-        addIf(errors, 'role-vocalist', choiceProblem(role, 'Choose your primary performance direction.'));
-
-        // The instrument must fit the chosen role (rule that combines two fields).
-        const instrument = findInstrument(instrumentSelect.value);
-        if (instrument === undefined) {
-            addIf(errors, 'instrument-type', 'Choose your primary instrument.');
-        } else if (role !== '' && instrument.role !== role) {
-            addIf(errors, 'instrument-type', '"' + instrument.label + '" does not match the role "' +
-                ROLE_LABELS[role] + '". Change the role or the instrument.');
+        addIf(errors, 'role-vocalist', choiceProblem(role, 'Choose your performance category.'));
+        if (role === 'instrumentalist') {
+            addIf(errors, 'instrument-type', choiceProblem(getValue('instrument-type'), 'Choose your main instrument.'));
         }
 
-        addIf(errors, 'repertoire-notes', textProblem(getValue('repertoire-notes'), 20, 500, 'Genres and prepared pieces'));
+        addIf(errors, 'repertoire-notes', textProblem(getValue('repertoire-notes'), 20, 500, 'Musical experience and prepared pieces'));
         if (!byId('rules-agree').checked) {
-            addIf(errors, 'rules-agree', 'You must agree to the room rules to apply.');
+            addIf(errors, 'rules-agree', 'Please confirm that you understand this is an audition request.');
         }
         return errors;
     }
 
     function buildSummary() {
-        const years = Number(getValue('years-experience'));
-        const instrument = findInstrument(instrumentSelect.value);
-        const slot = slots[Math.floor(Math.random() * slots.length)];
+        const role = getChecked('primary_role');
+        const lines = [
+            ['Name', getValue('candidate-name')],
+            ['Email', getValue('candidate-email')],
+            ['Experience level', getSelectedText('experience-level')],
+            ['Requested audition', formatDateLong(parseDateInput(getValue('preferred-date'))) + ', ' + getValue('preferred-time') + ', Room C1.1.142'],
+            ['Category', ROLE_LABELS[role]]
+        ];
+        if (role === 'instrumentalist') {
+            lines.push(['Instrument', findInstrument(instrumentSelect.value).label]);
+        }
+        lines.push(['Experience and prepared pieces', getValue('repertoire-notes')]);
+        lines.push(['Demo reference', makeReference('AUD')]);
         return {
-            title: 'Demonstration application prepared',
-            lines: [
-                ['Name', getValue('candidate-name')],
-                ['Email', getValue('candidate-email')],
-                ['Phone', formatPhone(getValue('candidate-phone'))],
-                ['Experience', years + (years === 1 ? ' year' : ' years')],
-                ['Preferred date', formatDateLong(parseDateInput(getValue('preferred-date')))],
-                ['Role', ROLE_LABELS[getChecked('primary_role')]],
-                ['Instrument', instrument.label + ' (' + instrument.section + ')'],
-                ['Example time slot', slot + ', Room C1.1.142'],
-                ['Demo reference', makeReference('AUD')]
-            ],
-            note: 'The time slot is only an example of how a confirmation will look.'
+            title: 'Audition request prepared (not a membership)',
+            lines: lines,
+            note: 'This is a request for an audition only. You do not become a club member by sending it: ' +
+                'you join after you have performed at the audition and the committee has accepted you. ' +
+                'In the real workflow the time slot is confirmed by email.'
         };
     }
 
     setupForm('audition-application-form', validate, buildSummary);
-    instrumentSelect.addEventListener('change', showInstrumentHint);
+    form.querySelectorAll('input[name="primary_role"]').forEach(function (radio) {
+        radio.addEventListener('change', showRoleDetails);
+    });
+    instrumentSelect.addEventListener('change', showRoleDetails);
     form.addEventListener('reset', function () {
-        setTimeout(showInstrumentHint, 0);
+        setTimeout(showRoleDetails, 0);
     });
 }
 

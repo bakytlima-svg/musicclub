@@ -18,19 +18,22 @@
 </head>
 
 <body>
-
     <header class="club-hero">
         <div class="container py-4">
 
             <h1 class="display-4 fw-bold text-center mb-4">About AITU Music Club</h1>
 
-            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
-            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same seven links in the same order on every page. Below 768px (phones) the links collapse behind the hamburger button; from md up they sit in a row. -->
+            <nav id="main-navigation" class="navbar navbar-expand-md navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="about.html">About Club</a>
@@ -49,7 +52,7 @@
                 Quick jump:
                 <a class="link-primary" href="#club-profile">Club Foundation</a> |
                 <a class="link-primary" href="#leadership-board">Leadership Board</a> |
-                <a class="link-primary" href="#studio-booking">Book a Rehearsal</a>
+                <a class="link-primary" href="#rehearsal-booking">Book a Rehearsal</a>
             </p>
 
         </div>
@@ -67,12 +70,12 @@
             <!-- Bootstrap grid replaces the old floated image: the photo and intro text sit side by side from md up and stack on phones. -->
             <div class="row g-4 align-items-center mb-2">
                 <div class="col-12 col-md-4">
-                    <img class="about-float-image img-fluid rounded shadow"
+                    <img class="about-float-image img-fluid rounded shadow page-photo"
                          src="images/about-team.jpg"
                          alt="AITU Music Club officers and members gathered inside rehearsal room C1.1.142 with guitars and sound hardware">
                 </div>
                 <div class="col-12 col-md-8">
-                    <p class="about-introduction lead mb-0">
+                    <p class="about-introduction mb-0">
                         Founded in 2024 at
                         <abbr title="Astana IT University">AITU</abbr>,
                         our music club brings together student musicians,
@@ -82,15 +85,10 @@
                         bands rehearse across multiple genres.
                         The facility operates daily from 09:00 to 22:00.
                         Because multiple ensembles share the rehearsal area,
-                        members book practice slots in advance with the <a href="#studio-booking">studio booking form</a> on this page.
+                        members book practice slots in advance as described in <a href="#rehearsal-booking">Booking a Rehearsal Slot</a> on this page.
                     </p>
                 </div>
             </div>
-
-            <p class="image-caption text-muted small fst-italic mb-4">
-                Figure 1: Club officers and active band musicians gathered
-                inside studio room C1.1.142.
-            </p>
 
             <p class="about-description">
                 The club accommodates a diverse sonic palette.
@@ -104,10 +102,10 @@
                 <mark>active for the autumn term</mark>.
             </p>
 
-            <aside class="studio-booking alert alert-light border border-warning my-4">
+            <aside class="alert alert-light border border-warning my-4">
                 <h3 class="h5 fw-bold">Studio Booking Protocol</h3>
                 <p class="mb-0">
-                    Rehearsal room C1.1.142 is managed through the <a href="#studio-booking">studio booking form</a> on this page.
+                    Rehearsal room C1.1.142 is shared by all ensembles; see <a href="#rehearsal-booking">Booking a Rehearsal Slot</a> below.
                     Ensembles must reserve slots 24 hours in advance
                     to avoid scheduling conflicts between rock bands
                     and acoustic duos.
@@ -117,13 +115,9 @@
             </aside>
 
             <figure class="about-team-photo text-center my-4">
-                <img class="img-fluid rounded shadow w-75"
+                <img class="img-fluid rounded shadow page-photo"
                      src="images/rehearsal-jam.jpg"
                      alt="Saxophone and electric guitar players jamming together during an evening rehearsal session in room C1.1.142">
-                <figcaption class="text-muted small mt-2">
-                    Figure 2: Saxophone and guitar section rehearsing
-                    an upcoming concert arrangement.
-                </figcaption>
             </figure>
 
         </article>
@@ -136,15 +130,14 @@
 
             <blockquote cite="https://www.instagram.com/aitu_music" class="mb-3">
                 <p class="lead mb-0">
-                    &ldquo;Біздің басты мақсатымыз — әр студентке өзінің
-                    шығармашылық қырын ашуға мүмкіндік беру.
-                    The show must go on: сахна мен дайындық бөлмесінде біз
-                    нағыз музыкалық отбасы құрамыз.&rdquo;
+                    &ldquo;Our main goal is to give every student the chance to discover their creative side.
+                    The show must go on: on the stage and in the rehearsal room we build
+                    a true musical family.&rdquo;
                 </p>
             </blockquote>
 
             <p class="mb-0">
-                — <cite>Айварұлы Ақназар</cite>,
+                — <cite>Aivaruly Aknazar</cite>,
                 President of AITU Music Club, interview recorded in room
                 C1.1.142 on September 10, 2024.
             </p>
@@ -166,7 +159,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="department-card card h-100 shadow-sm">
                         <div class="card-body">
-                            <h4 class="card-title h6 fw-bold">Rhythm and String Section</h4>
+                            <h4 class="card-title h5 fw-bold">Rhythm and String Section</h4>
                             <ul class="mb-0">
                                 <li>Electric Lead &amp; Rhythm Guitar</li>
                                 <li>4-String Electric Bass</li>
@@ -178,7 +171,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="department-card card h-100 shadow-sm">
                         <div class="card-body">
-                            <h4 class="card-title h6 fw-bold">Melodic &amp; Classical Section</h4>
+                            <h4 class="card-title h5 fw-bold">Melodic &amp; Classical Section</h4>
                             <ul class="mb-0">
                                 <li>Alto and Tenor Saxophone</li>
                                 <li>Acoustic and Electric Violin</li>
@@ -190,7 +183,7 @@
                 <div class="col-12 col-md-12 col-lg-4">
                     <div class="department-card card h-100 shadow-sm">
                         <div class="card-body">
-                            <h4 class="card-title h6 fw-bold">Vocal Department</h4>
+                            <h4 class="card-title h5 fw-bold">Vocal Department</h4>
                             <ul class="mb-0">
                                 <li>Solo Lead Vocalists</li>
                                 <li>Backing Harmony Vocalists</li>
@@ -203,18 +196,18 @@
             <h3 class="h5 fw-bold mb-3">Executive Committee Roles</h3>
 
             <dl class="executive-roles">
-                <dt class="fw-bold">Айварұлы Ақназар — Club President</dt>
+                <dt class="fw-bold">Aivaruly Aknazar — Club President</dt>
                 <dd class="mb-3">
                     Oversees general strategic direction, concert permits,
                     administrative coordination, and inter-university
                     performance events.
                 </dd>
-                <dt class="fw-bold">Билялова Адия — Head of Marketing</dt>
+                <dt class="fw-bold">Bilyalova Adiya — Head of Marketing</dt>
                 <dd class="mb-3">
                     Manages social media presence on Instagram, photographic
                     coverage, promotional posters, and event announcements.
                 </dd>
-                <dt class="fw-bold">Абразаков Рамиль — Head of Technical Support</dt>
+                <dt class="fw-bold">Abrazakov Ramil — Head of Technical Support</dt>
                 <dd class="mb-0">
                     Directs audio engineering, cable routing, instrument
                     maintenance, live mixer calibration, and soundcheck
@@ -226,80 +219,27 @@
 
         <hr class="my-5">
 
-        <section id="studio-booking" class="booking-section py-3">
+        <section id="rehearsal-booking" class="booking-section py-3">
 
-            <h2 class="h3 fw-bold mb-4">Rehearsal Slot Booking</h2>
+            <h2 class="h3 fw-bold mb-3">Booking a Rehearsal Slot</h2>
 
             <p>
-                Room C1.1.142 is open every day from 09:00 to 22:00. Choose a date and a time slot for your
-                ensemble below; slots must be reserved at least 24 hours in advance.
+                Room C1.1.142 is open every day from 09:00 to 22:00. The weekly slots already taken by registered bands
+                are listed in the <a href="index.html#schedule-table">rehearsal schedule on the home page</a>.
+                To reserve a free slot, write to the club and include:
             </p>
 
-            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
-            <form id="studio-booking-form" class="booking-form" method="get">
+            <ul>
+                <li>the name of your band or ensemble and the number of musicians;</li>
+                <li>the date and the start and end time of the session (from 1 to 3 hours);</li>
+                <li>your AITU student email address.</li>
+            </ul>
 
-                <fieldset class="booking-details border rounded p-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Ensemble &amp; Time Slot</legend>
-                    <div class="row g-3">
-                        <div class="col-12 col-md-6">
-                            <label for="booking-name" class="form-label fw-semibold">Contact Name:</label>
-                            <input type="text" class="form-control" id="booking-name" name="booking_name" placeholder="Name and surname" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="booking-email" class="form-label fw-semibold">AITU Student Email:</label>
-                            <input type="email" class="form-control" id="booking-email" name="booking_email" placeholder="student@astanait.edu.kz" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="booking-band" class="form-label fw-semibold">Band or Ensemble Name:</label>
-                            <input type="text" class="form-control" id="booking-band" name="booking_band" placeholder="Name of your band" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="booking-members" class="form-label fw-semibold">Number of Musicians:</label>
-                            <input type="number" class="form-control" id="booking-members" name="booking_members" placeholder="4" min="1" max="15" required>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <label for="booking-date" class="form-label fw-semibold">Rehearsal Date:</label>
-                            <input type="date" class="form-control" id="booking-date" name="booking_date" required>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <label for="booking-start" class="form-label fw-semibold">Start Time (from 09:00):</label>
-                            <input type="time" class="form-control" id="booking-start" name="booking_start" min="09:00" max="22:00" required>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <label for="booking-end" class="form-label fw-semibold">End Time (until 22:00):</label>
-                            <input type="time" class="form-control" id="booking-end" name="booking_end" min="09:00" max="22:00" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="booking-genre" class="form-label fw-semibold">Genre Focus:</label>
-                            <select class="form-select" id="booking-genre" name="booking_genre" required>
-                                <option value="">-- Choose a genre --</option>
-                                <option value="rock">Rock</option>
-                                <option value="acoustic">Acoustic / Indie Folk</option>
-                                <option value="jazz">Jazz</option>
-                                <option value="pop">Pop / K-pop</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mt-4"></div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="booking-rules" name="booking_rules" value="agreed" required>
-                        <label class="form-check-label" for="booking-rules">I agree to keep volume levels under 85 dB after 20:00.</label>
-                    </div>
-                    <p class="form-note text-muted small">
-                        After you submit, a confirmation of your reserved time slot will appear below this form.
-                    </p>
-                    <div class="form-actions d-flex flex-wrap gap-2">
-                        <button id="studio-booking-submit" type="submit" class="submit-button btn btn-primary btn-lg">Reserve Slot</button>
-                        <button id="studio-booking-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
-                    </div>
-                </fieldset>
-
-            </form>
-
-            <div id="studio-booking-error" class="hidden alert alert-danger mt-4" role="alert"></div>
-
-            <div id="studio-booking-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
+            <p class="mb-0">
+                Requests must be sent at least 24 hours in advance, by
+                <a href="mailto:music.club@astanait.edu.kz">email</a>
+                or by phone at <a href="tel:+77780573242">+7 (778) 057-32-42</a>.
+            </p>
 
         </section>
 
@@ -321,7 +261,7 @@
         <hr class="my-4">
         <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
         <p class="text-muted text-break">
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            President: Aivaruly Aknazar | Marketing: Bilyalova Adiya | Sound: Abrazakov Ramil |
             Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
             <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
@@ -330,9 +270,9 @@
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" type="button" class="back-to-top hidden" aria-label="Back to top">&uarr;</button>
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
-    <script src="js/about.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
     <script src="js/jquery-features.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

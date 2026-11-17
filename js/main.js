@@ -182,23 +182,6 @@ function isEmail(text) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
 }
 
-function normalizePhone(text) {
-    let digits = text.replace(/\D/g, '');
-    if (digits.length === 11 && digits.startsWith('8')) {
-        digits = '7' + digits.slice(1);
-    }
-    return digits;
-}
-
-function isKzPhone(text) {
-    return /^[+\d\s()-]+$/.test(text) && /^77\d{9}$/.test(normalizePhone(text));
-}
-
-function formatPhone(text) {
-    const d = normalizePhone(text);
-    return '+7 ' + d.slice(1, 4) + ' ' + d.slice(4, 7) + ' ' + d.slice(7, 9) + ' ' + d.slice(9, 11);
-}
-
 function nameProblem(value) {
     if (value === '') {
         return 'Full name is required.';
@@ -218,27 +201,6 @@ function emailProblem(value, aituOnly) {
     }
     if (aituOnly && !value.toLowerCase().endsWith('@astanait.edu.kz')) {
         return 'Use your AITU student email (it ends with @astanait.edu.kz).';
-    }
-    return '';
-}
-
-function phoneProblem(value) {
-    if (value === '') {
-        return 'Phone number is required.';
-    }
-    if (!isKzPhone(value)) {
-        return 'Enter a Kazakhstan number such as +7 777 123 45 67.';
-    }
-    return '';
-}
-
-function numberProblem(value, min, max, label) {
-    if (value === '') {
-        return label + ' is required.';
-    }
-    const number = Number(value);
-    if (!Number.isInteger(number) || number < min || number > max) {
-        return label + ' must be a whole number from ' + min + ' to ' + max + '.';
     }
     return '';
 }
@@ -474,4 +436,45 @@ function showNextConcert() {
     main.prepend(banner);
 }
 
+/* ---------- Site-wide feature: back-to-top button ---------- */
+
+const BACK_TO_TOP_OFFSET = 350; // pixels scrolled before the button appears
+
+function setupBackToTop() {
+    const button = byId('back-to-top');
+    if (button === null) {
+        return;
+    }
+    function toggleButton() {
+        button.classList.toggle('hidden', window.scrollY < BACK_TO_TOP_OFFSET);
+    }
+    button.addEventListener('click', function () {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        // The button hides itself at the top, so keyboard focus moves to the page title.
+        const title = document.querySelector('h1');
+        title.setAttribute('tabindex', '-1');
+        title.focus({ preventScroll: true });
+    });
+    window.addEventListener('scroll', toggleButton, { passive: true });
+    toggleButton();
+}
+
+/* ---------- Site-wide feature: portrait photos get a narrower maximum width (see .page-photo-portrait) ---------- */
+
+function markPortraitPhotos() {
+    document.querySelectorAll('img.page-photo').forEach(function (photo) {
+        function mark() {
+            photo.classList.toggle('page-photo-portrait', photo.naturalHeight > photo.naturalWidth);
+        }
+        if (photo.complete) {
+            mark();
+        } else {
+            photo.addEventListener('load', mark);
+        }
+    });
+}
+
 showNextConcert();
+setupBackToTop();
+markPortraitPhotos();

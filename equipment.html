@@ -17,19 +17,22 @@
 </head>
 
 <body>
-
     <header class="club-hero">
         <div class="container py-4">
 
             <h1 class="display-4 fw-bold text-center mb-4">Studio &amp; Gear</h1>
 
-            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
-            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same seven links in the same order on every page. Below 768px (phones) the links collapse behind the hamburger button; from md up they sit in a row. -->
+            <nav id="main-navigation" class="navbar navbar-expand-md navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
                             <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
@@ -48,7 +51,7 @@
                 Quick jump:
                 <a class="link-primary" href="#instruments">Instruments</a> |
                 <a class="link-primary" href="#inventory">Equipment Inventory</a> |
-                <a class="link-primary" href="#equipment-request">Request Equipment</a>
+                <a class="link-primary" href="#equipment-reservation">Reserve Equipment</a>
             </p>
 
         </div>
@@ -56,11 +59,11 @@
 
     <main class="container py-5">
 
-        <p class="lead">
+        <p>
             This page lists the instruments and sound equipment available to members of the Music Club in
             rehearsal room C1.1.142. Check it before a rehearsal or a show to see what you can use and what you
             need to bring yourself. Some items are shared between ensembles, others are intended for particular
-            activities only, so you can book equipment for a given date with the request form at the bottom of the page.
+            activities only, so you can reserve equipment for a given date and time with the reservation form at the bottom of the page.
         </p>
 
         <!-- I used section here because the equipment information is divided into a clear thematic part of the page. -->
@@ -74,8 +77,7 @@
             </p>
 
             <figure class="text-center my-4">
-                <img class="img-fluid rounded shadow w-75" src="images/studio.jpg" alt="Music Club studio and rehearsal room">
-                <figcaption class="text-muted small mt-2">Music Club studio and rehearsal room.</figcaption>
+                <img class="img-fluid rounded shadow page-photo" src="images/studio.jpg" alt="Music Club studio and rehearsal room">
             </figure>
 
             <!-- Bootstrap grid: three responsive blocks that change layout at the md and lg breakpoints, one card per instrument category. -->
@@ -85,7 +87,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
-                                <h4 class="card-title h6 fw-bold">String Instruments</h4>
+                                <h4 class="card-title h5 fw-bold">String Instruments</h4>
                                 <ul class="mb-0">
                                     <li>Yamaha F310 acoustic guitar</li>
                                     <li>Fender Squier Stratocaster electric guitar</li>
@@ -96,7 +98,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
-                                <h4 class="card-title h6 fw-bold">Keyboard Instruments</h4>
+                                <h4 class="card-title h5 fw-bold">Keyboard Instruments</h4>
                                 <ul class="mb-0">
                                     <li>Yamaha PSR-E373 61-key digital keyboard</li>
                                 </ul>
@@ -106,7 +108,7 @@
                     <div class="col-12 col-md-12 col-lg-4">
                         <div class="card h-100 shadow-sm">
                             <div class="card-body">
-                                <h4 class="card-title h6 fw-bold">Percussion Instruments</h4>
+                                <h4 class="card-title h5 fw-bold">Percussion Instruments</h4>
                                 <ul class="mb-0">
                                     <li>5-piece standard drum kit with cymbals</li>
                                 </ul>
@@ -117,8 +119,7 @@
             </article>
 
             <figure class="text-center my-4">
-                <img class="img-fluid rounded shadow w-75" src="images/instruments.jpg" alt="Musical instruments used in the Music Club">
-                <figcaption class="text-muted small mt-2">Musical instruments used in the Music Club.</figcaption>
+                <img class="img-fluid rounded shadow page-photo" src="images/instruments.jpg" alt="Musical instruments used in the Music Club">
             </figure>
 
         </section>
@@ -144,8 +145,7 @@
             </article>
 
             <figure class="text-center my-4">
-                <img class="img-fluid rounded shadow w-75" src="images/audio-equipment.jpg" alt="Audio equipment in the Music Club">
-                <figcaption class="text-muted small mt-2">Audio equipment used during Music Club activities.</figcaption>
+                <img class="img-fluid rounded shadow page-photo" src="images/audio-equipment.jpg" alt="Audio equipment in the Music Club">
             </figure>
 
         </section>
@@ -168,119 +168,80 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Yamaha F310</td>
-                            <td>Acoustic guitar</td>
-                            <td>2</td>
-                            <td>Rehearsal, songwriting</td>
-                        </tr>
-                        <tr>
-                            <td>Yamaha PSR-E373</td>
-                            <td>Digital keyboard</td>
-                            <td>1</td>
-                            <td>Accompaniment, rehearsal</td>
-                        </tr>
-                        <tr>
-                            <td>Shure SM58</td>
-                            <td>Microphone</td>
-                            <td>2</td>
-                            <td>Vocals, live performance</td>
-                        </tr>
-                        <tr>
-                            <td>Behringer Xenyx Q802USB</td>
-                            <td>Mixer</td>
-                            <td>1</td>
-                            <td>Live sound, recording</td>
-                        </tr>
-                        <tr>
-                            <td>Yamaha DBR12</td>
-                            <td>PA speaker</td>
-                            <td>2</td>
-                            <td>Live performance</td>
-                        </tr>
+                        <!-- The rows are built by equipment.js from the EQUIPMENT list in data.js, so the inventory exists in one place only. -->
                     </tbody>
                 </table>
             </div>
 
         </section>
 
-        <section id="equipment-request" class="py-3">
+        <section id="equipment-reservation" class="py-3">
 
-            <h2 class="h3 fw-bold mb-4">Equipment Request</h2>
+            <h2 class="h3 fw-bold mb-4">Equipment Reservation</h2>
 
             <p>
-                Book club equipment in advance, or report a malfunction so it can be repaired before the next session.
+                Reserve club equipment in advance for a rehearsal or a club activity. A reservation is possible from tomorrow,
+                between 09:00 and 22:00.
             </p>
 
-            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
-            <form id="equipment-request-form" class="request-form" method="get">
+            <!-- No server-side handler exists yet, so submitting only reloads the page. JavaScript takes over the submit, checks the data and fills the error or confirmation area below. -->
+            <form id="equipment-reservation-form" class="request-form" method="get">
 
                 <fieldset class="request-details border rounded p-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Request Details</legend>
-                    <p class="fw-semibold mb-2">Request Type:</p>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" id="request-type-book" name="request_type" value="book" required>
-                        <label class="form-check-label" for="request-type-book">Book equipment for a date</label>
-                    </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="request-type-report" name="request_type" value="report">
-                        <label class="form-check-label" for="request-type-report">Report a malfunction or damage</label>
-                    </div>
-                    <div class="row g-3">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Reservation Details</legend>
+                    <div class="row g-3 mb-3">
                         <div class="col-12 col-md-6">
-                            <label for="request-name" class="form-label fw-semibold">Full Name:</label>
-                            <input type="text" class="form-control" id="request-name" name="request_name" placeholder="Name and surname" required>
+                            <label for="reservation-name" class="form-label fw-semibold">Full Name:</label>
+                            <input type="text" class="form-control" id="reservation-name" name="reservation_name" placeholder="Name and surname" required>
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="request-email" class="form-label fw-semibold">AITU Student Email:</label>
-                            <input type="email" class="form-control" id="request-email" name="request_email" placeholder="student@astanait.edu.kz" required>
+                            <label for="reservation-email" class="form-label fw-semibold">AITU Student Email:</label>
+                            <input type="email" class="form-control" id="reservation-email" name="reservation_email" placeholder="student@astanait.edu.kz" required>
                         </div>
-                    </div>
-                    <div class="mt-3"></div>
-                    <div class="row g-3">
-                        <div class="col-12 col-md-6">
-                            <label for="request-item" class="form-label fw-semibold">Equipment:</label>
-                            <select class="form-select" id="request-item" name="request_item" required>
+                        <div class="col-12">
+                            <label for="reservation-item" class="form-label fw-semibold">Equipment:</label>
+                            <!-- The options are added by equipment.js from the same list that builds the inventory table. -->
+                            <select class="form-select" id="reservation-item" name="reservation_item" required>
                                 <option value="">-- Choose equipment --</option>
-                                <option value="acoustic-guitar">Yamaha F310 acoustic guitar</option>
-                                <option value="electric-guitar">Fender Squier Stratocaster electric guitar</option>
-                                <option value="keyboard">Yamaha PSR-E373 digital keyboard</option>
-                                <option value="drum-kit">5-piece drum kit with cymbals</option>
-                                <option value="microphone">Shure SM58 microphone</option>
-                                <option value="mixer">Behringer Xenyx Q802USB mixer</option>
-                                <option value="pa-speaker">Yamaha DBR12 PA speaker</option>
                             </select>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <label for="request-date" class="form-label fw-semibold">Date of Use (or of the Problem):</label>
-                            <input type="date" class="form-control" id="request-date" name="request_date" required>
+                        <div class="col-12 col-md-4">
+                            <label for="reservation-date" class="form-label fw-semibold">Date:</label>
+                            <input type="date" class="form-control" id="reservation-date" name="reservation_date" required>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label for="reservation-start" class="form-label fw-semibold">Start Time:</label>
+                            <input type="time" class="form-control" id="reservation-start" name="reservation_start" min="09:00" max="22:00" required>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label for="reservation-end" class="form-label fw-semibold">End Time:</label>
+                            <input type="time" class="form-control" id="reservation-end" name="reservation_end" min="09:00" max="22:00" required>
                         </div>
                     </div>
-                    <div class="mt-4"></div>
                     <div class="mb-4">
-                        <label for="request-details-text" class="form-label fw-semibold">Details (time needed, or what went wrong):</label>
-                        <textarea class="form-control" id="request-details-text" name="request_details" rows="3" placeholder="For example: Friday 16:00-18:00 for band rehearsal, or: the cable on the mixer input is loose" required></textarea>
+                        <label for="reservation-purpose" class="form-label fw-semibold">Purpose of the Reservation:</label>
+                        <textarea class="form-control" id="reservation-purpose" name="reservation_purpose" rows="3" placeholder="For example: band rehearsal in room C1.1.142" required></textarea>
                     </div>
                     <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="request-agree" name="request_agreement" value="agreed" required>
-                        <label class="form-check-label" for="request-agree">I will return shared equipment after use.</label>
+                        <input class="form-check-input" type="checkbox" id="reservation-agree" name="reservation_agreement" value="agreed" required>
+                        <label class="form-check-label" for="reservation-agree">I will return shared equipment after use.</label>
                     </div>
                     <p class="form-note text-muted small">
-                        After you submit, a confirmation of your request will appear below this form.
+                        After you submit, a summary of your reservation will appear below this form.
                     </p>
                     <div class="form-actions d-flex flex-wrap gap-2">
-                        <button id="equipment-request-submit" type="submit" class="submit-button btn btn-primary btn-lg">Send Request</button>
-                        <button id="equipment-request-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
+                        <button id="equipment-reservation-submit" type="submit" class="submit-button btn btn-primary btn-lg">Reserve Equipment</button>
+                        <button id="equipment-reservation-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
                     </div>
                 </fieldset>
 
             </form>
 
             <!-- Error area: stays hidden until JavaScript writes a message into it and removes the "hidden" class. -->
-            <div id="equipment-request-error" class="hidden alert alert-danger mt-4" role="alert"></div>
+            <div id="equipment-reservation-error" class="hidden alert alert-danger mt-4" role="alert"></div>
 
             <!-- Confirmation area: stays hidden until JavaScript writes the result into it and removes the "hidden" class. -->
-            <div id="equipment-request-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
+            <div id="equipment-reservation-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
 
         </section>
 
@@ -290,7 +251,7 @@
                 The students are expected to abide by the equipment policy of the Music Club and consult the representative of the Music Club regarding the equipment that needs permission.
             </p>
             <p class="mb-0">
-                For equipment questions, contact the club by
+                To report a malfunction or damage, or for any equipment question, contact the club by
                 <a href="mailto:music.club@astanait.edu.kz">email</a>
                 or by phone at <a href="tel:+77780573242">+7 (778) 057-32-42</a>.
             </p>
@@ -302,9 +263,9 @@
             <h2 class="h3 fw-bold mb-3">Useful Details</h2>
             <p>For more information, follow the club on <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
             <ul>
-                <li>Equipment can be booked in advance with the <a href="#equipment-request">equipment request form</a> to avoid conflicts during exam season and event weeks.</li>
+                <li>Equipment can be reserved in advance with the <a href="#equipment-reservation">equipment reservation form</a> to avoid conflicts during exam season and event weeks.</li>
                 <li>New members are given a short equipment orientation at their first rehearsal.</li>
-                <li>Any malfunction or damage should be reported immediately with the same form so it can be repaired before the next session.</li>
+                <li>Any malfunction or damage should be reported immediately to the club by email or phone so it can be repaired before the next session.</li>
                 <li>Personal instruments and gear are welcome, but club equipment always has priority for scheduled rehearsals.</li>
             </ul>
         </section>
@@ -313,7 +274,7 @@
             <h2 class="h3 fw-bold mb-3">Page Navigation</h2>
             <p><a href="#instruments">Jump to instruments</a></p>
             <p><a href="#inventory">Jump to the equipment inventory</a></p>
-            <p class="mb-0"><a href="#equipment-request">Jump to the equipment request form</a></p>
+            <p class="mb-0"><a href="#equipment-reservation">Jump to the equipment reservation form</a></p>
         </section>
 
     </main>
@@ -322,7 +283,7 @@
         <hr class="my-4">
         <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
         <p class="text-muted text-break">
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            President: Aivaruly Aknazar | Marketing: Bilyalova Adiya | Sound: Abrazakov Ramil |
             Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
             <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
@@ -331,6 +292,7 @@
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" type="button" class="back-to-top hidden" aria-label="Back to top">&uarr;</button>
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/equipment.js" defer></script>

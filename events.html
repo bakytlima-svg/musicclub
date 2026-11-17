@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Annual live concert calendar, traditional campus gigs, and performer registration for Astana IT University Music Club.">
+    <meta name="description" content="Annual live concert calendar, traditional campus gigs, and concert participation for Astana IT University Music Club.">
     <meta name="author" content="AITU Music Club">
     <title>Events &amp; Gigs &mdash; AITU Music Club</title>
     <link rel="icon" href="data:,">
@@ -21,13 +21,17 @@
 
             <h1 class="display-4 fw-bold text-center mb-4">AITU Music Club Concerts &amp; Events</h1>
 
-            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
-            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same seven links in the same order on every page. Below 768px (phones) the links collapse behind the hamburger button; from md up they sit in a row. -->
+            <nav id="main-navigation" class="navbar navbar-expand-md navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
                             <li class="nav-item">
@@ -45,7 +49,7 @@
             <p class="quick-navigation text-center lead mt-4 mb-0 d-none d-md-block">
                 Quick jump:
                 <a class="link-primary" href="#events-schedule">Annual Schedule</a> |
-                <a class="link-primary" href="#performer-signup">Performer Registration</a>
+                <a class="link-primary" href="#participation-form">Concert Registration</a>
             </p>
 
         </div>
@@ -58,7 +62,7 @@
                 <h2 class="display-6 fw-bold">Live Performances &amp; Stage Traditions</h2>
             </header>
 
-            <p class="lead">
+            <p>
                 Throughout every academic term, the Astana IT University Music Club produces live concert programs across campus venues.
                 Our performances range from high-energy arena sets during university marathons to quiet, candlelit acoustic evenings in the lounge.
                 Live events give student bands the opportunity to perform in front of peers, test their original arrangements, and master live stage presence.
@@ -71,15 +75,14 @@
             </p>
 
             <figure class="text-center my-4">
-                <img class="img-fluid rounded shadow w-75" src="images/halloween-concert.jpg" alt="AITU Music Club student rock band performing live under stage lights at the annual university Halloween concert">
-                <figcaption class="text-muted small mt-2">Figure 1: Live performance during the annual AITU campus Halloween concert.</figcaption>
+                <img class="img-fluid rounded shadow page-photo" src="images/halloween-concert.jpg" alt="AITU Music Club student rock band performing live under stage lights at the annual university Halloween concert">
             </figure>
 
             <aside class="alert alert-light border border-warning my-4">
                 <!-- Aside is selected because technical soundcheck regulations represent secondary backstage guidelines separate from the public event narrative -->
                 <h3 class="h5 fw-bold">Backstage &amp; Soundcheck Regulations</h3>
                 <p class="mb-0">
-                    All performing bands must complete their stage line checks with Head of Technical Support Абразаков Рамиль at least 90 minutes prior to doors opening.
+                    All performing bands must complete their stage line checks with Head of Technical Support Abrazakov Ramil at least 90 minutes prior to doors opening.
                     Performers arriving after designated soundcheck windows forfeit monitor equalization adjustments.
                 </p>
             </aside>
@@ -100,152 +103,97 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">February 14</th>
-                            <td>Valentine's Day Acoustic Set</td>
-                            <td>Main Atrium Lounge</td>
-                            <td>Romantic Acoustic &amp; Vocal Duets</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">April 3</th>
-                            <td>AITU Run Sports Festival</td>
-                            <td>Campus Outdoor Square</td>
-                            <td>High-Energy Rock, Brass &amp; Percussion</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">May 18</th>
-                            <td>Acoustic Night</td>
-                            <td>Room C1.1.142 &amp; Terrace</td>
-                            <td>Unplugged Indie, Saxophone &amp; Jazz</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">June 12</th>
-                            <td>Bye Bye Party (Year Finale)</td>
-                            <td>Main Assembly Hall</td>
-                            <td>All Club Ensembles Showcase</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">October 31</th>
-                            <td>Halloween Rock Concert</td>
-                            <td>Main Assembly Hall</td>
-                            <td>Costumed Alternative Rock &amp; Metal</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">December 29</th>
-                            <td>New Year Gala Concert</td>
-                            <td>Main Atrium Stage</td>
-                            <td>Holiday Big Band &amp; Pop Covers</td>
-                        </tr>
+                        <!-- The rows are built by events.js from the EVENTS list in data.js, so the concert data exists in one place only. -->
                     </tbody>
                 </table>
             </div>
         </section>
 
         <section class="py-3">
-            <h2 class="h3 fw-bold mb-3">Stage Application Workflow</h2>
-            <p>To take part in scheduled concert showcases, ensembles follow a four-step preparation track:</p>
+            <h2 class="h3 fw-bold mb-3">How to Take Part</h2>
+            <p>Every concert in the timetable is open to students who want to watch or help:</p>
 
-            <!-- Bootstrap List Group component adapted for the four-step application workflow: list-group-numbered replaces the old <ol> so the sequence gets Bootstrap's own numbered markers and spacing. -->
+            <!-- Bootstrap List Group component adapted for the participation steps: list-group-numbered gives the sequence Bootstrap's own numbered markers and spacing. -->
             <ol class="workflow-steps list-group list-group-numbered">
-                <li class="list-group-item">Submit the digital performer application form below at least two weeks before the show.</li>
-                <li class="list-group-item">Attend a preliminary screening session inside room C1.1.142 to verify arrangement readiness.</li>
-                <li class="list-group-item">Conduct a full dress rehearsal with Head of Tech Абразаков Рамиль to balance channel inputs.</li>
-                <li class="list-group-item">Perform live on stage and receive official photographic coverage from Marketing Lead Билялова Адия.</li>
+                <li class="list-group-item">Choose a concert in the timetable above and press its registration button.</li>
+                <li class="list-group-item">Choose your role in the form below: spectator or volunteer.</li>
+                <li class="list-group-item">Volunteers can also name the area they would like to help with, then submit the form.</li>
             </ol>
         </section>
 
         <hr class="my-5">
 
-        <section id="performer-signup" class="py-3">
-            <h2 class="h3 fw-bold mb-4">Performer &amp; Band Registration Form</h2>
-            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
-            <form id="performer-signup-form" method="get">
-                <fieldset class="border rounded p-4 mb-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Musician &amp; Ensemble Details</legend>
+        <section id="participation-form" class="py-3">
+            <h2 class="h3 fw-bold mb-3">Concert Participation Form</h2>
+            <p>
+                Register as a spectator or as a volunteer for one of the upcoming concerts.
+                Musicians who want to perform with the club start with an audition on the
+                <a href="auditions.html#audition-form">Auditions page</a>.
+            </p>
+            <!-- No server-side handler exists yet, so submitting only reloads the page. JavaScript takes over the submit, checks the data and fills the error or confirmation area below. -->
+            <form id="concert-participation-form" method="get">
+                <fieldset class="border rounded p-4 shadow-sm">
+                    <legend class="float-none w-auto px-2 h5 fw-bold">Your Participation</legend>
 
-                    <div class="row g-3">
+                    <div class="row g-3 mb-4">
                         <div class="col-12 col-md-6">
-                            <label for="lead-name" class="form-label fw-semibold">Full Name of Applicant / Band Leader:</label>
-                            <input type="text" class="form-control" id="lead-name" name="lead_name" placeholder="Name and surname" required>
+                            <label for="participant-name" class="form-label fw-semibold">Full Name:</label>
+                            <input type="text" class="form-control" id="participant-name" name="participant_name" placeholder="Name and surname" required>
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="student-email" class="form-label fw-semibold">AITU Student Email:</label>
-                            <input type="email" class="form-control" id="student-email" name="student_email" placeholder="student@astanait.edu.kz" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="contact-phone" class="form-label fw-semibold">Contact Phone Number:</label>
-                            <input type="tel" class="form-control" id="contact-phone" name="contact_phone" placeholder="+7 7XX XXX XX XX" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="ensemble-members" class="form-label fw-semibold">Number of Musicians on Stage:</label>
-                            <input type="number" class="form-control" id="ensemble-members" name="ensemble_size" min="1" max="15" placeholder="4" required>
+                            <label for="participant-email" class="form-label fw-semibold">AITU Student Email:</label>
+                            <input type="email" class="form-control" id="participant-email" name="participant_email" placeholder="student@astanait.edu.kz" required>
                         </div>
                         <div class="col-12">
-                            <label for="performance-date" class="form-label fw-semibold">Target Concert Date:</label>
-                            <input type="date" class="form-control" id="performance-date" name="target_date" required>
+                            <label for="concert-choice" class="form-label fw-semibold">Upcoming Concert:</label>
+                            <!-- The options are added by events.js from the same concert list that builds the timetable. -->
+                            <select class="form-select" id="concert-choice" name="concert" required>
+                                <option value="">-- Choose a concert --</option>
+                            </select>
                         </div>
                     </div>
-                </fieldset>
 
-                <fieldset class="border rounded p-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Performance Format &amp; Stage Rider</legend>
-
-                    <p class="fw-semibold mb-2">Ensemble Category:</p>
+                    <p class="fw-semibold mb-2">Participation Role:</p>
                     <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" id="format-solo" name="ensemble_type" value="solo" required>
-                        <label class="form-check-label" for="format-solo">Solo Performer (Vocal or Instrumental)</label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" id="format-duo" name="ensemble_type" value="duo">
-                        <label class="form-check-label" for="format-duo">Acoustic Duo / Trio</label>
+                        <input class="form-check-input" type="radio" id="role-spectator" name="participation_role" value="spectator" required>
+                        <label class="form-check-label" for="role-spectator">Spectator</label>
                     </div>
                     <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="format-band" name="ensemble_type" value="full-band">
-                        <label class="form-check-label" for="format-band">Full Electric Band (Drums, Bass, Guitars, Keys, Brass)</label>
+                        <input class="form-check-input" type="radio" id="role-volunteer" name="participation_role" value="volunteer">
+                        <label class="form-check-label" for="role-volunteer">Volunteer</label>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="target-event" class="form-label fw-semibold">Select Campus Event:</label>
-                        <select class="form-select" id="target-event" name="target_event" required>
-                            <option value="">-- Choose an event --</option>
-                            <option value="halloween">Halloween Concert (October 31)</option>
-                            <option value="new-year">New Year Concert (December 29)</option>
-                            <option value="valentine">Valentine's Day Set (February 14)</option>
-                            <option value="aitu-run">AITU Run Marathon (April 3)</option>
-                            <option value="acoustic-night">Acoustic Night (May 18)</option>
-                            <option value="bye-bye-party">Bye Bye Party (June 12)</option>
+                    <div id="volunteer-details" class="mb-4 hidden">
+                        <label for="volunteer-task" class="form-label fw-semibold">Volunteer Responsibility (optional):</label>
+                        <select class="form-select" id="volunteer-task" name="volunteer_task">
+                            <option value="">No preference</option>
+                            <option value="organization">Event organization</option>
+                            <option value="guests">Guest assistance</option>
+                            <option value="venue">Venue preparation</option>
+                            <option value="technical">Technical assistance</option>
                         </select>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="song-list" class="form-label fw-semibold">Planned Setlist &amp; Technical Requirements:</label>
-                        <textarea class="form-control" id="song-list" name="stage_setlist" rows="4"
-                                  placeholder="List song titles, instrument requirements (e.g., 2 vocal mics, 1 saxophone mic, DI box for bass)..." required></textarea>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="rehearsal-pledge" name="rehearsal_agreement" value="pledged" required>
-                        <label class="form-check-label" for="rehearsal-pledge">We agree to attend mandatory pre-concert soundchecks in room C1.1.142.</label>
-                    </div>
-
-                    <p>Stage Lineup Status: <span id="lineup-status" class="badge bg-warning text-dark">Applications Active</span></p>
+                    <p id="concert-empty" class="hidden alert alert-info">
+                        No concerts are scheduled at the moment. Please check this page again later.
+                    </p>
 
                     <p class="form-note text-muted small">
-                        After you submit, a confirmation of your requested concert slot will appear below this form.
+                        After you submit, a summary of your registration will appear below this form.
                     </p>
 
                     <div class="d-flex flex-wrap gap-2">
-                        <button id="performer-signup-submit" type="submit" class="btn btn-primary btn-lg">Submit Stage Application</button>
-                        <button id="performer-signup-reset" type="reset" class="btn btn-outline-secondary">Clear Form</button>
+                        <button id="concert-participation-submit" type="submit" class="btn btn-primary btn-lg">Register</button>
+                        <button id="concert-participation-reset" type="reset" class="btn btn-outline-secondary">Clear Form</button>
                     </div>
                 </fieldset>
             </form>
 
             <!-- Error area: stays hidden until JavaScript writes a message into it and removes the "hidden" class. -->
-            <div id="performer-signup-error" class="hidden alert alert-danger mt-4" role="alert"></div>
+            <div id="concert-participation-error" class="hidden alert alert-danger mt-4" role="alert"></div>
 
             <!-- Confirmation area: stays hidden until JavaScript writes the result into it and removes the "hidden" class. -->
-            <div id="performer-signup-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
+            <div id="concert-participation-result" class="hidden alert alert-success mt-4" role="status" aria-live="polite"></div>
         </section>
     </main>
 
@@ -253,7 +201,7 @@
         <hr class="my-4">
         <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
         <p class="text-muted text-break">
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            President: Aivaruly Aknazar | Marketing: Bilyalova Adiya | Sound: Abrazakov Ramil |
             Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
             <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
@@ -262,6 +210,7 @@
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" type="button" class="back-to-top hidden" aria-label="Back to top">&uarr;</button>
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/events.js" defer></script>

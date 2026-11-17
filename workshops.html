@@ -22,13 +22,17 @@
 
             <h1 class="display-4 fw-bold text-center mb-4">AITU Music Club Workshops</h1>
 
-            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
-            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same seven links in the same order on every page. Below 768px (phones) the links collapse behind the hamburger button; from md up they sit in a row. -->
+            <nav id="main-navigation" class="navbar navbar-expand-md navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
                             <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
@@ -60,7 +64,7 @@
                 <h2 class="display-6 fw-bold">Educational Sessions &amp; Practical Skill Building</h2>
             </header>
 
-            <p class="lead">
+            <p>
                 Apart from concert preparation, the
                 <abbr title="Astana IT University">AITU</abbr> Music Club organizes weekly educational
                 workshops for beginner and intermediate musicians.
@@ -81,9 +85,8 @@
             </p>
 
             <figure class="text-center my-4">
-                <img class="img-fluid rounded shadow w-75" src="images/workshops-concert.jpg"
+                <img class="img-fluid rounded shadow page-photo" src="images/workshops-concert.jpg"
                      alt="AITU Music Club mentor demonstrating vocal warm-up techniques to students in room C1.1.142">
-                <figcaption class="text-muted small mt-2">Figure 1: Practical vocal warm-up and mic handling session in room C1.1.142.</figcaption>
             </figure>
 
             <aside class="workshop-note alert alert-light border border-warning">
@@ -117,28 +120,28 @@
                         <tr>
                             <th scope="row">Wed, 16:00</th>
                             <td>Vocal Control &amp; Diaphragmatic Breathing</td>
-                            <td>Адильбек С.</td>
+                            <td>Adilbek S.</td>
                             <td>Room C1.1.142</td>
                             <td><a class="btn btn-outline-primary btn-sm" href="#workshop-registration" data-workshop="vocal-control">Register</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Thu, 17:30</th>
                             <td>Guitar Effect Chain &amp; Pedalboard Wiring</td>
-                            <td>Абразаков Рамиль</td>
+                            <td>Abrazakov Ramil</td>
                             <td>Room C1.1.142</td>
                             <td><a class="btn btn-outline-primary btn-sm" href="#workshop-registration" data-workshop="guitar-effects">Register</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Fri, 15:00</th>
                             <td>Live Digital Mixer Calibration (Behringer XR18)</td>
-                            <td>Абразаков Рамиль</td>
+                            <td>Abrazakov Ramil</td>
                             <td>Room C1.1.142</td>
                             <td><a class="btn btn-outline-primary btn-sm" href="#workshop-registration" data-workshop="mixer-calibration">Register</a></td>
                         </tr>
                         <tr>
                             <th scope="row">Sat, 14:00</th>
                             <td>Rhythm Section Synchronization for Bands</td>
-                            <td>Айварұлы Ақназар</td>
+                            <td>Aivaruly Aknazar</td>
                             <td>Main Atrium</td>
                             <td><a class="btn btn-outline-primary btn-sm" href="#workshop-registration" data-workshop="rhythm-section">Register</a></td>
                         </tr>
@@ -156,7 +159,7 @@
                 university students regardless of skill level.
             </p>
 
-            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
+            <!-- No server-side handler exists yet, so submitting only reloads the page. JavaScript takes over the submit, checks the data and fills the error or confirmation area below. -->
             <form id="workshop-registration-form" class="registration-form" method="get">
 
                 <fieldset class="workshop-details border rounded p-4 shadow-sm">
@@ -232,7 +235,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                            <h3 class="card-title h6 fw-bold">Gain Staging</h3>
+                            <h3 class="card-title h5 fw-bold">Gain Staging</h3>
                             <p class="card-text mb-0">
                                 The process of managing signal levels at each stage of amplification to prevent harmonic distortion.
                             </p>
@@ -242,7 +245,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                            <h3 class="card-title h6 fw-bold">Equalization (EQ)</h3>
+                            <h3 class="card-title h5 fw-bold">Equalization (EQ)</h3>
                             <p class="card-text mb-0">
                                 Adjusting specific frequency ranges to improve clarity between vocalists and instruments.
                             </p>
@@ -252,7 +255,7 @@
                 <div class="col-12 col-md-12 col-lg-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
-                            <h3 class="card-title h6 fw-bold">Monitor Feedback</h3>
+                            <h3 class="card-title h5 fw-bold">Monitor Feedback</h3>
                             <p class="card-text mb-0">
                                 High-pitched acoustic resonance caused when amplified sound loops back into a live microphone.
                             </p>
@@ -265,12 +268,12 @@
         <section class="workshop-card p-4 p-md-5 bg-light rounded shadow-sm my-5">
             <h2 class="h3 fw-bold mb-3">Instructor Guidance Quote</h2>
             <blockquote class="mb-2">
-                <p class="lead mb-0" lang="kk"> &ldquo;Университеттегі воркшоптар &mdash; бұл тек теория емес, аппаратпен жұмыс істеп
-                    үйренудің ең тиімді жолы.&rdquo;
+                <p class="lead mb-0">&ldquo;University workshops are not just theory: they are the most effective way
+                    to learn by working with the equipment.&rdquo;
                 </p>
             </blockquote>
             <p class="mb-0">
-                &mdash; <cite>Абразаков Рамиль</cite>,
+                &mdash; <cite>Abrazakov Ramil</cite>,
                 Head of Technical Support, workshop briefing on October 5, 2024.
             </p>
         </section>
@@ -281,7 +284,7 @@
         <hr class="my-4">
         <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
         <p class="text-muted text-break">
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            President: Aivaruly Aknazar | Marketing: Bilyalova Adiya | Sound: Abrazakov Ramil |
             Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
             <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
@@ -290,6 +293,7 @@
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" type="button" class="back-to-top hidden" aria-label="Back to top">&uarr;</button>
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/workshops.js" defer></script>

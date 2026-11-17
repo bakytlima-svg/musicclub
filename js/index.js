@@ -84,8 +84,8 @@ function initSchedule() {
         const cell = document.createElement('td');
         cell.colSpan = 4;
         const link = document.createElement('a');
-        link.href = 'about.html#studio-booking';
-        link.textContent = 'Book a rehearsal slot';
+        link.href = 'about.html#rehearsal-booking';
+        link.textContent = 'How to book a rehearsal slot';
         cell.append('No registered band rehearses on ' + WEEKDAY_NAMES[Number(day)] + ', so the room is free. ', link);
         row.append(cell);
         return row;

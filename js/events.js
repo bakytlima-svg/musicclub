@@ -1,6 +1,6 @@
 'use strict';
 
-/* events.js - concert timetable (search, filter, sort) and performer registration form. */
+/* events.js - concert timetable (search, filter, sort) and the concert participation form. */
 
 function initEventsPage() {
     const table = byId('events-table');
@@ -8,13 +8,11 @@ function initEventsPage() {
         return;
     }
     const body = table.tBodies[0];
-    const DEADLINE_DAYS = 14; // the page says: apply at least two weeks before the show
     let selectedId = '';
 
-    const ENSEMBLE_RULES = {
-        'solo': { label: 'solo performer', min: 1, max: 1 },
-        'duo': { label: 'acoustic duo / trio', min: 2, max: 3 },
-        'full-band': { label: 'full electric band', min: 4, max: 15 }
+    const ROLE_LABELS = {
+        spectator: 'Spectator',
+        volunteer: 'Volunteer'
     };
 
     /* ----- Controls above the table ----- */
@@ -60,7 +58,6 @@ function initEventsPage() {
 
     // One function builds every row of the table.
     function createEventRow(event) {
-        const days = daysUntil(event.date);
         const row = document.createElement('tr');
         if (event.id === selectedId) {
             row.classList.add('selected');
@@ -69,16 +66,12 @@ function initEventsPage() {
         dateCell.scope = 'row';
         const when = document.createElement('small');
         when.className = 'd-block text-muted fw-normal';
-        when.textContent = describeDays(days);
+        when.textContent = describeDays(daysUntil(event.date));
         dateCell.append(MONTH_NAMES[event.month - 1] + ' ' + event.day, when);
 
         const titleCell = document.createElement('td');
-        const button = createButton('Choose for my application', 'btn btn-outline-primary btn-sm d-block mt-2');
+        const button = createButton('Register for this concert', 'btn btn-outline-primary btn-sm d-block mt-2');
         button.dataset.eventId = event.id;
-        if (days < DEADLINE_DAYS) {
-            button.disabled = true;
-            button.textContent = 'Applications closed';
-        }
         titleCell.append(event.title, button);
         row.append(dateCell, titleCell, makeCell(event.place), makeCell(event.style));
         return row;
@@ -97,28 +90,37 @@ function initEventsPage() {
             row.append(cell);
             body.append(row);
         }
-        count.textContent = 'Showing ' + visible.length + ' of ' + EVENTS.length + ' concerts. Applications close ' +
-            DEADLINE_DAYS + ' days before each show.';
+        count.textContent = 'Showing ' + visible.length + ' of ' + EVENTS.length + ' concerts.';
     }
 
-    // Fills the registration form with the chosen concert.
+    /* ----- Concert list of the form: the same data as the timetable ----- */
+    const concertSelect = byId('concert-choice');
+    const upcoming = getUpcomingEvents();
+    upcoming.forEach(function (event) {
+        const option = document.createElement('option');
+        option.value = event.id;
+        option.textContent = event.title + ' — ' + formatDateLong(event.date);
+        concertSelect.append(option);
+    });
+    if (upcoming.length === 0) {
+        byId('concert-empty').classList.remove('hidden');
+        concertSelect.disabled = true;
+        byId('concert-participation-submit').disabled = true;
+    }
+
+    // Fills the form with the chosen concert.
     function selectEvent(id) {
         selectedId = id;
-        const event = EVENTS.find(function (item) {
+        const event = upcoming.find(function (item) {
             return item.id === id;
         });
-        const eventSelect = byId('target-event');
-        const dateField = byId('performance-date');
-        eventSelect.value = id;
+        concertSelect.value = id;
         if (event !== undefined) {
-            const date = getNextOccurrence(event.month, event.day);
-            dateField.value = formatDateInput(date);
-            message.textContent = 'Selected: ' + event.title + ', ' + formatDateLong(date) + '. The registration form below is filled in.';
+            message.textContent = 'Selected: ' + event.title + ', ' + formatDateLong(event.date) + '. The participation form below is filled in.';
         } else {
             message.textContent = '';
         }
-        clearFieldError(eventSelect);
-        clearFieldError(dateField);
+        clearFieldError(concertSelect);
         render();
     }
 
@@ -128,7 +130,7 @@ function initEventsPage() {
             return;
         }
         selectEvent(button.dataset.eventId);
-        byId('performer-signup').scrollIntoView({ behavior: 'smooth' });
+        byId('participation-form').scrollIntoView({ behavior: 'smooth' });
     });
     searchInput.addEventListener('input', render);
     searchInput.addEventListener('keydown', function (event) {
@@ -145,116 +147,65 @@ function initEventsPage() {
         sortSelect.value = 'calendar';
         render();
     });
-    byId('target-event').addEventListener('change', function () {
-        selectEvent(byId('target-event').value);
+    concertSelect.addEventListener('change', function () {
+        selectEvent(concertSelect.value);
     });
-    byId('performance-date').min = formatDateInput(getToday());
 
-    /* ----- Registration form ----- */
+    /* ----- Participation form ----- */
+    const volunteerDetails = byId('volunteer-details');
+    const taskSelect = byId('volunteer-task');
+
+    // Only volunteers see the responsibility field.
+    function showVolunteerDetails() {
+        const isVolunteer = getChecked('participation_role') === 'volunteer';
+        volunteerDetails.classList.toggle('hidden', !isVolunteer);
+        if (!isVolunteer) {
+            taskSelect.value = '';
+        }
+    }
+
     function validate() {
         const errors = [];
-        addIf(errors, 'lead-name', nameProblem(getValue('lead-name')));
-        addIf(errors, 'student-email', emailProblem(getValue('student-email'), true));
-        addIf(errors, 'contact-phone', phoneProblem(getValue('contact-phone')));
-
-        const sizeError = numberProblem(getValue('ensemble-members'), 1, 15, 'Number of musicians');
-        addIf(errors, 'ensemble-members', sizeError);
-        const type = getChecked('ensemble_type');
-        addIf(errors, 'format-solo', choiceProblem(type, 'Choose the ensemble category.'));
-
-        const event = EVENTS.find(function (item) {
-            return item.id === getValue('target-event');
-        });
-        let eventDate = null;
-        if (event === undefined) {
-            addIf(errors, 'target-event', 'Choose the campus event.');
-        } else {
-            eventDate = getNextOccurrence(event.month, event.day);
-            const left = daysUntil(eventDate);
-            if (left < DEADLINE_DAYS) {
-                addIf(errors, 'target-event', 'Applications for ' + event.title + ' are closed: they must be sent at least ' +
-                    DEADLINE_DAYS + ' days before the show (it is ' + describeDays(left) + ').');
-            }
-        }
-
-        const dateText = getValue('performance-date');
-        const dateError = dateProblem(dateText, getToday(), 'The concert date cannot be in the past.');
-        if (dateError !== '') {
-            addIf(errors, 'performance-date', dateError);
-        } else if (event !== undefined && dateText !== formatDateInput(eventDate)) {
-            addIf(errors, 'performance-date', 'The date must match the event: ' + event.title + ' takes place on ' +
-                formatDateLong(eventDate) + '.');
-        }
-
-        // Rules that combine fields: category vs. number of musicians, category vs. type of event.
-        if (type !== '' && sizeError === '') {
-            const rule = ENSEMBLE_RULES[type];
-            const size = Number(getValue('ensemble-members'));
-            if (size < rule.min || size > rule.max) {
-                const range = rule.min === rule.max ? String(rule.min) : rule.min + '–' + rule.max;
-                addIf(errors, 'ensemble-members', 'A ' + rule.label + ' has ' + range + ' musician(s), but you entered ' + size + '.');
-            }
-        }
-        if (type === 'full-band' && event !== undefined && !event.electricAllowed) {
-            addIf(errors, 'format-solo', event.title + ' is an unplugged evening: choose Solo or Acoustic Duo / Trio.');
-        }
-
-        addIf(errors, 'song-list', textProblem(getValue('song-list'), 10, 500, 'Setlist and technical requirements'));
-        if (!byId('rehearsal-pledge').checked) {
-            addIf(errors, 'rehearsal-pledge', 'You must agree to attend the pre-concert soundchecks.');
-        }
+        addIf(errors, 'participant-name', nameProblem(getValue('participant-name')));
+        addIf(errors, 'participant-email', emailProblem(getValue('participant-email'), true));
+        addIf(errors, 'concert-choice', choiceProblem(getValue('concert-choice'), 'Choose an upcoming concert.'));
+        addIf(errors, 'role-spectator', choiceProblem(getChecked('participation_role'), 'Choose your role: spectator or volunteer.'));
         return errors;
     }
 
     function buildSummary() {
-        const event = EVENTS.find(function (item) {
-            return item.id === getValue('target-event');
+        const event = upcoming.find(function (item) {
+            return item.id === getValue('concert-choice');
         });
+        const role = getChecked('participation_role');
+        const lines = [
+            ['Name', getValue('participant-name')],
+            ['Email', getValue('participant-email')],
+            ['Concert', event.title + ', ' + formatDateLong(event.date) + ', ' + event.place],
+            ['Role', ROLE_LABELS[role]]
+        ];
+        if (role === 'volunteer') {
+            lines.push(['Responsibility', getSelectedText('volunteer-task')]);
+        }
+        lines.push(['Demo reference', makeReference('CONCERT')]);
         return {
-            title: 'Demonstration stage application prepared',
-            lines: [
-                ['Applicant', getValue('lead-name')],
-                ['Email', getValue('student-email')],
-                ['Phone', formatPhone(getValue('contact-phone'))],
-                ['Concert', event.title + ', ' + formatDateLong(getNextOccurrence(event.month, event.day)) + ', ' + event.place],
-                ['Category', getCheckedLabel('ensemble_type')],
-                ['Musicians on stage', getValue('ensemble-members')],
-                ['Setlist and technical needs', getValue('song-list')],
-                ['Demo reference', makeReference('STAGE')]
-            ],
-            note: 'The next steps of the real workflow (screening, dress rehearsal) are not scheduled by this demonstration.'
+            title: 'Demonstration concert registration prepared',
+            lines: lines,
+            note: 'No ticket or volunteer shift is booked by this demonstration; it only shows how a confirmation would look.'
         };
     }
 
-    function showLineupStatus() {
-        const badge = byId('lineup-status');
-        if (badge === null) {
-            return;
-        }
-        const concerts = getUpcomingEvents();
-        let open = 0;
-        for (let i = 0; i < concerts.length; i++) {
-            if (daysUntil(concerts[i].date) >= DEADLINE_DAYS) {
-                open++;
-            }
-        }
-        if (open > 0) {
-            badge.textContent = 'Applications active: ' + open + ' of ' + concerts.length + ' concerts open';
-            badge.className = 'badge bg-warning text-dark';
-        } else {
-            badge.textContent = 'Applications closed: wait for the next season';
-            badge.className = 'badge bg-secondary';
-        }
-    }
-
-    setupForm('performer-signup-form', validate, buildSummary);
-    byId('performer-signup-form').addEventListener('reset', function () {
+    setupForm('concert-participation-form', validate, buildSummary);
+    byId('concert-participation-form').querySelectorAll('input[name="participation_role"]').forEach(function (radio) {
+        radio.addEventListener('change', showVolunteerDetails);
+    });
+    byId('concert-participation-form').addEventListener('reset', function () {
         selectedId = '';
         message.textContent = '';
+        setTimeout(showVolunteerDetails, 0);
         render();
     });
     render();
-    showLineupStatus();
 }
 
 initEventsPage();

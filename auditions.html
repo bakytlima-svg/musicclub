@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     <header class="club-hero">
 
         <div class="container py-4">
@@ -27,13 +26,17 @@
                 AITU Music Club Auditions &amp; Tryouts
             </h1>
 
-            <!-- Bootstrap Navbar: the same eight links in the same order on every page. The menu is never collapsed, so every page stays reachable at every screen width (stacked on phones, in a row from lg up). -->
-            <nav id="main-navigation" class="navbar navbar-expand-lg navbar-dark bg-dark rounded shadow">
+            <!-- Bootstrap Navbar: the same seven links in the same order on every page. Below 768px (phones) the links collapse behind the hamburger button; from md up they sit in a row. -->
+            <nav id="main-navigation" class="navbar navbar-expand-md navbar-dark bg-dark rounded shadow">
                 <!-- container-fluid here so the dark navbar bar fills the full width of its own rounded panel; the page content further down uses container instead, so paragraphs keep a readable line length on wide screens. -->
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="index.html">AITU Music Club</a>
-                    <div class="navbar-collapse">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                            aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Club</a></li>
                             <li class="nav-item"><a class="nav-link" href="events.html">Events &amp; Gigs</a></li>
@@ -51,7 +54,7 @@
             <p class="quick-navigation text-center lead mt-4 mb-0 d-none d-md-block">
                 Quick jump:
                 <a class="link-primary" href="#selection-process">Audition Steps</a> |
-                <a class="link-primary" href="#audition-form">Application Form</a>
+                <a class="link-primary" href="#audition-form">Application &amp; Audition Form</a>
             </p>
 
         </div>
@@ -60,7 +63,7 @@
     <main class="container py-5">
 
         <!-- Main audition information card. -->
-        <article class="audition-card bg-white p-4 p-md-5 rounded shadow mb-5">
+        <article class="audition-card p-4 p-md-5 rounded shadow mb-5">
 
             <header>
 
@@ -70,7 +73,7 @@
 
             </header>
 
-            <p class="lead">
+            <p>
                 At the beginning of each academic semester, the Astana IT University Music Club hosts auditions
                 for newly enrolled and returning students. We are looking for passionate
                 <strong>vocalists, guitarists, bassists, drummers, keyboard players, and brass instrument performers</strong>.
@@ -83,6 +86,8 @@
                 one primary solo piece and one impromptu rhythm test. Remember that
                 <em>stage confidence</em> matters more than flawless speed.
                 <mark>Current recruitment is active for all performance tracks.</mark>
+                Submitting the application form below only requests an audition: you become a club member
+                after you have performed at the audition and the committee has accepted you.
             </p>
 
             <p class="audition-note alert alert-light border-start border-4 border-warning">
@@ -92,12 +97,8 @@
             <figure class="audition-image text-center my-4">
 
                 <img src="images/auditions-concert.jpg"
-                     class="img-fluid rounded shadow"
+                     class="img-fluid rounded shadow page-photo"
                      alt="AITU Music Club guitarists and vocalist performing on stage during a club audition-season showcase">
-
-                <figcaption class="text-muted small mt-2">
-                    Figure 1: Guitarists and vocalist performing during an AITU Music Club audition-season showcase.
-                </figcaption>
 
             </figure>
 
@@ -105,7 +106,7 @@
 
                 <!-- Complementary advice is separated from official audition requirements. -->
 
-                <h3 class="h4 fw-bold">
+                <h3 class="h5 fw-bold">
                     Handling Stage Nerves
                 </h3>
 
@@ -120,12 +121,8 @@
             <figure class="audition-image text-center my-4">
 
                 <img src="images/instruments.jpg"
-                     class="img-fluid rounded shadow"
+                     class="img-fluid rounded shadow page-photo"
                      alt="Electronic drum kit and studio instruments set up in the AITU Music Club rehearsal room">
-
-                <figcaption class="text-muted small mt-2">
-                    Figure 2: Electronic drum kit and studio instruments prepared for rhythm evaluation.
-                </figcaption>
 
             </figure>
 
@@ -134,11 +131,11 @@
         <!-- Selection and repertoire section. -->
         <section id="selection-process" class="py-5">
 
-            <h2 class="display-6 fw-bold mb-4">
+            <h2 class="h3 fw-bold mb-4">
                 Selection Stages &amp; Repertoire Categories
             </h2>
 
-            <h3 class="h4 fw-bold mb-3">
+            <h3 class="h5 fw-bold mb-3">
                 Four-Step Recruitment Workflow
             </h3>
 
@@ -146,7 +143,7 @@
             <ol class="list-group list-group-numbered mb-5">
 
                 <li class="list-group-item">
-                    Fill out and submit the official applicant registration form below.
+                    Submit the club application and audition request form below. This does not make you a member yet.
                 </li>
 
                 <li class="list-group-item">
@@ -158,12 +155,12 @@
                 </li>
 
                 <li class="list-group-item">
-                    Participate in a short 5-minute group rhythm exercise with fellow applicants.
+                    Participate in a short 5-minute group rhythm exercise with fellow applicants. Membership is decided after the audition.
                 </li>
 
             </ol>
 
-            <h3 class="h4 fw-bold mb-4">
+            <h3 class="h5 fw-bold mb-4">
                 Auditioned Instrument Categories
             </h3>
 
@@ -260,90 +257,94 @@
         <!-- Candidate registration form. -->
         <section id="audition-form" class="py-5">
 
-            <h2 class="display-6 fw-bold mb-4">
-                Candidate Application Form
+            <h2 class="h3 fw-bold mb-4">
+                Club Application &amp; Audition Form
             </h2>
 
-            <!-- No server-side handler exists yet, so submitting only reloads the page. In a later assignment JavaScript will take over the submit, check the data and fill the error or confirmation area below. -->
+            <!-- No server-side handler exists yet, so submitting only reloads the page. JavaScript takes over the submit, checks the data and fills the error or confirmation area below. -->
             <form id="audition-application-form" class="audition-form" method="get">
 
-                <fieldset class="candidate-details mb-4 border rounded p-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Personal Candidate Information</legend>
-                    <div class="row g-3">
-                        <div class="col-12 col-md-6">
-                            <label for="candidate-name" class="form-label fw-semibold">Full Name:</label>
-                            <input type="text" class="form-control" id="candidate-name" name="candidate_name" placeholder="Name and surname" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="candidate-email" class="form-label fw-semibold">AITU Student Email:</label>
-                            <input type="email" class="form-control" id="candidate-email" name="candidate_email" placeholder="student@astanait.edu.kz" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="candidate-phone" class="form-label fw-semibold">Contact Phone Number:</label>
-                            <input type="tel" class="form-control" id="candidate-phone" name="candidate_phone" placeholder="+7 7XX XXX XX XX" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label for="years-experience" class="form-label fw-semibold">Years of Playing / Singing Experience:</label>
-                            <input type="number" class="form-control" id="years-experience" name="years_experience" placeholder="2" min="0" max="20" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="preferred-date" class="form-label fw-semibold">Preferred Audition Date:</label>
-                            <input type="date" class="form-control" id="preferred-date" name="audition_date" required>
-                        </div>
+            <fieldset class="candidate-details mb-4 border rounded p-4 shadow-sm">
+                <legend class="float-none w-auto px-2 h5 fw-bold">Personal Candidate Information</legend>
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label for="candidate-name" class="form-label fw-semibold">Full Name:</label>
+                        <input type="text" class="form-control" id="candidate-name" name="candidate_name" placeholder="Name and surname" required>
                     </div>
-                </fieldset>
-
-                <fieldset class="music-availability border rounded p-4 shadow-sm">
-                    <legend class="float-none w-auto px-2 h5 fw-bold">Instrument &amp; Performance Preferences</legend>
-                    <p class="fw-semibold mb-3">Primary Performance Direction:</p>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" id="role-vocalist" name="primary_role" value="vocalist" required>
-                        <label class="form-check-label" for="role-vocalist">Vocalist (Lead / Backing)</label>
+                    <div class="col-12 col-md-6">
+                        <label for="candidate-email" class="form-label fw-semibold">AITU Student Email:</label>
+                        <input type="email" class="form-control" id="candidate-email" name="candidate_email" placeholder="student@astanait.edu.kz" required>
                     </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" id="role-musician" name="primary_role" value="instrumentalist">
-                        <label class="form-check-label" for="role-musician">Instrumentalist</label>
-                    </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="radio" id="role-tech" name="primary_role" value="technician">
-                        <label class="form-check-label" for="role-tech">Sound Engineer / Stage Hand</label>
-                    </div>
-                    <div class="mb-4">
-                        <label for="instrument-type" class="form-label fw-semibold">Select Primary Instrument:</label>
-                        <select class="form-select" id="instrument-type" name="instrument_type" required>
-                            <option value="">-- Choose an instrument --</option>
-                            <option value="electric-guitar">Electric Guitar</option>
-                            <option value="bass-guitar">Bass Guitar</option>
-                            <option value="drums">Drums / Percussion</option>
-                            <option value="keyboards">Piano / Synthesizer</option>
-                            <option value="saxophone">Saxophone / Brass</option>
-                            <option value="violin">Violin / Strings</option>
-                            <option value="vocal">Vocal Solo</option>
-                            <option value="none">No instrument (sound engineering)</option>
+                    <div class="col-12 col-md-4">
+                        <label for="experience-level" class="form-label fw-semibold">Experience Level:</label>
+                        <select class="form-select" id="experience-level" name="experience_level" required>
+                            <option value="">-- Choose a level --</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
                         </select>
                     </div>
-                    <div class="mb-4">
-                        <label for="repertoire-notes" class="form-label fw-semibold">Describe your preferred music genres and prepared pieces:</label>
-                        <textarea class="form-control" id="repertoire-notes" name="repertoire_notes" rows="4" placeholder="Genres you play, artists who inspire you, pieces you plan to perform..." required></textarea>
+                    <div class="col-12 col-md-4">
+                        <label for="preferred-date" class="form-label fw-semibold">Preferred Audition Date:</label>
+                        <input type="date" class="form-control" id="preferred-date" name="audition_date" required>
                     </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="rules-agree" name="rules_agreement" value="agreed" required>
-                        <label class="form-check-label" for="rules-agree">I agree to follow room C1.1.142 safety rules and attend scheduled band rehearsals.</label>
+                    <div class="col-12 col-md-4">
+                        <label for="preferred-time" class="form-label fw-semibold">Preferred Time Slot:</label>
+                        <!-- The time slots (15:00 to 20:00) are added by audition-form.js. -->
+                        <select class="form-select" id="preferred-time" name="audition_time" required>
+                            <option value="">-- Choose a time --</option>
+                        </select>
                     </div>
-                    <p class="intake-status">
-                        Current Intake Status:
-                        <span id="intake-status" class="badge bg-warning text-dark">Accepting Audition Forms</span>
-                    </p>
-                    <p class="form-note text-muted small">
-                        After you submit, a confirmation with your assigned audition time slot will appear below this form.
-                    </p>
-                    <div class="form-actions d-flex flex-wrap gap-2">
-                        <button id="audition-application-submit" type="submit" class="submit-button btn btn-primary btn-lg">Submit Audition Application</button>
-                        <button id="audition-application-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
-                    </div>
-                </fieldset>
+                </div>
+            </fieldset>
 
-            </form>
+            <fieldset class="music-availability border rounded p-4 shadow-sm">
+                <legend class="float-none w-auto px-2 h5 fw-bold">Performance Category &amp; Experience</legend>
+                <p class="fw-semibold mb-3">Performance Category:</p>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" id="role-vocalist" name="primary_role" value="vocalist" required>
+                    <label class="form-check-label" for="role-vocalist">Vocalist (Lead / Backing)</label>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="radio" id="role-musician" name="primary_role" value="instrumentalist">
+                    <label class="form-check-label" for="role-musician">Instrumentalist</label>
+                </div>
+                <!-- Shown only when "Instrumentalist" is chosen, so a vocalist is never asked for an instrument. -->
+                <div id="instrument-group" class="mb-4 hidden">
+                    <label for="instrument-type" class="form-label fw-semibold">Main Instrument:</label>
+                    <select class="form-select" id="instrument-type" name="instrument_type">
+                        <option value="">-- Choose an instrument --</option>
+                        <option value="electric-guitar">Electric Guitar</option>
+                        <option value="bass-guitar">Bass Guitar</option>
+                        <option value="drums">Drums / Percussion</option>
+                        <option value="keyboards">Piano / Synthesizer</option>
+                        <option value="saxophone">Saxophone / Brass</option>
+                        <option value="violin">Violin / Strings</option>
+                    </select>
+                </div>
+                <div id="audition-hint" class="form-text mb-4 hidden" aria-live="polite"></div>
+                <div class="mb-4">
+                    <label for="repertoire-notes" class="form-label fw-semibold">Musical experience and prepared pieces:</label>
+                    <textarea class="form-control" id="repertoire-notes" name="repertoire_notes" rows="4" placeholder="Genres you play, artists who inspire you, pieces you plan to perform..." required></textarea>
+                </div>
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="rules-agree" name="rules_agreement" value="agreed" required>
+                    <label class="form-check-label" for="rules-agree">I understand that this form requests an audition and does not make me a club member, and I agree to follow room C1.1.142 safety rules.</label>
+                </div>
+                <p class="intake-status">
+                    Current Intake Status:
+                    <span id="intake-status" class="badge bg-warning text-dark">Accepting Audition Requests</span>
+                </p>
+                <p class="form-note text-muted small">
+                    After you submit, a summary of your audition request will appear below this form.
+                </p>
+                <div class="form-actions d-flex flex-wrap gap-2">
+                    <button id="audition-application-submit" type="submit" class="submit-button btn btn-primary btn-lg">Request an Audition</button>
+                    <button id="audition-application-reset" type="reset" class="reset-button btn btn-outline-secondary">Clear Form</button>
+                </div>
+            </fieldset>
+
+        </form>
 
             <!-- Error area: stays hidden until JavaScript writes a message into it and removes the "hidden" class. -->
             <div id="audition-application-error" class="hidden alert alert-danger mt-4" role="alert"></div>
@@ -358,7 +359,7 @@
 
             <p class="mb-0">
 
-                <small>
+                
 
                     <strong>Audition Location:</strong>
                     Astana IT University, Room C1.1.142.
@@ -366,7 +367,7 @@
 
                     Please present your student ID card at security post 2 upon entering.
 
-                </small>
+                
 
             </p>
 
@@ -378,7 +379,7 @@
         <hr class="my-4">
         <p><strong class="d-block mb-2">Astana IT University Music Club Contacts:</strong></p>
         <p class="text-muted text-break">
-            President: Айварұлы Ақназар | Marketing: Билялова Адия | Sound: Абразаков Рамиль |
+            President: Aivaruly Aknazar | Marketing: Bilyalova Adiya | Sound: Abrazakov Ramil |
             Instagram: <a href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">@aitu_music</a>
             <a class="btn btn-outline-primary btn-sm ms-2" href="https://www.instagram.com/aitu_music" target="_blank" rel="noopener noreferrer">Follow us</a>
             |
@@ -387,6 +388,7 @@
         </p>
         <p class="small text-muted mb-0">&copy; 2024&ndash;2026 Astana IT University Music Club. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" type="button" class="back-to-top hidden" aria-label="Back to top">&uarr;</button>
     <script src="js/data.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/audition-form.js" defer></script>

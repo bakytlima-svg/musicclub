@@ -1,6 +1,6 @@
 'use strict';
 
-/* equipment.js - inventory (search, filter, sort, totals) and the equipment request form. */
+/* equipment.js - inventory (search, filter, sort, totals) and the equipment reservation form. */
 
 function initEquipmentPage() {
     const table = byId('equipment-table');
@@ -8,7 +8,8 @@ function initEquipmentPage() {
         return;
     }
     const body = table.tBodies[0];
-    const bookings = []; // demonstration reservations, kept only until the page is reloaded
+    const MIN_MINUTES = 30; // shortest reservation
+    const reservations = []; // demonstration reservations, kept only until the page is reloaded
     let selectedId = '';
 
     function findItem(id) {
@@ -16,6 +17,14 @@ function initEquipmentPage() {
             return item.id === id;
         });
     }
+
+    /* ----- Equipment list of the form: the same data as the inventory table ----- */
+    EQUIPMENT.forEach(function (item) {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.name + ' (' + item.type + ')';
+        byId('reservation-item').append(option);
+    });
 
     /* ----- Controls above the table ----- */
     const groupOptions = [['all', 'All groups']];
@@ -72,14 +81,10 @@ function initEquipmentPage() {
         }, 0);
     }
 
-    function countRequests(itemId) {
-        let total = 0;
-        bookings.forEach(function (booking) {
-            if (booking.itemId === itemId) {
-                total++;
-            }
-        });
-        return total;
+    function countReservations(itemId) {
+        return reservations.filter(function (reservation) {
+            return reservation.itemId === itemId;
+        }).length;
     }
 
     // One function builds every row of the inventory.
@@ -89,14 +94,14 @@ function initEquipmentPage() {
             row.classList.add('selected');
         }
         const nameCell = document.createElement('td');
-        const button = createButton('Request this item', 'btn btn-outline-primary btn-sm d-block mt-2');
+        const button = createButton('Reserve this item', 'btn btn-outline-primary btn-sm d-block mt-2');
         button.dataset.itemId = item.id;
         nameCell.append(item.name, button);
-        const requested = countRequests(item.id);
-        if (requested > 0) {
+        const reserved = countReservations(item.id);
+        if (reserved > 0) {
             const note = document.createElement('small');
             note.className = 'd-block text-success';
-            note.textContent = requested + ' of ' + item.quantity + ' requested in this session';
+            note.textContent = reserved + (reserved === 1 ? ' reservation' : ' reservations') + ' made in this session';
             nameCell.append(note);
         }
         row.append(nameCell, makeCell(item.type), makeCell(String(item.quantity)), makeCell(item.use));
@@ -123,10 +128,10 @@ function initEquipmentPage() {
     function selectItem(id) {
         selectedId = id;
         const item = findItem(id);
-        const select = byId('request-item');
+        const select = byId('reservation-item');
         select.value = id;
         clearFieldError(select);
-        message.textContent = item === undefined ? '' : 'Selected: ' + item.name + '. The request form below is filled in.';
+        message.textContent = item === undefined ? '' : 'Selected: ' + item.name + '. The reservation form below is filled in.';
         render();
     }
 
@@ -136,7 +141,7 @@ function initEquipmentPage() {
             return;
         }
         selectItem(button.dataset.itemId);
-        byId('equipment-request').scrollIntoView({ behavior: 'smooth' });
+        byId('equipment-reservation').scrollIntoView({ behavior: 'smooth' });
     });
     searchInput.addEventListener('input', render);
     searchInput.addEventListener('keydown', function (event) {
@@ -153,85 +158,85 @@ function initEquipmentPage() {
         sortSelect.value = 'name';
         render();
     });
-    byId('request-item').addEventListener('change', function () {
-        selectItem(byId('request-item').value);
+    byId('reservation-item').addEventListener('change', function () {
+        selectItem(byId('reservation-item').value);
     });
 
-    /* ----- Request form ----- */
+    /* ----- Reservation form ----- */
+    byId('reservation-date').min = formatDateInput(addDays(getToday(), 1));
+
     function validate() {
         const errors = [];
-        const type = getChecked('request_type');
-        addIf(errors, 'request-type-book', choiceProblem(type, 'Choose the type of request.'));
-        addIf(errors, 'request-name', nameProblem(getValue('request-name')));
-        addIf(errors, 'request-email', emailProblem(getValue('request-email'), true));
+        addIf(errors, 'reservation-name', nameProblem(getValue('reservation-name')));
+        addIf(errors, 'reservation-email', emailProblem(getValue('reservation-email'), true));
 
-        const item = findItem(getValue('request-item'));
-        const dateText = getValue('request-date');
-        const date = parseDateInput(dateText);
-        let dateError = '';
-        if (type === 'book') {
-            dateError = dateProblem(dateText, addDays(getToday(), 1), 'Book at least one day ahead: choose tomorrow or later.');
-        } else if (type === 'report') {
-            dateError = dateProblem(dateText, new Date(2000, 0, 1), '');
-            if (dateError === '' && date > getToday()) {
-                dateError = 'Enter the day the problem happened (today or earlier).';
+        const item = findItem(getValue('reservation-item'));
+        addIf(errors, 'reservation-item', item === undefined ? 'Choose the equipment.' : '');
+
+        const dateText = getValue('reservation-date');
+        const dateError = dateProblem(dateText, addDays(getToday(), 1), 'Reserve at least one day ahead: choose tomorrow or later.');
+        const startError = timeProblem(getValue('reservation-start'), 'start');
+        const endError = timeProblem(getValue('reservation-end'), 'end');
+        addIf(errors, 'reservation-date', dateError);
+        addIf(errors, 'reservation-start', startError);
+        addIf(errors, 'reservation-end', endError);
+
+        // Rules that combine fields: the times must make sense and the item must be free in that window.
+        if (startError === '' && endError === '') {
+            const start = toMinutes(getValue('reservation-start'));
+            const end = toMinutes(getValue('reservation-end'));
+            if (end <= start) {
+                addIf(errors, 'reservation-end', 'The end time must be later than the start time.');
+            } else if (end - start < MIN_MINUTES) {
+                addIf(errors, 'reservation-end', 'A reservation lasts at least ' + MIN_MINUTES + ' minutes.');
+            } else if (item !== undefined && dateError === '') {
+                const date = parseDateInput(dateText);
+                const concert = EVENTS.find(function (event) {
+                    return event.month === date.getMonth() + 1 && event.day === date.getDate();
+                });
+                const overlapping = reservations.filter(function (reservation) {
+                    return reservation.itemId === item.id && reservation.date === dateText &&
+                        start < reservation.end && reservation.start < end;
+                }).length;
+                if (item.group === 'Audio' && concert !== undefined) {
+                    addIf(errors, 'reservation-item', 'Audio equipment is needed for ' + concert.title + ' on that date. Choose another day.');
+                } else if (overlapping >= item.quantity) {
+                    addIf(errors, 'reservation-item', 'No unit of ' + item.name + ' is free on ' + formatDateLong(date) +
+                        ' at that time (all ' + item.quantity + ' already reserved).');
+                }
             }
-        } else {
-            dateError = dateProblem(dateText, new Date(2000, 0, 1), '');
-        }
-        addIf(errors, 'request-date', dateError);
-
-        // Availability of the chosen item on the chosen date (booking requests only).
-        if (item === undefined) {
-            addIf(errors, 'request-item', 'Choose the equipment.');
-        } else if (type === 'book' && dateError === '') {
-            const concert = EVENTS.find(function (event) {
-                return event.month === date.getMonth() + 1 && event.day === date.getDate();
-            });
-            const used = bookings.filter(function (booking) {
-                return booking.itemId === item.id && booking.date === dateText;
-            }).length;
-            if (item.group === 'Audio' && concert !== undefined) {
-                addIf(errors, 'request-item', 'Audio equipment is needed for ' + concert.title + ' on that date. Choose another day.');
-            } else if (used >= item.quantity) {
-                addIf(errors, 'request-item', 'No unit of ' + item.name + ' is left on ' + formatDateLong(date) +
-                    ' (all ' + item.quantity + ' already requested).');
-            }
         }
 
-        addIf(errors, 'request-details-text', textProblem(getValue('request-details-text'), 10, 400, 'Details'));
-        if (!byId('request-agree').checked) {
-            addIf(errors, 'request-agree', 'You must agree to return shared equipment after use.');
+        addIf(errors, 'reservation-purpose', textProblem(getValue('reservation-purpose'), 10, 400, 'Purpose of the reservation'));
+        if (!byId('reservation-agree').checked) {
+            addIf(errors, 'reservation-agree', 'You must agree to return shared equipment after use.');
         }
         return errors;
     }
 
     function buildSummary() {
-        const item = findItem(getValue('request-item'));
-        const type = getChecked('request_type');
-        if (type === 'book') {
-            bookings.push({ itemId: item.id, date: getValue('request-date') });
-            render();
-        }
+        const item = findItem(getValue('reservation-item'));
+        const start = toMinutes(getValue('reservation-start'));
+        const end = toMinutes(getValue('reservation-end'));
+        reservations.push({ itemId: item.id, date: getValue('reservation-date'), start: start, end: end });
+        render();
         return {
-            title: type === 'book' ? 'Demonstration booking request prepared' : 'Demonstration malfunction report prepared',
+            title: 'Demonstration reservation request prepared',
             lines: [
-                ['Request type', getCheckedLabel('request_type')],
-                ['Name', getValue('request-name')],
-                ['Email', getValue('request-email')],
+                ['Name', getValue('reservation-name')],
+                ['Email', getValue('reservation-email')],
                 ['Equipment', item.name + ' (' + item.type + ')'],
-                [type === 'book' ? 'Date of use' : 'Date of the problem', formatDateLong(parseDateInput(getValue('request-date')))],
-                ['Details', getValue('request-details-text')],
-                ['Demo reference', makeReference(type === 'book' ? 'GEAR' : 'FIX')]
+                ['Date', formatDateLong(parseDateInput(getValue('reservation-date')))],
+                ['Time', getValue('reservation-start') + '–' + getValue('reservation-end') + ' (' + ((end - start) / 60) + ' h)'],
+                ['Purpose', getValue('reservation-purpose')],
+                ['Demo reference', makeReference('GEAR')]
             ],
-            note: type === 'book'
-                ? 'The unit is counted as requested only in this browser tab until you reload the page.'
-                : 'No repair was ordered: the report is shown only as a demonstration.'
+            note: 'The unit is counted as reserved only in this browser tab until you reload the page.'
         };
     }
 
-    setupForm('equipment-request-form', validate, buildSummary);
-    byId('equipment-request-form').addEventListener('reset', function () {
+    setupForm('equipment-reservation-form', validate, buildSummary);
+    byId('equipment-reservation-form').addEventListener('reset', function () {
         selectedId = '';
         message.textContent = '';
         render();
